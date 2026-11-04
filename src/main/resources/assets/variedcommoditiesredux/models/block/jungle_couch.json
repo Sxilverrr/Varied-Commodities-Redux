@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:block/furniture/couch_middle",
+  "textures": {
+    "wood": "minecraft:block/jungle_planks"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:item/bronze_dagger",
+  "textures": {
+    "layer0": "variedcommoditiesredux:item/kukri"
+  }
+}

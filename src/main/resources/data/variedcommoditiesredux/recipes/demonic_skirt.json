@@ -1,0 +1,15 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    " XX ",
+    "XXXX"
+  ],
+  "key": {
+    "X": {
+      "item": "variedcommoditiesredux:demonic_ingot"
+    }
+  },
+  "result": {
+    "item": "variedcommoditiesredux:demonic_skirt"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    "X  X",
+    "XXXX",
+    "XXXX",
+    " XX "
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:emerald"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:emerald_shield"
+  }
+}

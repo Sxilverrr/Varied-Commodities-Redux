@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#c:bronze_ingots",
+    "#c:steel_ingots",
+    "#c:mithril_ingots",
+    "variedcommoditiesredux:demonic_ingot"
+  ]
+}

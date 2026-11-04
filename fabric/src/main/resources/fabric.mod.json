@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "${id}",
+  "version": "${version}",
+  "name": "${name}",
+  "description": "A modern port of Varied Commodities by Noppes",
+  "authors": [
+    "Noppes",
+    "Sxilverr"
+  ],
+  "license": "CC-BY-NC-3.0",
+  "icon": "assets/${id}/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.sxilverr.variedcommoditiesredux.fabric.VariedCommoditiesFabric"
+    ],
+    "client": [
+      "com.sxilverr.variedcommoditiesredux.fabric.VariedCommoditiesFabricClient"
+    ],
+    "modmenu": [
+      "com.sxilverr.variedcommoditiesredux.fabric.ModMenuIntegration"
+    ],
+    "jei_mod_plugin": [
+      "com.sxilverr.variedcommoditiesredux.compat.VCJeiPlugin"
+    ]
+  },
+  "mixins": [
+    "variedcommoditiesredux.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15",
+    "minecraft": "${minecraft}",
+    "fabric-api": "*",
+    "architectury": "${architectury}"
+  },
+  "suggests": {
+    "cloth-config": "*",
+    "modmenu": "*"
+  }
+}

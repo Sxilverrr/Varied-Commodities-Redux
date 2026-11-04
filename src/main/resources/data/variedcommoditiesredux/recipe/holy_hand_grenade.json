@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " X ",
+    "XYX",
+    " X "
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:rabbit_foot"
+    },
+    "Y": {
+      "item": "minecraft:tnt"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:holy_hand_grenade"
+  }
+}

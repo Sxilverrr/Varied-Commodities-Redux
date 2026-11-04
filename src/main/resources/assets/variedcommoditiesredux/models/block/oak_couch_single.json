@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:block/furniture/couch_single",
+  "textures": {
+    "wood": "minecraft:block/oak_planks"
+  }
+}

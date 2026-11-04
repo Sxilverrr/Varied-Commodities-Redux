@@ -1,0 +1,30 @@
+{
+  "textures": {
+    "particle": "#blood"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0.16
+      ],
+      "to": [
+        16,
+        16,
+        0.16
+      ],
+      "faces": {
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#blood"
+        }
+      }
+    }
+  ]
+}

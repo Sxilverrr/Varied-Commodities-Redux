@@ -1,0 +1,33 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "CC BY-NC 3.0"
+
+[[mods]]
+modId = "${id}"
+version = "${version}"
+displayName = "${name}"
+authors = "Noppes, Sxilverr"
+description = '''A modern port of Varied Commodities by Noppes'''
+logoFile = "assets/${id}/icon.png"
+logoBlur = false
+
+[[dependencies.${id}]]
+modId = "forge"
+mandatory = true
+versionRange = "[47.3.10,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${id}]]
+modId = "minecraft"
+mandatory = true
+versionRange = "${minecraft}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${id}]]
+modId = "architectury"
+mandatory = true
+versionRange = "${architectury}"
+ordering = "AFTER"
+side = "BOTH"

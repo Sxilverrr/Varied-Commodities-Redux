@@ -1,0 +1,379 @@
+{
+  "textures": {
+    "flag": "variedcommoditiesredux:block/furniture/banner_flag",
+    "particle": "#material"
+  },
+  "elements": [
+    {
+      "name": "BannerModel.MiddleStick",
+      "from": [
+        7.0,
+        0.0,
+        7.0
+      ],
+      "to": [
+        9.0,
+        17.0,
+        9.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            16.0,
+            4.0,
+            14.0,
+            2.0
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            12.0,
+            0.0,
+            14.0,
+            8.5
+          ],
+          "texture": "#material"
+        },
+        "north": {
+          "uv": [
+            14.0,
+            0.0,
+            16.0,
+            8.5
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            0.0,
+            2.0,
+            8.5
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            2.0,
+            0.0,
+            4.0,
+            8.5
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "name": "BannerModel.StickDecoration",
+      "from": [
+        0.0,
+        12.5,
+        6.5
+      ],
+      "to": [
+        16.0,
+        15.5,
+        9.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            16.0,
+            15.0,
+            0.0,
+            12.0
+          ],
+          "texture": "#material"
+        },
+        "down": {
+          "uv": [
+            16.0,
+            12.0,
+            0.0,
+            15.0
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            11.0,
+            13.0,
+            14.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "north": {
+          "uv": [
+            0.0,
+            13.0,
+            16.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            13.0,
+            13.0,
+            16.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            0.0,
+            13.0,
+            16.0,
+            16.0
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "name": "BannerModel.TopDecoration",
+      "from": [
+        7.5,
+        17.0,
+        7.5
+      ],
+      "to": [
+        8.5,
+        18.0,
+        8.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            15.0,
+            4.0,
+            14.0,
+            3.0
+          ],
+          "texture": "#material"
+        },
+        "down": {
+          "uv": [
+            16.0,
+            3.0,
+            15.0,
+            4.0
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            13.0,
+            4.0,
+            14.0,
+            5.0
+          ],
+          "texture": "#material"
+        },
+        "north": {
+          "uv": [
+            14.0,
+            4.0,
+            15.0,
+            5.0
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            15.0,
+            4.0,
+            16.0,
+            5.0
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            0.0,
+            4.0,
+            1.0,
+            5.0
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "name": "BannerModel.FlagPole1",
+      "from": [
+        14.0,
+        13.5,
+        5.5
+      ],
+      "to": [
+        15.0,
+        14.5,
+        6.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            15.0,
+            4.0,
+            14.0,
+            3.0
+          ],
+          "texture": "#material"
+        },
+        "down": {
+          "uv": [
+            16.0,
+            3.0,
+            15.0,
+            4.0
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            13.0,
+            4.0,
+            14.0,
+            5.0
+          ],
+          "texture": "#material"
+        },
+        "north": {
+          "uv": [
+            14.0,
+            4.0,
+            15.0,
+            5.0
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            15.0,
+            4.0,
+            16.0,
+            5.0
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            0.0,
+            4.0,
+            1.0,
+            5.0
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "name": "BannerModel.FlagPole2",
+      "from": [
+        1.0,
+        13.5,
+        5.5
+      ],
+      "to": [
+        2.0,
+        14.5,
+        6.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            15.0,
+            4.0,
+            14.0,
+            3.0
+          ],
+          "texture": "#material"
+        },
+        "down": {
+          "uv": [
+            16.0,
+            3.0,
+            15.0,
+            4.0
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            13.0,
+            4.0,
+            14.0,
+            5.0
+          ],
+          "texture": "#material"
+        },
+        "north": {
+          "uv": [
+            14.0,
+            4.0,
+            15.0,
+            5.0
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            15.0,
+            4.0,
+            16.0,
+            5.0
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            0.0,
+            4.0,
+            1.0,
+            5.0
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "name": "BannerFlagModel.Flag",
+      "from": [
+        0.5,
+        0.0,
+        6.0
+      ],
+      "to": [
+        15.5,
+        15.0,
+        6.0
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0.0,
+            0.0,
+            7.5,
+            7.5
+          ],
+          "texture": "#flag",
+          "tintindex": 0
+        },
+        "south": {
+          "uv": [
+            7.5,
+            0.0,
+            15.0,
+            7.5
+          ],
+          "texture": "#flag",
+          "tintindex": 0
+        }
+      }
+    }
+  ]
+}

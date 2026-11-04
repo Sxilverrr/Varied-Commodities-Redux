@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "rotation=0": {
+      "model": "variedcommoditiesredux:block/oak_beam"
+    },
+    "rotation=1": {
+      "model": "variedcommoditiesredux:block/oak_beam",
+      "y": 90
+    },
+    "rotation=2": {
+      "model": "variedcommoditiesredux:block/oak_beam",
+      "y": 180
+    },
+    "rotation=3": {
+      "model": "variedcommoditiesredux:block/oak_beam",
+      "y": 270
+    }
+  }
+}

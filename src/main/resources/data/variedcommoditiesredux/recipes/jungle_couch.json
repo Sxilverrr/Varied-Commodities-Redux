@@ -1,0 +1,17 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    "   X",
+    "   X",
+    "XXXX",
+    "X  X"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:jungle_planks"
+    }
+  },
+  "result": {
+    "item": "variedcommoditiesredux:jungle_couch"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:block/furniture/pedestal",
+  "textures": {
+    "material": "minecraft:block/stone"
+  }
+}

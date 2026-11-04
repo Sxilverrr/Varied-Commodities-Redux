@@ -1,0 +1,22 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    " XX ",
+    "XXXX",
+    "XXXX",
+    " XX "
+  ],
+  "key": {
+    "X": [
+      {
+        "tag": "forge:ingots/mithril"
+      },
+      {
+        "tag": "c:mithril_ingots"
+      }
+    ]
+  },
+  "result": {
+    "item": "variedcommoditiesredux:mithril_round_shield"
+  }
+}

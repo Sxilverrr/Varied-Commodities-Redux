@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:item/basic_glaive",
+  "textures": {
+    "layer0": "variedcommoditiesredux:item/wooden_glaive"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    " XX ",
+    "XXXX"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:chain"
+    }
+  },
+  "result": {
+    "item": "variedcommoditiesredux:chainmail_skirt"
+  }
+}

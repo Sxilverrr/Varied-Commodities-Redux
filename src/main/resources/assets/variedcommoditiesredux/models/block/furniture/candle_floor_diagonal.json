@@ -1,0 +1,476 @@
+{
+  "textures": {
+    "texture": "variedcommoditiesredux:block/furniture/candle",
+    "particle": "#texture"
+  },
+  "elements": [
+    {
+      "name": "CandleModel.Base",
+      "from": [
+        6.0,
+        0.0,
+        6.0
+      ],
+      "to": [
+        10.0,
+        1.0,
+        10.0
+      ],
+      "rotation": {
+        "origin": [
+          8.0,
+          0.5,
+          8.0
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            2.0,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            2.0,
+            1.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            2.0,
+            2.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            2.0,
+            3.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            2.0,
+            4.0,
+            2.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleModel.Bar1",
+      "from": [
+        9.2678,
+        1.0,
+        6.7678
+      ],
+      "to": [
+        10.2678,
+        2.0,
+        12.7678
+      ],
+      "rotation": {
+        "origin": [
+          9.7678,
+          1.5,
+          9.7678
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            1.75,
+            3.0,
+            1.5,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            2.0,
+            0.0,
+            1.75,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            3.0,
+            1.5,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.5,
+            3.0,
+            1.75,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            1.75,
+            3.0,
+            3.25,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            3.25,
+            3.0,
+            3.5,
+            3.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleModel.Bar2",
+      "from": [
+        5.7322,
+        1.0,
+        3.2322
+      ],
+      "to": [
+        6.7322,
+        2.0,
+        9.2322
+      ],
+      "rotation": {
+        "origin": [
+          6.2322,
+          1.5,
+          6.2322
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            1.75,
+            3.0,
+            1.5,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            2.0,
+            0.0,
+            1.75,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            3.0,
+            1.5,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.5,
+            3.0,
+            1.75,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            1.75,
+            3.0,
+            3.25,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            3.25,
+            3.0,
+            3.5,
+            3.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleModel.Bar3",
+      "from": [
+        7.7678,
+        1.0,
+        5.7322
+      ],
+      "to": [
+        11.7678,
+        2.0,
+        6.7322
+      ],
+      "rotation": {
+        "origin": [
+          9.7678,
+          1.5,
+          6.2322
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            1.25,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            2.25,
+            0.0,
+            1.25,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            1.25,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            1.25,
+            0.5,
+            1.5,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1.5,
+            0.5,
+            2.5,
+            1.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleModel.Bar4",
+      "from": [
+        4.2322,
+        1.0,
+        9.2678
+      ],
+      "to": [
+        8.2322,
+        2.0,
+        10.2678
+      ],
+      "rotation": {
+        "origin": [
+          6.2322,
+          1.5,
+          9.7678
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            1.25,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            2.25,
+            0.0,
+            1.25,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            1.25,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            1.25,
+            0.5,
+            1.5,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1.5,
+            0.5,
+            2.5,
+            1.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleModel.Wax",
+      "from": [
+        7.0,
+        1.0,
+        7.0
+      ],
+      "to": [
+        9.0,
+        5.0,
+        9.0
+      ],
+      "rotation": {
+        "origin": [
+          8.0,
+          3.0,
+          8.0
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            5.0,
+            1.0,
+            4.5,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            5.5,
+            0.0,
+            5.0,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            4.0,
+            1.0,
+            4.5,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            4.5,
+            1.0,
+            5.0,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            5.0,
+            1.0,
+            5.5,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            5.5,
+            1.0,
+            6.0,
+            3.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    }
+  ]
+}

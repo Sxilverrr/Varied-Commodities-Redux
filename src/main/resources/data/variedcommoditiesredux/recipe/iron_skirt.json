@@ -1,0 +1,15 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    " XX ",
+    "XXXX"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:iron_skirt"
+  }
+}

@@ -1,0 +1,480 @@
+{
+  "textures": {
+    "table": "variedcommoditiesredux:block/furniture/trading_table",
+    "arrows": "variedcommoditiesredux:block/furniture/trading_arrows",
+    "particle": "#table"
+  },
+  "elements": [
+    {
+      "name": "TradingTableModel.Paper_1",
+      "from": [
+        11.6562,
+        0.348,
+        8.1883
+      ],
+      "to": [
+        14.6562,
+        0.348,
+        12.1883
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            10.5,
+            2.0,
+            9.0,
+            0.0
+          ],
+          "texture": "#table"
+        },
+        "down": {
+          "uv": [
+            12.0,
+            0.0,
+            10.5,
+            2.0
+          ],
+          "texture": "#table"
+        }
+      }
+    },
+    {
+      "name": "TradingTableModel.Base1",
+      "from": [
+        2.6092,
+        -0.31,
+        4.0587
+      ],
+      "to": [
+        3.6092,
+        0.63,
+        8.0587
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.5,
+            2.0,
+            2.0,
+            0.0
+          ],
+          "texture": "#table"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            2.5,
+            2.0
+          ],
+          "texture": "#table"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            2.0,
+            2.0,
+            2.5
+          ],
+          "texture": "#table"
+        },
+        "north": {
+          "uv": [
+            2.0,
+            2.0,
+            2.5,
+            2.5
+          ],
+          "texture": "#table"
+        },
+        "west": {
+          "uv": [
+            2.5,
+            2.0,
+            4.5,
+            2.5
+          ],
+          "texture": "#table"
+        },
+        "south": {
+          "uv": [
+            4.5,
+            2.0,
+            5.0,
+            2.5
+          ],
+          "texture": "#table"
+        }
+      }
+    },
+    {
+      "name": "TradingTableModel.Base2",
+      "from": [
+        2.1092,
+        -0.31,
+        5.0587
+      ],
+      "to": [
+        4.1092,
+        0.63,
+        7.0587
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            1.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#table"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            2.0,
+            1.0
+          ],
+          "texture": "#table"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            1.0,
+            1.0,
+            1.5
+          ],
+          "texture": "#table"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            1.0,
+            2.0,
+            1.5
+          ],
+          "texture": "#table"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            1.0,
+            3.0,
+            1.5
+          ],
+          "texture": "#table"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            1.0,
+            4.0,
+            1.5
+          ],
+          "texture": "#table"
+        }
+      }
+    },
+    {
+      "name": "TradingTableModel.Pole",
+      "from": [
+        2.6092,
+        0.63,
+        5.5587
+      ],
+      "to": [
+        3.6092,
+        5.33,
+        6.5587
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            1.0,
+            0.5,
+            0.5,
+            0.0
+          ],
+          "texture": "#table"
+        },
+        "down": {
+          "uv": [
+            1.5,
+            0.0,
+            1.0,
+            0.5
+          ],
+          "texture": "#table"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.5,
+            3.0
+          ],
+          "texture": "#table"
+        },
+        "north": {
+          "uv": [
+            0.5,
+            0.5,
+            1.0,
+            3.0
+          ],
+          "texture": "#table"
+        },
+        "west": {
+          "uv": [
+            1.0,
+            0.5,
+            1.5,
+            3.0
+          ],
+          "texture": "#table"
+        },
+        "south": {
+          "uv": [
+            1.5,
+            0.5,
+            2.0,
+            3.0
+          ],
+          "texture": "#table"
+        }
+      }
+    },
+    {
+      "name": "TradingTableModel.Support",
+      "from": [
+        2.6092,
+        5.33,
+        3.0587
+      ],
+      "to": [
+        3.6092,
+        6.27,
+        9.0587
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            3.5,
+            3.0,
+            3.0,
+            0.0
+          ],
+          "texture": "#table"
+        },
+        "down": {
+          "uv": [
+            4.0,
+            0.0,
+            3.5,
+            3.0
+          ],
+          "texture": "#table"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            3.0,
+            3.0,
+            3.5
+          ],
+          "texture": "#table"
+        },
+        "north": {
+          "uv": [
+            3.0,
+            3.0,
+            3.5,
+            3.5
+          ],
+          "texture": "#table"
+        },
+        "west": {
+          "uv": [
+            3.5,
+            3.0,
+            6.5,
+            3.5
+          ],
+          "texture": "#table"
+        },
+        "south": {
+          "uv": [
+            6.5,
+            3.0,
+            7.0,
+            3.5
+          ],
+          "texture": "#table"
+        }
+      }
+    },
+    {
+      "name": "TradingTableModel.Cup_1",
+      "from": [
+        2.5862,
+        2.98,
+        2.6046
+      ],
+      "to": [
+        4.5862,
+        3.92,
+        4.6046
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            1.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#table"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            2.0,
+            1.0
+          ],
+          "texture": "#table"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            1.0,
+            1.0,
+            1.5
+          ],
+          "texture": "#table"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            1.0,
+            2.0,
+            1.5
+          ],
+          "texture": "#table"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            1.0,
+            3.0,
+            1.5
+          ],
+          "texture": "#table"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            1.0,
+            4.0,
+            1.5
+          ],
+          "texture": "#table"
+        }
+      }
+    },
+    {
+      "name": "TradingTableModel.Cup_2",
+      "from": [
+        1.6322,
+        2.98,
+        7.5127
+      ],
+      "to": [
+        3.6322,
+        3.92,
+        9.5127
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            1.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#table"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            2.0,
+            1.0
+          ],
+          "texture": "#table"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            1.0,
+            1.0,
+            1.5
+          ],
+          "texture": "#table"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            1.0,
+            2.0,
+            1.5
+          ],
+          "texture": "#table"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            1.0,
+            3.0,
+            1.5
+          ],
+          "texture": "#table"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            1.0,
+            4.0,
+            1.5
+          ],
+          "texture": "#table"
+        }
+      }
+    },
+    {
+      "name": "arrows",
+      "from": [
+        0.8,
+        0.144,
+        0.8
+      ],
+      "to": [
+        15.2,
+        0.144,
+        15.2
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            16.0,
+            16.0,
+            0.0,
+            0.0
+          ],
+          "texture": "#arrows"
+        }
+      }
+    }
+  ]
+}

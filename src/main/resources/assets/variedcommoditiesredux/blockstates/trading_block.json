@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "rotation=0": {
+      "model": "variedcommoditiesredux:block/furniture/trading_block_0"
+    },
+    "rotation=1": {
+      "model": "variedcommoditiesredux:block/furniture/trading_block_1"
+    },
+    "rotation=2": {
+      "model": "variedcommoditiesredux:block/furniture/trading_block_2"
+    },
+    "rotation=3": {
+      "model": "variedcommoditiesredux:block/furniture/trading_block_3"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    "  X",
+    "  X",
+    "XXX",
+    "X X"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:acacia_planks"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:acacia_chair"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "variedcommoditiesredux:full_golden_chestplate",
+    "variedcommoditiesredux:full_golden_helmet",
+    "variedcommoditiesredux:golden_banner",
+    "variedcommoditiesredux:golden_battleaxe",
+    "variedcommoditiesredux:golden_broadsword",
+    "variedcommoditiesredux:golden_coin",
+    "variedcommoditiesredux:golden_crown",
+    "variedcommoditiesredux:golden_dagger",
+    "variedcommoditiesredux:golden_glaive",
+    "variedcommoditiesredux:golden_gun",
+    "variedcommoditiesredux:golden_halberd",
+    "variedcommoditiesredux:golden_mace",
+    "variedcommoditiesredux:golden_pedestal",
+    "variedcommoditiesredux:golden_reverse_dagger",
+    "variedcommoditiesredux:golden_round_shield",
+    "variedcommoditiesredux:golden_scythe",
+    "variedcommoditiesredux:golden_shield",
+    "variedcommoditiesredux:golden_skirt",
+    "variedcommoditiesredux:golden_spear",
+    "variedcommoditiesredux:golden_staff",
+    "variedcommoditiesredux:golden_tall_lamp",
+    "variedcommoditiesredux:golden_trident",
+    "variedcommoditiesredux:golden_wall_banner",
+    "variedcommoditiesredux:golden_warhammer"
+  ]
+}

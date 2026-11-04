@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "rotation=0": {
+      "model": "variedcommoditiesredux:block/furniture/big_sign_0"
+    },
+    "rotation=1": {
+      "model": "variedcommoditiesredux:block/furniture/big_sign_1"
+    },
+    "rotation=2": {
+      "model": "variedcommoditiesredux:block/furniture/big_sign_2"
+    },
+    "rotation=3": {
+      "model": "variedcommoditiesredux:block/furniture/big_sign_3"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    "XXXX",
+    "X  X",
+    "X  X",
+    "X  X"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:dark_oak_planks"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:dark_oak_table"
+  }
+}

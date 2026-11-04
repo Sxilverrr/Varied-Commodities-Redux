@@ -1,0 +1,238 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "down": "true",
+        "rotation": "0"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_floor"
+      }
+    },
+    {
+      "when": {
+        "up": "true",
+        "rotation": "0"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_ceiling"
+      }
+    },
+    {
+      "when": {
+        "down": "true",
+        "rotation": "1"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_floor",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "up": "true",
+        "rotation": "1"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_ceiling",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "down": "true",
+        "rotation": "2"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_floor",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "up": "true",
+        "rotation": "2"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_ceiling",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "down": "true",
+        "rotation": "3"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_floor",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "up": "true",
+        "rotation": "3"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_ceiling",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "north": "true",
+        "rotation": "0"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_0"
+      }
+    },
+    {
+      "when": {
+        "north": "true",
+        "rotation": "1"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_1"
+      }
+    },
+    {
+      "when": {
+        "north": "true",
+        "rotation": "2"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_2"
+      }
+    },
+    {
+      "when": {
+        "north": "true",
+        "rotation": "3"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_3"
+      }
+    },
+    {
+      "when": {
+        "east": "true",
+        "rotation": "0"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_0",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "east": "true",
+        "rotation": "1"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_1",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "east": "true",
+        "rotation": "2"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_2",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "east": "true",
+        "rotation": "3"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_3",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "south": "true",
+        "rotation": "0"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_0",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "south": "true",
+        "rotation": "1"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_1",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "south": "true",
+        "rotation": "2"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_2",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "south": "true",
+        "rotation": "3"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_3",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "west": "true",
+        "rotation": "0"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_0",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "west": "true",
+        "rotation": "1"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_1",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "west": "true",
+        "rotation": "2"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_2",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "west": "true",
+        "rotation": "3"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/blood_splat_3_wall_3",
+        "y": 270
+      }
+    }
+  ]
+}

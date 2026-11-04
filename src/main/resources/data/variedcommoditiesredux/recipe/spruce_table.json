@@ -1,0 +1,17 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    "XXXX",
+    "X  X",
+    "X  X",
+    "X  X"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:spruce_planks"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:spruce_table"
+  }
+}

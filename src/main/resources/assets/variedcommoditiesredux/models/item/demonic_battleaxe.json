@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:item/basic_battleaxe",
+  "textures": {
+    "layer0": "variedcommoditiesredux:item/demonic_battleaxe"
+  }
+}

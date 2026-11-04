@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:item/basic_staff",
+  "textures": {
+    "layer0": "variedcommoditiesredux:item/stone_staff"
+  }
+}

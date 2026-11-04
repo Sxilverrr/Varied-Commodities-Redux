@@ -1,0 +1,15 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    " XX ",
+    "XXXX"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "variedcommoditiesredux:leather_skirt"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "textures": {
+    "particle": "#wood"
+  },
+  "elements": [
+    {
+      "name": "TableModel.Shape5",
+      "from": [
+        13.0,
+        0.0,
+        1.0
+      ],
+      "to": [
+        15.0,
+        14.0,
+        3.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            4.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            4.0,
+            0.0,
+            6.0,
+            2.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            2.0,
+            0.0,
+            16.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            4.0,
+            2.0,
+            2.0,
+            16.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            6.0,
+            2.0,
+            4.0,
+            16.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            8.0,
+            2.0,
+            6.0,
+            16.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    }
+  ]
+}

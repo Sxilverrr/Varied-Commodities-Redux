@@ -1,0 +1,15 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    "XXXX"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:oak_planks"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:oak_beam",
+    "count": 2
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "left=true,right=true,rotation=0": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch"
+    },
+    "left=true,right=false,rotation=0": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch_left"
+    },
+    "left=false,right=true,rotation=0": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch_right"
+    },
+    "left=false,right=false,rotation=0": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch_single"
+    },
+    "left=true,right=true,rotation=1": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch",
+      "y": 90
+    },
+    "left=true,right=false,rotation=1": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch_left",
+      "y": 90
+    },
+    "left=false,right=true,rotation=1": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch_right",
+      "y": 90
+    },
+    "left=false,right=false,rotation=1": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch_single",
+      "y": 90
+    },
+    "left=true,right=true,rotation=2": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch",
+      "y": 180
+    },
+    "left=true,right=false,rotation=2": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch_left",
+      "y": 180
+    },
+    "left=false,right=true,rotation=2": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch_right",
+      "y": 180
+    },
+    "left=false,right=false,rotation=2": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch_single",
+      "y": 180
+    },
+    "left=true,right=true,rotation=3": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch",
+      "y": 270
+    },
+    "left=true,right=false,rotation=3": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch_left",
+      "y": 270
+    },
+    "left=false,right=true,rotation=3": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch_right",
+      "y": 270
+    },
+    "left=false,right=false,rotation=3": {
+      "model": "variedcommoditiesredux:block/dark_oak_couch_single",
+      "y": 270
+    }
+  }
+}

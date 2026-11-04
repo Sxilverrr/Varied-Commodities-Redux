@@ -1,0 +1,20 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    "XXXX",
+    "X Y ",
+    "XY  "
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:spruce_planks"
+    },
+    "Y": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "variedcommoditiesredux:spruce_shelf",
+    "count": 3
+  }
+}

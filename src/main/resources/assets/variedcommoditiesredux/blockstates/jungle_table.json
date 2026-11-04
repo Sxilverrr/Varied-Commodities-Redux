@@ -1,0 +1,75 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "rotation": "0"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/jungle_table"
+      }
+    },
+    {
+      "when": {
+        "rotation": "1"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/jungle_table",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "rotation": "2"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/jungle_table",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "rotation": "3"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/jungle_table",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "east": "false",
+        "south": "false"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/jungle_table_leg1"
+      }
+    },
+    {
+      "when": {
+        "west": "false",
+        "north": "false"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/jungle_table_leg3"
+      }
+    },
+    {
+      "when": {
+        "west": "false",
+        "south": "false"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/jungle_table_leg4"
+      }
+    },
+    {
+      "when": {
+        "east": "false",
+        "north": "false"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/jungle_table_leg5"
+      }
+    }
+  ]
+}

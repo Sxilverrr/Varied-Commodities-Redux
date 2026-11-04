@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "variedcommoditiesredux:full_golden_helmet",
+    "variedcommoditiesredux:full_golden_chestplate",
+    "variedcommoditiesredux:golden_skirt",
+    "variedcommoditiesredux:golden_crown"
+  ]
+}

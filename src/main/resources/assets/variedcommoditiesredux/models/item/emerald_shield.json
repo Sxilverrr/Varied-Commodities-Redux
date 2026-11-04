@@ -1,0 +1,14 @@
+{
+  "parent": "variedcommoditiesredux:item/basic_shield",
+  "textures": {
+    "layer0": "variedcommoditiesredux:item/emerald_shield"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "blocking": 1
+      },
+      "model": "variedcommoditiesredux:item/emerald_shield_blocking"
+    }
+  ]
+}

@@ -1,0 +1,578 @@
+{
+  "textures": {
+    "texture": "variedcommoditiesredux:block/furniture/lamp",
+    "particle": "#texture"
+  },
+  "elements": [
+    {
+      "name": "LampWallModel.Base",
+      "from": [
+        6.0,
+        3.0,
+        9.0
+      ],
+      "to": [
+        10.0,
+        10.0,
+        13.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            5.0,
+            1.0,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            3.0,
+            2.0,
+            5.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            5.0,
+            1.0,
+            8.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            5.0,
+            2.0,
+            8.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            5.0,
+            3.0,
+            8.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            5.0,
+            4.0,
+            8.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampWallModel.Top1",
+      "from": [
+        5.5,
+        9.0,
+        8.5
+      ],
+      "to": [
+        10.5,
+        10.0,
+        13.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.5,
+            2.5,
+            1.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            3.75,
+            0.0,
+            2.5,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            2.5,
+            1.25,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.25,
+            2.5,
+            2.5,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            2.5,
+            2.5,
+            3.75,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            3.75,
+            2.5,
+            5.0,
+            3.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampWallModel.Top2",
+      "from": [
+        6.0,
+        9.5,
+        9.0
+      ],
+      "to": [
+        10.0,
+        10.5,
+        13.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            2.0,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            2.0,
+            1.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            2.0,
+            2.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            2.0,
+            3.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            2.0,
+            4.0,
+            2.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampWallModel.Top3",
+      "from": [
+        6.5,
+        10.0,
+        9.5
+      ],
+      "to": [
+        9.5,
+        11.0,
+        12.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            1.5,
+            1.5,
+            0.75,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            2.25,
+            0.0,
+            1.5,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            1.5,
+            0.75,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.75,
+            1.5,
+            1.5,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            1.5,
+            1.5,
+            2.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            2.25,
+            1.5,
+            3.0,
+            2.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampWallModel.Shape2",
+      "from": [
+        7.5,
+        12.0,
+        11.5
+      ],
+      "to": [
+        8.5,
+        13.0,
+        14.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            1.0,
+            1.5,
+            0.75,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            1.25,
+            0.0,
+            1.0,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            1.5,
+            0.75,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.75,
+            1.5,
+            1.0,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            1.0,
+            1.5,
+            1.75,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1.75,
+            1.5,
+            2.0,
+            2.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampWallModel.Shape3",
+      "from": [
+        6.5,
+        10.8787,
+        14.5
+      ],
+      "to": [
+        9.5,
+        13.8787,
+        15.5
+      ],
+      "rotation": {
+        "origin": [
+          8.0,
+          12.3787,
+          15.0
+        ],
+        "axis": "z",
+        "angle": 45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            1.0,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            1.75,
+            0.0,
+            1.0,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            1.0,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            1.0,
+            0.5,
+            1.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1.25,
+            0.5,
+            2.0,
+            2.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampWallModel.Shape4",
+      "from": [
+        7.5,
+        10.5,
+        10.5
+      ],
+      "to": [
+        8.5,
+        13.5,
+        11.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            2.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampWallModel.Shape5",
+      "from": [
+        6.0,
+        10.4716,
+        15.0
+      ],
+      "to": [
+        10.0,
+        14.4716,
+        16.0
+      ],
+      "rotation": {
+        "origin": [
+          8.0,
+          12.4716,
+          15.5
+        ],
+        "axis": "z",
+        "angle": 45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            1.25,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            2.25,
+            0.0,
+            1.25,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            1.25,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            1.25,
+            0.5,
+            1.5,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1.5,
+            0.5,
+            2.5,
+            2.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:block/furniture/table_shape5",
+  "textures": {
+    "wood": "minecraft:block/birch_planks"
+  }
+}

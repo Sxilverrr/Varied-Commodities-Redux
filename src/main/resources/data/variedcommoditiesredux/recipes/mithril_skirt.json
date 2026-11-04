@@ -1,0 +1,20 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    " XX ",
+    "XXXX"
+  ],
+  "key": {
+    "X": [
+      {
+        "tag": "forge:ingots/mithril"
+      },
+      {
+        "tag": "c:mithril_ingots"
+      }
+    ]
+  },
+  "result": {
+    "item": "variedcommoditiesredux:mithril_skirt"
+  }
+}

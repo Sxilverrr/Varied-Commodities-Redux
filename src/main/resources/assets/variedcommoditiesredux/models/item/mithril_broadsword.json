@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:item/basic_broadsword",
+  "textures": {
+    "layer0": "variedcommoditiesredux:item/mithril_broadsword"
+  }
+}

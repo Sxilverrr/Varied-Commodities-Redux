@@ -1,0 +1,25 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    "XXXY",
+    " ZA ",
+    "  A "
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:emerald"
+    },
+    "Y": {
+      "item": "minecraft:lever"
+    },
+    "Z": {
+      "item": "minecraft:stone_button"
+    },
+    "A": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:emerald_gun"
+  }
+}

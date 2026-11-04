@@ -1,0 +1,284 @@
+{
+  "textures": {
+    "overlay": "variedcommoditiesredux:block/furniture/pedestal",
+    "particle": "#material"
+  },
+  "elements": [
+    {
+      "name": "PedestalModel.Main_Block",
+      "from": [
+        1.0,
+        5.0,
+        4.0
+      ],
+      "to": [
+        15.0,
+        8.0,
+        12.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            15.0,
+            16.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#material"
+        },
+        "down": {
+          "uv": [
+            16.0,
+            0.0,
+            2.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            3.0
+          ],
+          "texture": "#material"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            0.0,
+            15.0,
+            3.0
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            0.0,
+            16.0,
+            3.0
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            2.0,
+            0.0,
+            16.0,
+            3.0
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "name": "PedestalModel.Front",
+      "from": [
+        0.0,
+        0.0,
+        3.0
+      ],
+      "to": [
+        16.0,
+        5.0,
+        13.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            16.0,
+            16.0,
+            0.0,
+            0.0
+          ],
+          "texture": "#material"
+        },
+        "down": {
+          "uv": [
+            16.0,
+            0.0,
+            0.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            8.0,
+            16.0,
+            13.0
+          ],
+          "texture": "#material"
+        },
+        "north": {
+          "uv": [
+            0.0,
+            8.0,
+            16.0,
+            13.0
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            8.0,
+            16.0,
+            13.0
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            0.0,
+            8.0,
+            16.0,
+            13.0
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "name": "PedestalModel.Main_Block",
+      "from": [
+        0.98,
+        5.17,
+        3.98
+      ],
+      "to": [
+        15.02,
+        8.18,
+        12.02
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            7.75,
+            8.0,
+            4.25,
+            0.0
+          ],
+          "texture": "#overlay"
+        },
+        "down": {
+          "uv": [
+            11.25,
+            0.0,
+            7.75,
+            8.0
+          ],
+          "texture": "#overlay"
+        },
+        "east": {
+          "uv": [
+            0.25,
+            8.0,
+            4.25,
+            9.5
+          ],
+          "texture": "#overlay"
+        },
+        "north": {
+          "uv": [
+            4.25,
+            8.0,
+            7.75,
+            9.5
+          ],
+          "texture": "#overlay"
+        },
+        "west": {
+          "uv": [
+            7.75,
+            8.0,
+            11.75,
+            9.5
+          ],
+          "texture": "#overlay"
+        },
+        "south": {
+          "uv": [
+            11.75,
+            8.0,
+            15.25,
+            9.5
+          ],
+          "texture": "#overlay"
+        }
+      }
+    },
+    {
+      "name": "PedestalModel.Front",
+      "from": [
+        -0.02,
+        0.22,
+        2.98
+      ],
+      "to": [
+        16.02,
+        5.21,
+        13.02
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            12.0,
+            12.0,
+            8.0,
+            4.0
+          ],
+          "texture": "#overlay"
+        },
+        "down": {
+          "uv": [
+            16.0,
+            4.0,
+            12.0,
+            12.0
+          ],
+          "texture": "#overlay"
+        },
+        "east": {
+          "uv": [
+            4.0,
+            12.0,
+            8.0,
+            14.5
+          ],
+          "texture": "#overlay"
+        },
+        "north": {
+          "uv": [
+            8.0,
+            12.0,
+            12.0,
+            14.5
+          ],
+          "texture": "#overlay"
+        },
+        "west": {
+          "uv": [
+            12.0,
+            12.0,
+            16.0,
+            14.5
+          ],
+          "texture": "#overlay"
+        },
+        "south": {
+          "uv": [
+            0.0,
+            12.0,
+            4.0,
+            14.5
+          ],
+          "texture": "#overlay"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "variedcommoditiesredux:cow_leather_helmet",
+    "variedcommoditiesredux:cow_leather_chestplate",
+    "variedcommoditiesredux:cow_leather_leggings",
+    "variedcommoditiesredux:cow_leather_boots",
+    "variedcommoditiesredux:full_leather_helmet",
+    "variedcommoditiesredux:full_leather_chestplate",
+    "variedcommoditiesredux:leather_skirt"
+  ]
+}

@@ -1,0 +1,448 @@
+{
+  "textures": {
+    "flag": "variedcommoditiesredux:block/furniture/banner_flag",
+    "particle": "#material"
+  },
+  "elements": [
+    {
+      "name": "BannerModel.Base",
+      "from": [
+        1.0,
+        0.0,
+        1.0
+      ],
+      "to": [
+        15.0,
+        1.0,
+        15.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            15.0,
+            15.0,
+            1.0,
+            1.0
+          ],
+          "texture": "#material"
+        },
+        "down": {
+          "uv": [
+            16.0,
+            1.0,
+            2.0,
+            15.0
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            2.0,
+            15.0,
+            16.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            15.0,
+            15.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            15.0,
+            16.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            2.0,
+            15.0,
+            16.0,
+            16.0
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "name": "BannerModel.MiddleStick",
+      "from": [
+        7.0,
+        1.0,
+        7.0
+      ],
+      "to": [
+        9.0,
+        16.0,
+        9.0
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            2.0,
+            2.0,
+            0.0,
+            4.0
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            12.0,
+            8.5,
+            14.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "north": {
+          "uv": [
+            14.0,
+            8.5,
+            16.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            8.5,
+            2.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            2.0,
+            8.5,
+            4.0,
+            16.0
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "name": "BannerModel.BaseDeco1",
+      "from": [
+        2.0,
+        0.0,
+        0.0
+      ],
+      "to": [
+        14.0,
+        1.0,
+        1.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            14.0,
+            15.0,
+            2.0,
+            14.0
+          ],
+          "texture": "#material"
+        },
+        "down": {
+          "uv": [
+            16.0,
+            14.0,
+            4.0,
+            15.0
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            1.0,
+            15.0,
+            2.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "north": {
+          "uv": [
+            2.0,
+            15.0,
+            14.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            14.0,
+            15.0,
+            15.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            4.0,
+            15.0,
+            16.0,
+            16.0
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "name": "BannerModel.BaseDeco2",
+      "from": [
+        2.0,
+        0.0,
+        15.0
+      ],
+      "to": [
+        14.0,
+        1.0,
+        16.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            14.0,
+            15.0,
+            2.0,
+            14.0
+          ],
+          "texture": "#material"
+        },
+        "down": {
+          "uv": [
+            16.0,
+            14.0,
+            4.0,
+            15.0
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            1.0,
+            15.0,
+            2.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "north": {
+          "uv": [
+            2.0,
+            15.0,
+            14.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            14.0,
+            15.0,
+            15.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            4.0,
+            15.0,
+            16.0,
+            16.0
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "name": "BannerModel.BaseDeco3",
+      "from": [
+        15.0,
+        0.0,
+        2.0
+      ],
+      "to": [
+        16.0,
+        1.0,
+        14.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            15.0,
+            14.0,
+            14.0,
+            2.0
+          ],
+          "texture": "#material"
+        },
+        "down": {
+          "uv": [
+            16.0,
+            2.0,
+            15.0,
+            14.0
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            2.0,
+            14.0,
+            14.0,
+            15.0
+          ],
+          "texture": "#material"
+        },
+        "north": {
+          "uv": [
+            14.0,
+            14.0,
+            15.0,
+            15.0
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            4.0,
+            14.0,
+            16.0,
+            15.0
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            11.0,
+            14.0,
+            12.0,
+            15.0
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "name": "BannerModel.BaseDeco4",
+      "from": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "to": [
+        1.0,
+        1.0,
+        14.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            15.0,
+            14.0,
+            14.0,
+            2.0
+          ],
+          "texture": "#material"
+        },
+        "down": {
+          "uv": [
+            16.0,
+            2.0,
+            15.0,
+            14.0
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            2.0,
+            14.0,
+            14.0,
+            15.0
+          ],
+          "texture": "#material"
+        },
+        "north": {
+          "uv": [
+            14.0,
+            14.0,
+            15.0,
+            15.0
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            4.0,
+            14.0,
+            16.0,
+            15.0
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            11.0,
+            14.0,
+            12.0,
+            15.0
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "name": "BannerFlagModel.Flag",
+      "from": [
+        0.5,
+        4.0,
+        6.0
+      ],
+      "to": [
+        15.5,
+        16.0,
+        6.0
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0.0,
+            7.5,
+            7.5,
+            13.5
+          ],
+          "texture": "#flag",
+          "tintindex": 0
+        },
+        "south": {
+          "uv": [
+            7.5,
+            7.5,
+            15.0,
+            13.5
+          ],
+          "texture": "#flag",
+          "tintindex": 0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "rotation=0,top=false": {
+      "model": "variedcommoditiesredux:block/iron_tall_lamp"
+    },
+    "rotation=0,top=true": {
+      "model": "variedcommoditiesredux:block/iron_tall_lamp_top"
+    },
+    "rotation=1,top=false": {
+      "model": "variedcommoditiesredux:block/iron_tall_lamp",
+      "y": 90
+    },
+    "rotation=1,top=true": {
+      "model": "variedcommoditiesredux:block/iron_tall_lamp_top",
+      "y": 90
+    },
+    "rotation=2,top=false": {
+      "model": "variedcommoditiesredux:block/iron_tall_lamp",
+      "y": 180
+    },
+    "rotation=2,top=true": {
+      "model": "variedcommoditiesredux:block/iron_tall_lamp_top",
+      "y": 180
+    },
+    "rotation=3,top=false": {
+      "model": "variedcommoditiesredux:block/iron_tall_lamp",
+      "y": 270
+    },
+    "rotation=3,top=true": {
+      "model": "variedcommoditiesredux:block/iron_tall_lamp_top",
+      "y": 270
+    }
+  }
+}

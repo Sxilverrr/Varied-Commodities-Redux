@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:item/bronze_spear",
+  "textures": {
+    "layer0": "variedcommoditiesredux:item/golf_club"
+  }
+}

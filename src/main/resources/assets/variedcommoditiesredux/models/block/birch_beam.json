@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:block/furniture/beam",
+  "textures": {
+    "wood": "minecraft:block/birch_planks"
+  }
+}

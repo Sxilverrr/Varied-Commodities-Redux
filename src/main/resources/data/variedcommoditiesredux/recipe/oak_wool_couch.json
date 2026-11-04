@@ -1,0 +1,20 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    "  XY",
+    "  XY",
+    "XXXY",
+    "YYYY"
+  ],
+  "key": {
+    "X": {
+      "tag": "minecraft:wool"
+    },
+    "Y": {
+      "item": "minecraft:oak_planks"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:oak_wool_couch"
+  }
+}

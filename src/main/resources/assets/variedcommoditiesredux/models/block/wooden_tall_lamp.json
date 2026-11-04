@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:block/furniture/tall_lamp",
+  "textures": {
+    "material": "minecraft:block/oak_planks"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "variedcommoditiesredux:block/crystal_block"
+    }
+  }
+}

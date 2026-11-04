@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:item/bear_claw",
+  "textures": {
+    "layer0": "variedcommoditiesredux:item/steel_claw"
+  }
+}

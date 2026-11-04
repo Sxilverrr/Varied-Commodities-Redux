@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "XXX",
+    "X X"
+  ],
+  "key": {
+    "X": [
+      {
+        "tag": "forge:ingots/mithril"
+      },
+      {
+        "tag": "c:mithril_ingots"
+      }
+    ]
+  },
+  "result": {
+    "item": "variedcommoditiesredux:mithril_helmet"
+  }
+}

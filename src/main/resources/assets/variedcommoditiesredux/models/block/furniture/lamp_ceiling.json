@@ -1,0 +1,1199 @@
+{
+  "textures": {
+    "texture": "variedcommoditiesredux:block/furniture/lamp",
+    "particle": "#texture"
+  },
+  "elements": [
+    {
+      "name": "LampCeilingModel.Base",
+      "from": [
+        6.0,
+        0.0,
+        6.0
+      ],
+      "to": [
+        10.0,
+        7.0,
+        10.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            5.0,
+            1.0,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            3.0,
+            2.0,
+            5.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            5.0,
+            1.0,
+            8.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            5.0,
+            2.0,
+            8.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            5.0,
+            3.0,
+            8.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            5.0,
+            4.0,
+            8.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.Top1",
+      "from": [
+        5.5,
+        6.0,
+        5.5
+      ],
+      "to": [
+        10.5,
+        7.0,
+        10.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.5,
+            2.5,
+            1.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            3.75,
+            0.0,
+            2.5,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            2.5,
+            1.25,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.25,
+            2.5,
+            2.5,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            2.5,
+            2.5,
+            3.75,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            3.75,
+            2.5,
+            5.0,
+            3.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.Top2",
+      "from": [
+        6.0,
+        6.5,
+        6.0
+      ],
+      "to": [
+        10.0,
+        7.5,
+        10.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            2.0,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            2.0,
+            1.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            2.0,
+            2.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            2.0,
+            3.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            2.0,
+            4.0,
+            2.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.Top3",
+      "from": [
+        6.5,
+        7.0,
+        6.5
+      ],
+      "to": [
+        9.5,
+        8.0,
+        9.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            1.5,
+            1.5,
+            0.75,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            2.25,
+            0.0,
+            1.5,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            1.5,
+            0.75,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.75,
+            1.5,
+            1.5,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            1.5,
+            1.5,
+            2.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            2.25,
+            1.5,
+            3.0,
+            2.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.Chain8",
+      "from": [
+        7.5,
+        8.0,
+        6.5
+      ],
+      "to": [
+        8.5,
+        10.0,
+        7.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            1.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.Chain1",
+      "from": [
+        6.5,
+        13.0,
+        7.5
+      ],
+      "to": [
+        7.5,
+        16.0,
+        8.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            2.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.Chain2",
+      "from": [
+        8.5,
+        13.0,
+        7.5
+      ],
+      "to": [
+        9.5,
+        16.0,
+        8.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            2.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.Chain3",
+      "from": [
+        7.5,
+        11.0,
+        8.5
+      ],
+      "to": [
+        8.5,
+        14.0,
+        9.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            2.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.Chain4",
+      "from": [
+        7.5,
+        11.0,
+        6.5
+      ],
+      "to": [
+        8.5,
+        14.0,
+        7.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            2.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.Chain5",
+      "from": [
+        8.5,
+        9.0,
+        7.5
+      ],
+      "to": [
+        9.5,
+        12.0,
+        8.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            2.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.Chain6",
+      "from": [
+        6.5,
+        9.0,
+        7.5
+      ],
+      "to": [
+        7.5,
+        12.0,
+        8.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            2.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.Chain7",
+      "from": [
+        7.5,
+        8.0,
+        8.5
+      ],
+      "to": [
+        8.5,
+        10.0,
+        9.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            1.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.TippyTop1",
+      "from": [
+        5.9716,
+        15.0,
+        6.0
+      ],
+      "to": [
+        9.9716,
+        16.0,
+        10.0
+      ],
+      "rotation": {
+        "origin": [
+          7.9716,
+          15.5,
+          8.0
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            2.0,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            2.0,
+            1.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            2.0,
+            2.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            2.0,
+            3.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            2.0,
+            4.0,
+            2.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.TippyTop2",
+      "from": [
+        6.4787,
+        14.5,
+        6.5
+      ],
+      "to": [
+        9.4787,
+        15.5,
+        9.5
+      ],
+      "rotation": {
+        "origin": [
+          7.9787,
+          15.0,
+          8.0
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            1.5,
+            1.5,
+            0.75,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            2.25,
+            0.0,
+            1.5,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            1.5,
+            0.75,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.75,
+            1.5,
+            1.5,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            1.5,
+            1.5,
+            2.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            2.25,
+            1.5,
+            3.0,
+            2.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.Shape3",
+      "from": [
+        7.5,
+        9.0,
+        7.5
+      ],
+      "to": [
+        8.5,
+        10.0,
+        8.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            1.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.Shape1",
+      "from": [
+        7.5,
+        13.0,
+        7.5
+      ],
+      "to": [
+        8.5,
+        14.0,
+        8.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            1.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "LampCeilingModel.Shape2",
+      "from": [
+        7.5,
+        11.0,
+        7.5
+      ],
+      "to": [
+        8.5,
+        12.0,
+        8.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            1.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    }
+  ]
+}

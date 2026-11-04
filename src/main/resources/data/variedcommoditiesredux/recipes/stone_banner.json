@@ -1,0 +1,20 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    " X ",
+    " Y ",
+    " Y ",
+    "YYY"
+  ],
+  "key": {
+    "X": {
+      "item": "variedcommoditiesredux:stone_wall_banner"
+    },
+    "Y": {
+      "item": "minecraft:stone"
+    }
+  },
+  "result": {
+    "item": "variedcommoditiesredux:stone_banner"
+  }
+}

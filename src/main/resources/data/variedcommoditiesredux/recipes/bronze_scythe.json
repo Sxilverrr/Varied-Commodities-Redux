@@ -1,0 +1,25 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    "XXX",
+    "  Y",
+    "  Y",
+    "  Y"
+  ],
+  "key": {
+    "X": [
+      {
+        "tag": "forge:ingots/bronze"
+      },
+      {
+        "tag": "c:bronze_ingots"
+      }
+    ],
+    "Y": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "variedcommoditiesredux:bronze_scythe"
+  }
+}

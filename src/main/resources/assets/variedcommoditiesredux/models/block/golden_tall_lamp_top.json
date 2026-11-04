@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:block/furniture/tall_lamp_top",
+  "textures": {
+    "material": "minecraft:block/gold_block"
+  }
+}

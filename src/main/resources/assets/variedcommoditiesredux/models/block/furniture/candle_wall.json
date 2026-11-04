@@ -1,0 +1,716 @@
+{
+  "textures": {
+    "texture": "variedcommoditiesredux:block/furniture/candle",
+    "particle": "#texture"
+  },
+  "elements": [
+    {
+      "name": "CandleWallModel.Base",
+      "from": [
+        6.0,
+        10.0,
+        8.0
+      ],
+      "to": [
+        10.0,
+        11.0,
+        12.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            1.0,
+            0.0,
+            2.0,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            2.0,
+            2.0,
+            3.0,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            2.0,
+            1.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1.0,
+            2.0,
+            2.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            2.0,
+            2.0,
+            3.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            3.0,
+            2.0,
+            4.0,
+            2.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleWallModel.Bar1",
+      "from": [
+        5.0,
+        11.0,
+        7.0
+      ],
+      "to": [
+        6.0,
+        12.0,
+        13.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            1.5,
+            0.0,
+            1.75,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            1.75,
+            3.0,
+            2.0,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            3.0,
+            1.5,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1.5,
+            3.0,
+            1.75,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            1.75,
+            3.0,
+            3.25,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            3.25,
+            3.0,
+            3.5,
+            3.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleWallModel.Bar2",
+      "from": [
+        10.0,
+        11.0,
+        7.0
+      ],
+      "to": [
+        11.0,
+        12.0,
+        13.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            1.5,
+            0.0,
+            1.75,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            1.75,
+            3.0,
+            2.0,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            3.0,
+            1.5,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1.5,
+            3.0,
+            1.75,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            1.75,
+            3.0,
+            3.25,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            3.25,
+            3.0,
+            3.5,
+            3.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleWallModel.Bar3",
+      "from": [
+        6.0,
+        11.0,
+        12.0
+      ],
+      "to": [
+        10.0,
+        12.0,
+        13.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.25,
+            0.0,
+            1.25,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            1.25,
+            0.5,
+            2.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.25,
+            0.5,
+            1.25,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            1.25,
+            0.5,
+            1.5,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.5,
+            0.5,
+            2.5,
+            1.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleWallModel.Bar4",
+      "from": [
+        6.0,
+        11.0,
+        7.0
+      ],
+      "to": [
+        10.0,
+        12.0,
+        8.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.25,
+            0.0,
+            1.25,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            1.25,
+            0.5,
+            2.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.25,
+            0.5,
+            1.25,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            1.25,
+            0.5,
+            1.5,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.5,
+            0.5,
+            2.5,
+            1.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleWallModel.Wax",
+      "from": [
+        7.0,
+        11.0,
+        9.0
+      ],
+      "to": [
+        9.0,
+        15.0,
+        11.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            4.5,
+            0.0,
+            5.0,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            5.0,
+            1.0,
+            5.5,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            4.0,
+            1.0,
+            4.5,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            4.5,
+            1.0,
+            5.0,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            5.0,
+            1.0,
+            5.5,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            5.5,
+            1.0,
+            6.0,
+            3.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleWallModel.Wall2",
+      "from": [
+        6.5,
+        6.6787,
+        14.5
+      ],
+      "to": [
+        9.5,
+        9.6787,
+        15.5
+      ],
+      "rotation": {
+        "origin": [
+          8.0,
+          8.1787,
+          15.0
+        ],
+        "axis": "z",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            0.25,
+            0.0,
+            1.0,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            1.0,
+            0.5,
+            1.75,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.25,
+            0.5,
+            1.0,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            1.0,
+            0.5,
+            1.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.25,
+            0.5,
+            2.0,
+            2.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleWallModel.Wall1",
+      "from": [
+        6.0,
+        6.1716,
+        15.0
+      ],
+      "to": [
+        10.0,
+        10.1716,
+        16.0
+      ],
+      "rotation": {
+        "origin": [
+          8.0,
+          8.1716,
+          15.5
+        ],
+        "axis": "z",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            0.25,
+            0.0,
+            1.25,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            1.25,
+            0.5,
+            2.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.25,
+            0.5,
+            1.25,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            1.25,
+            0.5,
+            1.5,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.5,
+            0.5,
+            2.5,
+            2.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleWallModel.Bar5",
+      "from": [
+        7.5,
+        8.5,
+        9.5
+      ],
+      "to": [
+        8.5,
+        10.5,
+        10.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.25,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            1.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleWallModel.Bar6",
+      "from": [
+        7.5,
+        7.5,
+        9.5
+      ],
+      "to": [
+        8.5,
+        8.5,
+        14.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            1.25,
+            0.0,
+            1.5,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            1.5,
+            2.5,
+            1.75,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            2.5,
+            1.25,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1.25,
+            2.5,
+            1.5,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            1.5,
+            2.5,
+            2.75,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            2.75,
+            2.5,
+            3.0,
+            3.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    }
+  ]
+}

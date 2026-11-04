@@ -1,0 +1,20 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    "XXX",
+    "YYY",
+    "YYY",
+    "Y Y"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:gold_ingot"
+    },
+    "Y": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:golden_wall_banner"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    "X  X",
+    "XXXX",
+    "XXXX",
+    " XX "
+  ],
+  "key": {
+    "X": {
+      "tag": "c:ingots/bronze"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:bronze_shield"
+  }
+}

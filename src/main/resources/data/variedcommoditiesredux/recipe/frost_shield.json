@@ -1,0 +1,17 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    "X  X",
+    "XXXX",
+    "XXXX",
+    " XX "
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:packed_ice"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:frost_shield"
+  }
+}

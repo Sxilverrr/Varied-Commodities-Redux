@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:block/blood/ceiling",
+  "textures": {
+    "blood": "variedcommoditiesredux:block/blood_splat_2"
+  }
+}

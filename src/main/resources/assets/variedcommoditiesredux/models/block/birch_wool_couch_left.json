@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:block/furniture/wool_couch_left",
+  "textures": {
+    "wood": "minecraft:block/birch_planks"
+  }
+}

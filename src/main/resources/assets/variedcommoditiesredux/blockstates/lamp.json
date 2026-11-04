@@ -1,0 +1,94 @@
+{
+  "variants": {
+    "attach=floor,rotation=0": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_floor"
+    },
+    "attach=floor,rotation=1": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_floor_diagonal"
+    },
+    "attach=floor,rotation=2": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_floor",
+      "y": 90
+    },
+    "attach=floor,rotation=3": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_floor_diagonal",
+      "y": 90
+    },
+    "attach=floor,rotation=4": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_floor",
+      "y": 180
+    },
+    "attach=floor,rotation=5": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_floor_diagonal",
+      "y": 180
+    },
+    "attach=floor,rotation=6": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_floor",
+      "y": 270
+    },
+    "attach=floor,rotation=7": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_floor_diagonal",
+      "y": 270
+    },
+    "attach=ceiling,rotation=0": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_ceiling"
+    },
+    "attach=ceiling,rotation=1": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_ceiling_diagonal"
+    },
+    "attach=ceiling,rotation=2": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_ceiling",
+      "y": 90
+    },
+    "attach=ceiling,rotation=3": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_ceiling_diagonal",
+      "y": 90
+    },
+    "attach=ceiling,rotation=4": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_ceiling",
+      "y": 180
+    },
+    "attach=ceiling,rotation=5": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_ceiling_diagonal",
+      "y": 180
+    },
+    "attach=ceiling,rotation=6": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_ceiling",
+      "y": 270
+    },
+    "attach=ceiling,rotation=7": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_ceiling_diagonal",
+      "y": 270
+    },
+    "attach=wall,rotation=0": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_wall"
+    },
+    "attach=wall,rotation=1": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_wall"
+    },
+    "attach=wall,rotation=2": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_wall",
+      "y": 90
+    },
+    "attach=wall,rotation=3": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_wall",
+      "y": 90
+    },
+    "attach=wall,rotation=4": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_wall",
+      "y": 180
+    },
+    "attach=wall,rotation=5": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_wall",
+      "y": 180
+    },
+    "attach=wall,rotation=6": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_wall",
+      "y": 270
+    },
+    "attach=wall,rotation=7": {
+      "model": "variedcommoditiesredux:block/furniture/lamp_wall",
+      "y": 270
+    }
+  }
+}

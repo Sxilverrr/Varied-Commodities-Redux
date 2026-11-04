@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:block/furniture/wall_banner",
+  "textures": {
+    "material": "minecraft:block/gold_block"
+  }
+}

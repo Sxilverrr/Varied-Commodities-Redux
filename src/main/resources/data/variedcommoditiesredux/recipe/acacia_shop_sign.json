@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "XXX",
+    "YYY",
+    "YYY"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:iron_ingot"
+    },
+    "Y": {
+      "item": "minecraft:acacia_planks"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:acacia_shop_sign",
+    "count": 3
+  }
+}

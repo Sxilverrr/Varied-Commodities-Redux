@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "variedcommoditiesredux:item/dark_spell"
+  }
+}

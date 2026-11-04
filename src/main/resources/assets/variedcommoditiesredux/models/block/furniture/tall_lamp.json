@@ -1,0 +1,137 @@
+{
+  "textures": {
+    "wool": "minecraft:block/white_wool",
+    "particle": "#material"
+  },
+  "elements": [
+    {
+      "name": "TallLampModel.Base",
+      "from": [
+        2.0,
+        0.0,
+        2.0
+      ],
+      "to": [
+        14.0,
+        1.0,
+        14.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            14.0,
+            14.0,
+            2.0,
+            2.0
+          ],
+          "texture": "#material"
+        },
+        "down": {
+          "uv": [
+            16.0,
+            2.0,
+            4.0,
+            14.0
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            4.0,
+            14.0,
+            16.0,
+            15.0
+          ],
+          "texture": "#material"
+        },
+        "north": {
+          "uv": [
+            2.0,
+            14.0,
+            14.0,
+            15.0
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            4.0,
+            14.0,
+            16.0,
+            15.0
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            4.0,
+            14.0,
+            16.0,
+            15.0
+          ],
+          "texture": "#material"
+        }
+      }
+    },
+    {
+      "name": "TallLampModel.MiddleStick",
+      "from": [
+        7.0,
+        1.0,
+        7.0
+      ],
+      "to": [
+        9.0,
+        16.0,
+        9.0
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            2.0,
+            2.0,
+            0.0,
+            4.0
+          ],
+          "texture": "#material"
+        },
+        "east": {
+          "uv": [
+            12.0,
+            7.4286,
+            14.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "north": {
+          "uv": [
+            14.0,
+            7.4286,
+            16.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "west": {
+          "uv": [
+            0.0,
+            7.4286,
+            2.0,
+            16.0
+          ],
+          "texture": "#material"
+        },
+        "south": {
+          "uv": [
+            2.0,
+            7.4286,
+            4.0,
+            16.0
+          ],
+          "texture": "#material"
+        }
+      }
+    }
+  ]
+}

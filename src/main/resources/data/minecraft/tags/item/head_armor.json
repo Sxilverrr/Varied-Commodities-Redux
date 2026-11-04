@@ -1,0 +1,28 @@
+{
+  "replace": false,
+  "values": [
+    "variedcommoditiesredux:assassin_helmet",
+    "variedcommoditiesredux:bandit_mask",
+    "variedcommoditiesredux:commissar_helmet",
+    "variedcommoditiesredux:cow_leather_helmet",
+    "variedcommoditiesredux:demonic_helmet",
+    "variedcommoditiesredux:full_bronze_helmet",
+    "variedcommoditiesredux:full_diamond_helmet",
+    "variedcommoditiesredux:full_emerald_helmet",
+    "variedcommoditiesredux:full_golden_helmet",
+    "variedcommoditiesredux:full_iron_helmet",
+    "variedcommoditiesredux:full_leather_helmet",
+    "variedcommoditiesredux:full_wooden_helmet",
+    "variedcommoditiesredux:golden_crown",
+    "variedcommoditiesredux:infantry_helmet",
+    "variedcommoditiesredux:mithril_helmet",
+    "variedcommoditiesredux:nanorum_helmet",
+    "variedcommoditiesredux:ninja_helmet",
+    "variedcommoditiesredux:paper_crown",
+    "variedcommoditiesredux:silver_crown",
+    "variedcommoditiesredux:soldier_helmet",
+    "variedcommoditiesredux:tactical_helmet",
+    "variedcommoditiesredux:wizard_helmet",
+    "variedcommoditiesredux:x407_helmet"
+  ]
+}

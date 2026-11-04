@@ -1,0 +1,1249 @@
+{
+  "textures": {
+    "particle": "#wood"
+  },
+  "elements": [
+    {
+      "name": "CouchWoodLeftModel.Shape1",
+      "from": [
+        14.0,
+        3.0,
+        4.0
+      ],
+      "to": [
+        16.0,
+        6.0,
+        14.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            10.0,
+            10.0,
+            12.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            12.0,
+            0.0,
+            14.0,
+            10.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            10.0,
+            10.0,
+            0.0,
+            13.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            12.0,
+            10.0,
+            10.0,
+            13.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            16.0,
+            10.0,
+            6.0,
+            13.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            8.0,
+            10.0,
+            6.0,
+            13.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape2",
+      "from": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "to": [
+        1.0,
+        3.0,
+        4.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            3.0,
+            2.0,
+            2.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            4.0,
+            0.0,
+            3.0,
+            2.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            2.0,
+            2.0,
+            5.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            2.0,
+            2.0,
+            3.0,
+            5.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            3.0,
+            2.0,
+            5.0,
+            5.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            5.0,
+            2.0,
+            6.0,
+            5.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape3",
+      "from": [
+        14.0,
+        6.0,
+        8.5
+      ],
+      "to": [
+        16.0,
+        10.0,
+        9.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            1.0,
+            1.0,
+            3.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            5.0,
+            1.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            1.0,
+            1.0,
+            0.0,
+            5.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            3.0,
+            1.0,
+            1.0,
+            5.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            4.0,
+            1.0,
+            3.0,
+            5.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            6.0,
+            1.0,
+            4.0,
+            5.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape4",
+      "from": [
+        0.0,
+        15.0,
+        15.0
+      ],
+      "to": [
+        14.0,
+        17.0,
+        16.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            1.0,
+            1.0,
+            15.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            2.0,
+            0.0,
+            16.0,
+            1.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            1.0,
+            1.0,
+            0.0,
+            3.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            15.0,
+            1.0,
+            1.0,
+            3.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            16.0,
+            1.0,
+            15.0,
+            3.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            14.0,
+            1.0,
+            0.0,
+            3.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape5",
+      "from": [
+        0.0,
+        3.0,
+        14.0
+      ],
+      "to": [
+        14.0,
+        5.0,
+        16.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            16.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            0.0,
+            0.0,
+            14.0,
+            2.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            2.0,
+            0.0,
+            4.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            16.0,
+            2.0,
+            2.0,
+            4.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            2.0,
+            2.0,
+            0.0,
+            4.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            16.0,
+            2.0,
+            2.0,
+            4.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape6",
+      "from": [
+        14.0,
+        10.0,
+        1.0
+      ],
+      "to": [
+        16.0,
+        11.0,
+        14.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            13.0,
+            13.0,
+            15.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            14.0,
+            0.0,
+            16.0,
+            13.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            13.0,
+            13.0,
+            0.0,
+            14.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            15.0,
+            13.0,
+            13.0,
+            14.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            16.0,
+            13.0,
+            3.0,
+            14.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            14.0,
+            13.0,
+            12.0,
+            14.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape7",
+      "from": [
+        13.0,
+        4.0,
+        4.0
+      ],
+      "to": [
+        14.0,
+        5.0,
+        14.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            11.0,
+            10.0,
+            10.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            12.0,
+            0.0,
+            11.0,
+            10.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            10.0,
+            10.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            10.0,
+            10.0,
+            11.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            6.0,
+            10.0,
+            16.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            5.0,
+            10.0,
+            6.0,
+            11.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape8",
+      "from": [
+        0.0,
+        0.0,
+        14.0
+      ],
+      "to": [
+        1.0,
+        3.0,
+        16.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            3.0,
+            2.0,
+            2.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            4.0,
+            0.0,
+            3.0,
+            2.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            2.0,
+            2.0,
+            5.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            2.0,
+            2.0,
+            3.0,
+            5.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            3.0,
+            2.0,
+            5.0,
+            5.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            5.0,
+            2.0,
+            6.0,
+            5.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape9",
+      "from": [
+        1.0,
+        4.0,
+        4.0
+      ],
+      "to": [
+        3.0,
+        5.0,
+        14.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            12.0,
+            10.0,
+            10.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            14.0,
+            0.0,
+            12.0,
+            10.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            10.0,
+            10.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            10.0,
+            10.0,
+            12.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            6.0,
+            10.0,
+            16.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            6.0,
+            10.0,
+            8.0,
+            11.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape10",
+      "from": [
+        13.0,
+        5.0,
+        15.0
+      ],
+      "to": [
+        14.0,
+        15.0,
+        16.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            1.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            2.0,
+            1.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            1.0,
+            1.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            1.0,
+            2.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            1.0,
+            3.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            1.0,
+            4.0,
+            11.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape11",
+      "from": [
+        0.0,
+        3.0,
+        2.0
+      ],
+      "to": [
+        14.0,
+        5.0,
+        4.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            16.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            0.0,
+            0.0,
+            14.0,
+            2.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            2.0,
+            0.0,
+            4.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            16.0,
+            2.0,
+            2.0,
+            4.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            2.0,
+            2.0,
+            0.0,
+            4.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            16.0,
+            2.0,
+            2.0,
+            4.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape12",
+      "from": [
+        9.0,
+        4.0,
+        4.0
+      ],
+      "to": [
+        11.0,
+        5.0,
+        14.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            12.0,
+            10.0,
+            10.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            14.0,
+            0.0,
+            12.0,
+            10.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            10.0,
+            10.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            10.0,
+            10.0,
+            12.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            6.0,
+            10.0,
+            16.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            6.0,
+            10.0,
+            8.0,
+            11.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape13",
+      "from": [
+        5.0,
+        4.0,
+        4.0
+      ],
+      "to": [
+        7.0,
+        5.0,
+        14.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            12.0,
+            10.0,
+            10.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            14.0,
+            0.0,
+            12.0,
+            10.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            10.0,
+            10.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            10.0,
+            10.0,
+            12.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            6.0,
+            10.0,
+            16.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            6.0,
+            10.0,
+            8.0,
+            11.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape14",
+      "from": [
+        9.0,
+        5.0,
+        15.0
+      ],
+      "to": [
+        11.0,
+        15.0,
+        16.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            3.0,
+            1.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            5.0,
+            0.0,
+            3.0,
+            1.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            1.0,
+            1.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            1.0,
+            3.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            3.0,
+            1.0,
+            4.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            4.0,
+            1.0,
+            6.0,
+            11.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape15",
+      "from": [
+        5.0,
+        5.0,
+        15.0
+      ],
+      "to": [
+        7.0,
+        15.0,
+        16.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            3.0,
+            1.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            5.0,
+            0.0,
+            3.0,
+            1.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            1.0,
+            1.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            1.0,
+            3.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            3.0,
+            1.0,
+            4.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            4.0,
+            1.0,
+            6.0,
+            11.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape16",
+      "from": [
+        1.0,
+        5.0,
+        15.0
+      ],
+      "to": [
+        3.0,
+        15.0,
+        16.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            3.0,
+            1.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            5.0,
+            0.0,
+            3.0,
+            1.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            1.0,
+            1.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            1.0,
+            3.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            3.0,
+            1.0,
+            4.0,
+            11.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            4.0,
+            1.0,
+            6.0,
+            11.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape17",
+      "from": [
+        14.0,
+        0.0,
+        2.0
+      ],
+      "to": [
+        16.0,
+        10.0,
+        4.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            4.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            4.0,
+            0.0,
+            6.0,
+            2.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            2.0,
+            0.0,
+            12.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            4.0,
+            2.0,
+            2.0,
+            12.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            6.0,
+            2.0,
+            4.0,
+            12.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            8.0,
+            2.0,
+            6.0,
+            12.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "CouchWoodLeftModel.Shape18",
+      "from": [
+        14.0,
+        0.0,
+        14.0
+      ],
+      "to": [
+        16.0,
+        18.0,
+        16.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            4.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            4.0,
+            0.0,
+            6.0,
+            2.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            0.0,
+            0.0,
+            16.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            4.0,
+            0.0,
+            2.0,
+            16.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            6.0,
+            0.0,
+            4.0,
+            16.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            8.0,
+            0.0,
+            6.0,
+            16.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    }
+  ]
+}

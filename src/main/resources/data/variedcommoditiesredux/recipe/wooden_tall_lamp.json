@@ -1,0 +1,23 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    "XYX",
+    " Z ",
+    " Z ",
+    "ZZZ"
+  ],
+  "key": {
+    "X": {
+      "tag": "minecraft:wool"
+    },
+    "Y": {
+      "item": "minecraft:torch"
+    },
+    "Z": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:wooden_tall_lamp"
+  }
+}

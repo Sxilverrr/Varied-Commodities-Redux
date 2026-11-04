@@ -1,0 +1,17 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    " XX ",
+    "XXXX",
+    "XXXX",
+    " XX "
+  ],
+  "key": {
+    "X": {
+      "tag": "c:ingots/mithril"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:mithril_round_shield"
+  }
+}

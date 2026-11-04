@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "variedcommoditiesredux:item/mithril_sword"
+  }
+}

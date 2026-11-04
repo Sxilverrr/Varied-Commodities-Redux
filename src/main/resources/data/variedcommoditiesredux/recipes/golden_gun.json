@@ -1,0 +1,25 @@
+{
+  "type": "variedcommoditiesredux:carpentry",
+  "pattern": [
+    "XXXY",
+    " ZA ",
+    "  A "
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:gold_ingot"
+    },
+    "Y": {
+      "item": "minecraft:lever"
+    },
+    "Z": {
+      "item": "minecraft:stone_button"
+    },
+    "A": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "variedcommoditiesredux:golden_gun"
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "textures": {
+    "particle": "#wood"
+  },
+  "elements": [
+    {
+      "name": "ShelfModel.SupportLeft1",
+      "from": [
+        13.5,
+        7.0,
+        14.0
+      ],
+      "to": [
+        15.5,
+        14.0,
+        16.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            4.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            4.0,
+            0.0,
+            6.0,
+            2.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            2.0,
+            0.0,
+            9.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            4.0,
+            2.0,
+            2.0,
+            9.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            6.0,
+            2.0,
+            4.0,
+            9.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            8.0,
+            2.0,
+            6.0,
+            9.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "ShelfModel.SupportLeft2",
+      "from": [
+        13.498,
+        6.6716,
+        10.7426
+      ],
+      "to": [
+        15.498,
+        16.6716,
+        12.7426
+      ],
+      "rotation": {
+        "origin": [
+          14.498,
+          11.6716,
+          11.7426
+        ],
+        "axis": "x",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            4.0,
+            0.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            4.0,
+            0.0,
+            6.0,
+            2.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            2.0,
+            0.0,
+            12.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            4.0,
+            2.0,
+            2.0,
+            12.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            6.0,
+            2.0,
+            4.0,
+            12.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            8.0,
+            2.0,
+            6.0,
+            12.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "rotation": "0"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/spruce_shelf"
+      }
+    },
+    {
+      "when": {
+        "rotation": "0",
+        "left": "false"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/spruce_shelf_left"
+      }
+    },
+    {
+      "when": {
+        "rotation": "0",
+        "right": "false"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/spruce_shelf_right"
+      }
+    },
+    {
+      "when": {
+        "rotation": "1"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/spruce_shelf",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "rotation": "1",
+        "left": "false"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/spruce_shelf_left",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "rotation": "1",
+        "right": "false"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/spruce_shelf_right",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "rotation": "2"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/spruce_shelf",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "rotation": "2",
+        "left": "false"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/spruce_shelf_left",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "rotation": "2",
+        "right": "false"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/spruce_shelf_right",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "rotation": "3"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/spruce_shelf",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "rotation": "3",
+        "left": "false"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/spruce_shelf_left",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "rotation": "3",
+        "right": "false"
+      },
+      "apply": {
+        "model": "variedcommoditiesredux:block/spruce_shelf_right",
+        "y": 270
+      }
+    }
+  ]
+}

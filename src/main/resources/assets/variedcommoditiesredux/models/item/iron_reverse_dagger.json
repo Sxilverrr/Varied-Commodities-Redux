@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:item/basic_reverse_dagger",
+  "textures": {
+    "layer0": "variedcommoditiesredux:item/iron_reverse_dagger"
+  }
+}

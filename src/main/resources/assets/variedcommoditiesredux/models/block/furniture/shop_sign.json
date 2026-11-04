@@ -1,0 +1,284 @@
+{
+  "textures": {
+    "steel": "variedcommoditiesredux:block/furniture/steel",
+    "particle": "#wood"
+  },
+  "elements": [
+    {
+      "name": "SignModel.Sign",
+      "from": [
+        1.0,
+        4.9294,
+        7.5785
+      ],
+      "to": [
+        15.0,
+        13.9294,
+        8.5785
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            15.0,
+            7.0,
+            1.0,
+            6.0
+          ],
+          "texture": "#wood"
+        },
+        "down": {
+          "uv": [
+            16.0,
+            6.0,
+            2.0,
+            7.0
+          ],
+          "texture": "#wood"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            7.0,
+            1.0,
+            16.0
+          ],
+          "texture": "#wood"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            7.0,
+            15.0,
+            16.0
+          ],
+          "texture": "#wood"
+        },
+        "west": {
+          "uv": [
+            15.0,
+            7.0,
+            16.0,
+            16.0
+          ],
+          "texture": "#wood"
+        },
+        "south": {
+          "uv": [
+            0.0,
+            7.0,
+            14.0,
+            16.0
+          ],
+          "texture": "#wood"
+        }
+      }
+    },
+    {
+      "name": "SignModel.Chain2",
+      "from": [
+        2.0,
+        12.92,
+        7.0
+      ],
+      "to": [
+        3.0,
+        14.92,
+        9.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.75,
+            1.0,
+            0.5,
+            0.0
+          ],
+          "texture": "#steel"
+        },
+        "down": {
+          "uv": [
+            1.0,
+            0.0,
+            0.75,
+            1.0
+          ],
+          "texture": "#steel"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            1.0,
+            0.5,
+            2.0
+          ],
+          "texture": "#steel"
+        },
+        "north": {
+          "uv": [
+            0.5,
+            1.0,
+            0.75,
+            2.0
+          ],
+          "texture": "#steel"
+        },
+        "west": {
+          "uv": [
+            0.75,
+            1.0,
+            1.25,
+            2.0
+          ],
+          "texture": "#steel"
+        },
+        "south": {
+          "uv": [
+            1.25,
+            1.0,
+            1.5,
+            2.0
+          ],
+          "texture": "#steel"
+        }
+      }
+    },
+    {
+      "name": "SignModel.Bar",
+      "from": [
+        0.0,
+        14.92,
+        7.5
+      ],
+      "to": [
+        16.0,
+        15.92,
+        8.5
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            4.25,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#steel"
+        },
+        "down": {
+          "uv": [
+            8.25,
+            0.0,
+            4.25,
+            0.5
+          ],
+          "texture": "#steel"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            1.0
+          ],
+          "texture": "#steel"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            4.25,
+            1.0
+          ],
+          "texture": "#steel"
+        },
+        "west": {
+          "uv": [
+            4.25,
+            0.5,
+            4.5,
+            1.0
+          ],
+          "texture": "#steel"
+        },
+        "south": {
+          "uv": [
+            4.5,
+            0.5,
+            8.5,
+            1.0
+          ],
+          "texture": "#steel"
+        }
+      }
+    },
+    {
+      "name": "SignModel.Chain1",
+      "from": [
+        13.0,
+        12.92,
+        7.0
+      ],
+      "to": [
+        14.0,
+        14.92,
+        9.0
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            0.75,
+            1.0,
+            0.5,
+            0.0
+          ],
+          "texture": "#steel"
+        },
+        "down": {
+          "uv": [
+            1.0,
+            0.0,
+            0.75,
+            1.0
+          ],
+          "texture": "#steel"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            1.0,
+            0.5,
+            2.0
+          ],
+          "texture": "#steel"
+        },
+        "north": {
+          "uv": [
+            0.5,
+            1.0,
+            0.75,
+            2.0
+          ],
+          "texture": "#steel"
+        },
+        "west": {
+          "uv": [
+            0.75,
+            1.0,
+            1.25,
+            2.0
+          ],
+          "texture": "#steel"
+        },
+        "south": {
+          "uv": [
+            1.25,
+            1.0,
+            1.5,
+            2.0
+          ],
+          "texture": "#steel"
+        }
+      }
+    }
+  ]
+}

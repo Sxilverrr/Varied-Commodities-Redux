@@ -1,0 +1,6 @@
+{
+  "parent": "variedcommoditiesredux:block/furniture/barrel_diagonal",
+  "textures": {
+    "wood": "minecraft:block/acacia_planks"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "rotation=0": {
+      "model": "variedcommoditiesredux:block/spruce_crate"
+    },
+    "rotation=1": {
+      "model": "variedcommoditiesredux:block/spruce_crate",
+      "y": 90
+    },
+    "rotation=2": {
+      "model": "variedcommoditiesredux:block/spruce_crate",
+      "y": 180
+    },
+    "rotation=3": {
+      "model": "variedcommoditiesredux:block/spruce_crate",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,1484 @@
+{
+  "textures": {
+    "texture": "variedcommoditiesredux:block/furniture/candle",
+    "particle": "#texture"
+  },
+  "elements": [
+    {
+      "name": "CandleCeilingModel.Wax1",
+      "from": [
+        2.7574,
+        4.5,
+        11.2426
+      ],
+      "to": [
+        4.7574,
+        8.5,
+        13.2426
+      ],
+      "rotation": {
+        "origin": [
+          3.7574,
+          6.5,
+          12.2426
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            5.0,
+            1.0,
+            4.5,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            5.5,
+            0.0,
+            5.0,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            4.0,
+            1.0,
+            4.5,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            4.5,
+            1.0,
+            5.0,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            5.0,
+            1.0,
+            5.5,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            5.5,
+            1.0,
+            6.0,
+            3.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.Wax2",
+      "from": [
+        2.7574,
+        4.5,
+        2.7574
+      ],
+      "to": [
+        4.7574,
+        8.5,
+        4.7574
+      ],
+      "rotation": {
+        "origin": [
+          3.7574,
+          6.5,
+          3.7574
+        ],
+        "axis": "y",
+        "angle": 45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            4.5,
+            0.0,
+            5.0,
+            1.0
+          ],
+          "texture": "#texture",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            5.5,
+            0.0,
+            5.0,
+            1.0
+          ],
+          "texture": "#texture",
+          "rotation": 90
+        },
+        "north": {
+          "uv": [
+            4.0,
+            1.0,
+            4.5,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            4.5,
+            1.0,
+            5.0,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            5.0,
+            1.0,
+            5.5,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            5.5,
+            1.0,
+            6.0,
+            3.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.Wax3",
+      "from": [
+        11.2426,
+        4.5,
+        11.2426
+      ],
+      "to": [
+        13.2426,
+        8.5,
+        13.2426
+      ],
+      "rotation": {
+        "origin": [
+          12.2426,
+          6.5,
+          12.2426
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            5.0,
+            1.0,
+            4.5,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            5.5,
+            0.0,
+            5.0,
+            1.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            4.0,
+            1.0,
+            4.5,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            4.5,
+            1.0,
+            5.0,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            5.0,
+            1.0,
+            5.5,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            5.5,
+            1.0,
+            6.0,
+            3.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.Wax4",
+      "from": [
+        11.2426,
+        4.5,
+        2.7574
+      ],
+      "to": [
+        13.2426,
+        8.5,
+        4.7574
+      ],
+      "rotation": {
+        "origin": [
+          12.2426,
+          6.5,
+          3.7574
+        ],
+        "axis": "y",
+        "angle": 45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            4.5,
+            0.0,
+            5.0,
+            1.0
+          ],
+          "texture": "#texture",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            5.5,
+            0.0,
+            5.0,
+            1.0
+          ],
+          "texture": "#texture",
+          "rotation": 90
+        },
+        "north": {
+          "uv": [
+            4.0,
+            1.0,
+            4.5,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            4.5,
+            1.0,
+            5.0,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            5.0,
+            1.0,
+            5.5,
+            3.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            5.5,
+            1.0,
+            6.0,
+            3.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.TippyTop1",
+      "from": [
+        5.9799,
+        15.5,
+        5.9799
+      ],
+      "to": [
+        9.9799,
+        16.5,
+        9.9799
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#texture",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            2.0,
+            2.0,
+            3.0,
+            0.0
+          ],
+          "texture": "#texture",
+          "rotation": 90
+        },
+        "south": {
+          "uv": [
+            0.0,
+            2.0,
+            1.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            1.0,
+            2.0,
+            2.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            2.0,
+            2.0,
+            3.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            3.0,
+            2.0,
+            4.0,
+            2.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.TippyTop2",
+      "from": [
+        6.4849,
+        15.0,
+        6.4849
+      ],
+      "to": [
+        9.4849,
+        16.0,
+        9.4849
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            1.5,
+            1.5,
+            0.75,
+            0.0
+          ],
+          "texture": "#texture",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            1.5,
+            1.5,
+            2.25,
+            0.0
+          ],
+          "texture": "#texture",
+          "rotation": 90
+        },
+        "south": {
+          "uv": [
+            0.0,
+            1.5,
+            0.75,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.75,
+            1.5,
+            1.5,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.5,
+            1.5,
+            2.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            2.25,
+            1.5,
+            3.0,
+            2.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.Middle",
+      "from": [
+        7.5,
+        2.0,
+        7.5
+      ],
+      "to": [
+        8.5,
+        15.0,
+        8.5
+      ],
+      "rotation": {
+        "origin": [
+          8.0,
+          8.5,
+          8.0
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            7.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            7.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            7.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            7.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.BottomBar1",
+      "from": [
+        5.3787,
+        2.0,
+        7.6213
+      ],
+      "to": [
+        6.3787,
+        3.0,
+        12.6213
+      ],
+      "rotation": {
+        "origin": [
+          5.8787,
+          2.5,
+          10.1213
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            1.5,
+            4.5,
+            1.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            1.75,
+            2.0,
+            1.5,
+            4.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            4.5,
+            1.25,
+            5.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.25,
+            4.5,
+            1.5,
+            5.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            1.5,
+            4.5,
+            2.75,
+            5.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            2.75,
+            4.5,
+            3.0,
+            5.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.Rod1",
+      "from": [
+        3.2574,
+        2.0,
+        11.7426
+      ],
+      "to": [
+        4.2574,
+        4.0,
+        12.7426
+      ],
+      "rotation": {
+        "origin": [
+          3.7574,
+          3.0,
+          12.2426
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            1.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.Rod2",
+      "from": [
+        3.2574,
+        2.0,
+        3.2574
+      ],
+      "to": [
+        4.2574,
+        4.0,
+        4.2574
+      ],
+      "rotation": {
+        "origin": [
+          3.7574,
+          3.0,
+          3.7574
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            1.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.Rod3",
+      "from": [
+        11.7426,
+        2.0,
+        11.7426
+      ],
+      "to": [
+        12.7426,
+        4.0,
+        12.7426
+      ],
+      "rotation": {
+        "origin": [
+          12.2426,
+          3.0,
+          12.2426
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            1.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.Rod4",
+      "from": [
+        11.7426,
+        2.0,
+        3.2574
+      ],
+      "to": [
+        12.7426,
+        4.0,
+        4.2574
+      ],
+      "rotation": {
+        "origin": [
+          12.2426,
+          3.0,
+          3.7574
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            0.5,
+            0.5,
+            0.25,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            0.75,
+            0.0,
+            0.5,
+            0.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            0.5,
+            0.25,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0.25,
+            0.5,
+            0.5,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0.5,
+            0.5,
+            0.75,
+            1.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0.75,
+            0.5,
+            1.0,
+            1.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.Base1",
+      "from": [
+        1.7574,
+        4.0,
+        10.2426
+      ],
+      "to": [
+        5.7574,
+        5.0,
+        14.2426
+      ],
+      "rotation": {
+        "origin": [
+          3.7574,
+          4.5,
+          12.2426
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            2.0,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            2.0,
+            1.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            2.0,
+            2.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            2.0,
+            3.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            2.0,
+            4.0,
+            2.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.Base2",
+      "from": [
+        1.7574,
+        4.0,
+        1.7574
+      ],
+      "to": [
+        5.7574,
+        5.0,
+        5.7574
+      ],
+      "rotation": {
+        "origin": [
+          3.7574,
+          4.5,
+          3.7574
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            2.0,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            2.0,
+            1.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            2.0,
+            2.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            2.0,
+            3.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            2.0,
+            4.0,
+            2.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.Base3",
+      "from": [
+        10.2426,
+        4.0,
+        10.2426
+      ],
+      "to": [
+        14.2426,
+        5.0,
+        14.2426
+      ],
+      "rotation": {
+        "origin": [
+          12.2426,
+          4.5,
+          12.2426
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            2.0,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            2.0,
+            1.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            2.0,
+            2.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            2.0,
+            3.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            2.0,
+            4.0,
+            2.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.Base4",
+      "from": [
+        10.2426,
+        4.0,
+        1.7574
+      ],
+      "to": [
+        14.2426,
+        5.0,
+        5.7574
+      ],
+      "rotation": {
+        "origin": [
+          12.2426,
+          4.5,
+          3.7574
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            2.0,
+            2.0,
+            1.0,
+            0.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            2.0,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            2.0,
+            1.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.0,
+            2.0,
+            2.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            2.0,
+            3.0,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            2.0,
+            4.0,
+            2.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.BottomBar3",
+      "from": [
+        9.6213,
+        2.0,
+        7.6213
+      ],
+      "to": [
+        10.6213,
+        3.0,
+        12.6213
+      ],
+      "rotation": {
+        "origin": [
+          10.1213,
+          2.5,
+          10.1213
+        ],
+        "axis": "y",
+        "angle": 45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            1.5,
+            4.5,
+            1.25,
+            2.0
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            1.75,
+            2.0,
+            1.5,
+            4.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            4.5,
+            1.25,
+            5.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.25,
+            4.5,
+            1.5,
+            5.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            1.5,
+            4.5,
+            2.75,
+            5.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            2.75,
+            4.5,
+            3.0,
+            5.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.BottomBar2",
+      "from": [
+        3.3787,
+        2.0,
+        5.3787
+      ],
+      "to": [
+        8.3787,
+        3.0,
+        6.3787
+      ],
+      "rotation": {
+        "origin": [
+          5.8787,
+          2.5,
+          5.8787
+        ],
+        "axis": "y",
+        "angle": -45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            1.5,
+            4.5,
+            1.25,
+            2.0
+          ],
+          "texture": "#texture",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            1.5,
+            4.5,
+            1.75,
+            2.0
+          ],
+          "texture": "#texture",
+          "rotation": 90
+        },
+        "south": {
+          "uv": [
+            0.0,
+            4.5,
+            1.25,
+            5.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            1.25,
+            4.5,
+            1.5,
+            5.0
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1.5,
+            4.5,
+            2.75,
+            5.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            2.75,
+            4.5,
+            3.0,
+            5.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "name": "CandleCeilingModel.BottomBar4",
+      "from": [
+        7.692,
+        2.0,
+        5.4494
+      ],
+      "to": [
+        12.692,
+        3.0,
+        6.4494
+      ],
+      "rotation": {
+        "origin": [
+          10.192,
+          2.5,
+          5.9494
+        ],
+        "axis": "y",
+        "angle": 45.0
+      },
+      "faces": {
+        "up": {
+          "uv": [
+            1.25,
+            2.0,
+            1.5,
+            4.5
+          ],
+          "texture": "#texture",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            1.75,
+            2.0,
+            1.5,
+            4.5
+          ],
+          "texture": "#texture",
+          "rotation": 90
+        },
+        "north": {
+          "uv": [
+            0.0,
+            4.5,
+            1.25,
+            5.0
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            1.25,
+            4.5,
+            1.5,
+            5.0
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1.5,
+            4.5,
+            2.75,
+            5.0
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            2.75,
+            4.5,
+            3.0,
+            5.0
+          ],
+          "texture": "#texture"
+        }
+      }
+    }
+  ]
+}

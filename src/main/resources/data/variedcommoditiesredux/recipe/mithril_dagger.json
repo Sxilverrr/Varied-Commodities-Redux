@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " X",
+    "Y "
+  ],
+  "key": {
+    "X": {
+      "tag": "c:ingots/mithril"
+    },
+    "Y": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "variedcommoditiesredux:mithril_dagger"
+  }
+}
