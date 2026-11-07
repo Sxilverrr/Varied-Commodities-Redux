@@ -7,9 +7,9 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
+import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
@@ -55,10 +55,8 @@ public final class VCRecipes {
 
     private static Map<Item, Item> flips;
 
-    //? if >=1.21 {
-    /*public static class Carpentry implements Recipe<CraftingInput> {
-    *///?} else {
-    public static class Carpentry implements Recipe<CraftingContainer> {
+    public static class Carpentry implements CraftingRecipe {
+    //? if <1.21 {
         private final ResourceLocation id;
     //?}
         private final List<String> pattern;
@@ -176,8 +174,8 @@ public final class VCRecipes {
         }
 
         @Override
-        public boolean isSpecial() {
-            return true;
+        public CraftingBookCategory category() {
+            return CraftingBookCategory.MISC;
         }
 
         @Override
