@@ -30,10 +30,9 @@ public class SkirtModel extends HumanoidModel<LivingEntity> {
         float rotX = 0.3F + leftArm.xRot * 0.01F;
         float rotZ = -0.23F + leftArm.xRot * 0.03F;
         pose.pushPose();
-        if (crouching) {
-            pose.translate(0.0, 0.1, 0.15);
-            pose.mulPose(Axis.XP.rotationDegrees(12.0F));
-        }
+        pose.translate((leftLeg.x + rightLeg.x) / 32.0F, (leftLeg.y + rightLeg.y) / 32.0F, (leftLeg.z + rightLeg.z) / 32.0F);
+        pose.mulPose(Axis.XP.rotation(body.xRot * 0.42F));
+        pose.translate(0.0F, -0.75F, 0.0F);
         pose.scale(2.1F, 1.04F, 2.1F);
         for (int i = 0; i < 10; i++) {
             pose.mulPose(Axis.YP.rotationDegrees(36.0F));
