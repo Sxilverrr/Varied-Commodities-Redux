@@ -58,6 +58,8 @@ public final class VCClient {
         registerColors();
         VCNetwork.clientbound(VCNetwork.OpenSignEditor.ID, VCNetwork.OpenSignEditor::read, packet -> openSignEditor(packet.pos()));
         VCNetwork.clientbound(VCNetwork.OpenBook.ID, VCNetwork.OpenBook::read, packet -> openBook(packet.pos(), packet.book()));
+        VCMenus.CARPENTRY.listen(type -> MenuRegistry.registerScreenFactory(type, CarpentryScreen::new));
+        VCMenus.TRADING.listen(type -> MenuRegistry.registerScreenFactory(type, TradingScreen::new));
         ClientLifecycleEvent.CLIENT_SETUP.register(minecraft -> setup());
     }
 
@@ -70,8 +72,6 @@ public final class VCClient {
         BlockEntityRendererRegistry.register(VCBlockEntities.BIG_SIGN.get(), BlockRenderers.of(BlockRenderers::bigSign));
         BlockEntityRendererRegistry.register(VCBlockEntities.TOMBSTONE.get(), BlockRenderers.of(BlockRenderers::tombstone));
         BlockEntityRendererRegistry.register(VCBlockEntities.BOOK.get(), BlockRenderers.of(BlockRenderers::book));
-        MenuRegistry.registerScreenFactory(VCMenus.CARPENTRY.get(), CarpentryScreen::new);
-        MenuRegistry.registerScreenFactory(VCMenus.TRADING.get(), TradingScreen::new);
         RenderTypeRegistry.register(RenderType.translucent(), VCBlocks.all(VCBlocks.CRYSTALS.values()));
         RenderTypeRegistry.register(RenderType.cutout(), VCBlocks.all(VCBlocks.BLOOD));
         RenderTypeRegistry.register(RenderType.cutout(), VCBlocks.all(VCBlocks.FURNITURE));
