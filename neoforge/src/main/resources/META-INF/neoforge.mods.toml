@@ -11,6 +11,9 @@ description = '''A modern port of Varied Commodities by Noppes'''
 logoFile = "assets/${id}/icon.png"
 logoBlur = false
 
+[[mixins]]
+config = "variedcommoditiesredux.mixins.json"
+
 [[dependencies.${id}]]
 modId = "neoforge"
 type = "required"
