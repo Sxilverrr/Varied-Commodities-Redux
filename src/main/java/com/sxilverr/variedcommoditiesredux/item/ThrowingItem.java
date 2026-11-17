@@ -44,7 +44,7 @@ public class ThrowingItem extends ChargeItem {
                 Compat.damage(stack, 1, entity, entity.getUsedItemHand());
                 VCProjectile projectile = new VCProjectile(level, entity, new ItemStack(Items.COBBLESTONE));
                 projectile.damage = VCConfig.slingshotDamage;
-                projectile.punch = ticks > 24 ? 2 : 1;
+                projectile.punch = ticks > 24 ? VCConfig.slingshotKnockback * 2 : VCConfig.slingshotKnockback;
                 projectile.setRotating(true);
                 projectile.setHasGravity(true);
                 projectile.setSpeed(14);
@@ -61,7 +61,7 @@ public class ThrowingItem extends ChargeItem {
                 grenade.setRotating(true);
                 grenade.setHasGravity(true);
                 grenade.setSpeed((int) (8.0F * charge) + 5);
-                grenade.timeToLive = 34;
+                grenade.timeToLive = VCConfig.holyHandGrenadeFuse;
                 if (entity instanceof Player player && !creative) ItemUtil.consume(player, this);
                 grenade.shoot(1.0F);
                 ItemUtil.playSound(entity, VCSounds.SWOOSH.get(), 1.0F, 1.0F);

@@ -35,7 +35,7 @@ public class SeatEntity extends Entity {
     }
 
     public static InteractionResult mount(Level level, BlockPos pos, Player player, double height, float yaw) {
-        if (!VCConfig.seats) return InteractionResult.PASS;
+        if (!VCConfig.seats || VCConfig.seatsNeedEmptyHand && !player.getMainHandItem().isEmpty()) return InteractionResult.PASS;
         if (level.isClientSide) return InteractionResult.SUCCESS;
         if (player.isPassenger() || !level.getEntitiesOfClass(SeatEntity.class, new AABB(pos).inflate(0.0, 1.0, 0.0), seat -> pos.equals(seat.seatPos)).isEmpty()) {
             return InteractionResult.CONSUME;

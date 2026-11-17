@@ -124,13 +124,11 @@ public final class VCEnchants {
     }
 
     public static void applyEffects(Level level, ItemStack stack, LivingEntity target) {
-        int confusion = level(level, CONFUSION, stack);
-        if (confusion > 0 && target.getRandom().nextInt(4) < confusion) {
-            target.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 100));
+        if (target.getRandom().nextInt(100) < level(level, CONFUSION, stack) * VCConfig.enchantEffectChance) {
+            target.addEffect(new MobEffectInstance(MobEffects.CONFUSION, VCConfig.enchantEffectDuration));
         }
-        int poison = level(level, POISON, stack);
-        if (poison > 0 && target.getRandom().nextInt(4) < poison) {
-            target.addEffect(new MobEffectInstance(MobEffects.POISON, 100));
+        if (target.getRandom().nextInt(100) < level(level, POISON, stack) * VCConfig.enchantEffectChance) {
+            target.addEffect(new MobEffectInstance(MobEffects.POISON, VCConfig.enchantEffectDuration));
         }
     }
 

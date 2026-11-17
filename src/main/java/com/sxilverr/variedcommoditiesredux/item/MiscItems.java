@@ -1,5 +1,6 @@
 package com.sxilverr.variedcommoditiesredux.item;
 
+import com.sxilverr.variedcommoditiesredux.VCConfig;
 import com.sxilverr.variedcommoditiesredux.client.VCClientHooks;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -30,7 +31,7 @@ public final class MiscItems {
             if (level instanceof ServerLevel server) {
                 int note = level.random.nextInt(24);
                 float pitch = (float) Math.pow(2.0, (note - 12) / 12.0);
-                ItemUtil.playSound(player, SoundEvents.NOTE_BLOCK_HARP.value(), 3.0F, pitch);
+                ItemUtil.playSound(player, SoundEvents.NOTE_BLOCK_HARP.value(), (float) VCConfig.instrumentVolume, pitch);
                 server.sendParticles(ParticleTypes.NOTE, player.getX(), player.getY() + 1.2, player.getZ(), 0, note / 24.0, 0.0, 0.0, 1.0);
             }
             return bowed ? InteractionResultHolder.consume(stack) : InteractionResultHolder.sidedSuccess(stack, level.isClientSide);

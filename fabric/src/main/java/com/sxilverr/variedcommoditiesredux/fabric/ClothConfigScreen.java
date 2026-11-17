@@ -77,6 +77,77 @@ public final class ClothConfigScreen {
                 .setDefaultValue(VCConfig.DEFAULT_HOLY_HAND_GRENADE_BREAKS_BLOCKS)
                 .setTooltip(Component.translatable(KEY + "holy_hand_grenade_breaks_blocks.tooltip"))
                 .setSaveConsumer(v -> data.holy_hand_grenade_breaks_blocks = v).build());
+        general.addEntry(eb.startIntField(Component.translatable(KEY + "holy_hand_grenade_fuse"), data.holy_hand_grenade_fuse)
+                .setMin(1)
+                .setDefaultValue(VCConfig.DEFAULT_HOLY_HAND_GRENADE_FUSE)
+                .setTooltip(Component.translatable(KEY + "holy_hand_grenade_fuse.tooltip"))
+                .setSaveConsumer(v -> data.holy_hand_grenade_fuse = v).build());
+        general.addEntry(eb.startIntField(Component.translatable(KEY + "machine_gun_clip_size"), data.machine_gun_clip_size)
+                .setMin(2)
+                .setDefaultValue(VCConfig.DEFAULT_MACHINE_GUN_CLIP_SIZE)
+                .setTooltip(Component.translatable(KEY + "machine_gun_clip_size.tooltip"))
+                .setSaveConsumer(v -> data.machine_gun_clip_size = v).build());
+        general.addEntry(eb.startIntField(Component.translatable(KEY + "machine_gun_fire_delay"), data.machine_gun_fire_delay)
+                .setMin(1)
+                .setDefaultValue(VCConfig.DEFAULT_MACHINE_GUN_FIRE_DELAY)
+                .setTooltip(Component.translatable(KEY + "machine_gun_fire_delay.tooltip"))
+                .setSaveConsumer(v -> data.machine_gun_fire_delay = v).build());
+        general.addEntry(eb.startIntField(Component.translatable(KEY + "musket_reload_time"), data.musket_reload_time)
+                .setMin(1)
+                .setDefaultValue(VCConfig.DEFAULT_MUSKET_RELOAD_TIME)
+                .setTooltip(Component.translatable(KEY + "musket_reload_time.tooltip"))
+                .setSaveConsumer(v -> data.musket_reload_time = v).build());
+        general.addEntry(eb.startIntField(Component.translatable(KEY + "heavy_crossbow_reload_time"), data.heavy_crossbow_reload_time)
+                .setMin(1)
+                .setDefaultValue(VCConfig.DEFAULT_HEAVY_CROSSBOW_RELOAD_TIME)
+                .setTooltip(Component.translatable(KEY + "heavy_crossbow_reload_time.tooltip"))
+                .setSaveConsumer(v -> data.heavy_crossbow_reload_time = v).build());
+        general.addEntry(eb.startBooleanToggle(Component.translatable(KEY + "heavy_crossbow_bolt_pickup"), data.heavy_crossbow_bolt_pickup)
+                .setDefaultValue(VCConfig.DEFAULT_HEAVY_CROSSBOW_BOLT_PICKUP)
+                .setTooltip(Component.translatable(KEY + "heavy_crossbow_bolt_pickup.tooltip"))
+                .setSaveConsumer(v -> data.heavy_crossbow_bolt_pickup = v).build());
+        general.addEntry(eb.startBooleanToggle(Component.translatable(KEY + "guns_use_bullets"), data.guns_use_bullets)
+                .setDefaultValue(VCConfig.DEFAULT_GUNS_USE_BULLETS)
+                .setTooltip(Component.translatable(KEY + "guns_use_bullets.tooltip"))
+                .setSaveConsumer(v -> data.guns_use_bullets = v).build());
+        general.addEntry(eb.startBooleanToggle(Component.translatable(KEY + "staffs_use_mana"), data.staffs_use_mana)
+                .setDefaultValue(VCConfig.DEFAULT_STAFFS_USE_MANA)
+                .setTooltip(Component.translatable(KEY + "staffs_use_mana.tooltip"))
+                .setSaveConsumer(v -> data.staffs_use_mana = v).build());
+        general.addEntry(eb.startDoubleField(Component.translatable(KEY + "staff_charge_time_multiplier"), data.staff_charge_time_multiplier)
+                .setMin(0.0D)
+                .setDefaultValue(VCConfig.DEFAULT_STAFF_CHARGE_TIME_MULTIPLIER)
+                .setTooltip(Component.translatable(KEY + "staff_charge_time_multiplier.tooltip"))
+                .setSaveConsumer(v -> data.staff_charge_time_multiplier = v).build());
+        general.addEntry(eb.startBooleanToggle(Component.translatable(KEY + "staff_spell_explosion"), data.staff_spell_explosion)
+                .setDefaultValue(VCConfig.DEFAULT_STAFF_SPELL_EXPLOSION)
+                .setTooltip(Component.translatable(KEY + "staff_spell_explosion.tooltip"))
+                .setSaveConsumer(v -> data.staff_spell_explosion = v).build());
+        general.addEntry(eb.startIntField(Component.translatable(KEY + "slingshot_knockback"), data.slingshot_knockback)
+                .setMin(0)
+                .setDefaultValue(VCConfig.DEFAULT_SLINGSHOT_KNOCKBACK)
+                .setTooltip(Component.translatable(KEY + "slingshot_knockback.tooltip"))
+                .setSaveConsumer(v -> data.slingshot_knockback = v).build());
+        general.addEntry(eb.startIntField(Component.translatable(KEY + "thrown_kunai_damage"), data.thrown_kunai_damage)
+                .setMin(0)
+                .setDefaultValue(VCConfig.DEFAULT_THROWN_KUNAI_DAMAGE)
+                .setTooltip(Component.translatable(KEY + "thrown_kunai_damage.tooltip"))
+                .setSaveConsumer(v -> data.thrown_kunai_damage = v).build());
+        general.addEntry(eb.startBooleanToggle(Component.translatable(KEY + "thrown_weapons_despawn"), data.thrown_weapons_despawn)
+                .setDefaultValue(VCConfig.DEFAULT_THROWN_WEAPONS_DESPAWN)
+                .setTooltip(Component.translatable(KEY + "thrown_weapons_despawn.tooltip"))
+                .setSaveConsumer(v -> data.thrown_weapons_despawn = v).build());
+        general.addEntry(eb.startIntField(Component.translatable(KEY + "enchant_effect_chance"), data.enchant_effect_chance)
+                .setMin(0)
+                .setMax(100)
+                .setDefaultValue(VCConfig.DEFAULT_ENCHANT_EFFECT_CHANCE)
+                .setTooltip(Component.translatable(KEY + "enchant_effect_chance.tooltip"))
+                .setSaveConsumer(v -> data.enchant_effect_chance = v).build());
+        general.addEntry(eb.startIntField(Component.translatable(KEY + "enchant_effect_duration"), data.enchant_effect_duration)
+                .setMin(1)
+                .setDefaultValue(VCConfig.DEFAULT_ENCHANT_EFFECT_DURATION)
+                .setTooltip(Component.translatable(KEY + "enchant_effect_duration.tooltip"))
+                .setSaveConsumer(v -> data.enchant_effect_duration = v).build());
         general.addEntry(eb.startBooleanToggle(Component.translatable(KEY + "golden_armor_calms_piglins"), data.golden_armor_calms_piglins)
                 .setDefaultValue(VCConfig.DEFAULT_GOLDEN_ARMOR_CALMS_PIGLINS)
                 .setTooltip(Component.translatable(KEY + "golden_armor_calms_piglins.tooltip"))
@@ -85,6 +156,15 @@ public final class ClothConfigScreen {
                 .setDefaultValue(VCConfig.DEFAULT_SEATS)
                 .setTooltip(Component.translatable(KEY + "seats.tooltip"))
                 .setSaveConsumer(v -> data.seats = v).build());
+        general.addEntry(eb.startBooleanToggle(Component.translatable(KEY + "seats_need_empty_hand"), data.seats_need_empty_hand)
+                .setDefaultValue(VCConfig.DEFAULT_SEATS_NEED_EMPTY_HAND)
+                .setTooltip(Component.translatable(KEY + "seats_need_empty_hand.tooltip"))
+                .setSaveConsumer(v -> data.seats_need_empty_hand = v).build());
+        general.addEntry(eb.startDoubleField(Component.translatable(KEY + "instrument_volume"), data.instrument_volume)
+                .setMin(0.0D)
+                .setDefaultValue(VCConfig.DEFAULT_INSTRUMENT_VOLUME)
+                .setTooltip(Component.translatable(KEY + "instrument_volume.tooltip"))
+                .setSaveConsumer(v -> data.instrument_volume = v).build());
         general.addEntry(eb.startBooleanToggle(Component.translatable(KEY + "sign_editor_on_place"), data.sign_editor_on_place)
                 .setDefaultValue(VCConfig.DEFAULT_SIGN_EDITOR_ON_PLACE)
                 .setTooltip(Component.translatable(KEY + "sign_editor_on_place.tooltip"))

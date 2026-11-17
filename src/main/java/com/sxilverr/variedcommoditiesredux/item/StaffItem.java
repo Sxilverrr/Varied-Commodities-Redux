@@ -42,9 +42,9 @@ public class StaffItem extends ChargeItem {
             for (int color : colors) VCClientHooks.spellParticles(entity, color, colors.length == 1 ? 4 : 2);
             return;
         }
-        int chargeTime = 20 + material.harvestLevel() * 8;
+        int chargeTime = Math.max(1, (int) ((20 + material.harvestLevel() * 8) * VCConfig.staffChargeTimeMultiplier));
         if (tick == chargeTime) {
-            if (entity instanceof Player player && !player.getAbilities().instabuild && !VCEnchants.infinity(level, stack)) {
+            if (VCConfig.staffsUseMana && entity instanceof Player player && !player.getAbilities().instabuild && !VCEnchants.infinity(level, stack)) {
                 if (!ItemUtil.consume(player, VCItems.MANA.get())) return;
             }
             ItemUtil.playSound(entity, VCSounds.MAGIC_CHARGE.get(), 1.0F, 1.0F);
@@ -83,7 +83,7 @@ public class StaffItem extends ChargeItem {
             return false;
         };
         projectile.explosiveDamage = false;
-        projectile.explosiveRadius = 1;
+        projectile.explosiveRadius = VCConfig.staffSpellExplosion ? 1 : 0;
         projectile.setYRot(entity.getYRot());
         projectile.setXRot(entity.getXRot());
         projectile.yRotO = entity.getYRot();

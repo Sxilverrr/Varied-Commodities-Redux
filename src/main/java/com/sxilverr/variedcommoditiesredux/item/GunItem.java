@@ -23,7 +23,7 @@ public class GunItem extends ChargeItem {
     public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int remaining) {
         if (level.isClientSide) return;
         if (entity instanceof Player player) {
-            boolean free = player.getAbilities().instabuild || VCEnchants.infinity(level, stack);
+            boolean free = player.getAbilities().instabuild || !VCConfig.gunsUseBullets || VCEnchants.infinity(level, stack);
             if (!free && !ItemUtil.has(player, VCItems.BULLET.get())) {
                 ItemUtil.playSound(player, VCSounds.GUN_EMPTY.get(), 1.0F, 1.0F);
                 return;

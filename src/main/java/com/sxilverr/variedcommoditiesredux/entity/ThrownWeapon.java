@@ -1,6 +1,7 @@
 package com.sxilverr.variedcommoditiesredux.entity;
 
 import com.sxilverr.variedcommoditiesredux.Compat;
+import com.sxilverr.variedcommoditiesredux.VCConfig;
 import com.sxilverr.variedcommoditiesredux.VCEntities;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -103,7 +104,7 @@ public class ThrownWeapon extends AbstractArrow {
 
     @Override
     protected void tickDespawn() {
-        if (!returns || pickup != Pickup.ALLOWED) super.tickDespawn();
+        if (VCConfig.thrownWeaponsDespawn || !returns || pickup != Pickup.ALLOWED) super.tickDespawn();
     }
 
     @Override

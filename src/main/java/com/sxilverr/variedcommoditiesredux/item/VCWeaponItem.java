@@ -1,6 +1,7 @@
 package com.sxilverr.variedcommoditiesredux.item;
 
 import com.sxilverr.variedcommoditiesredux.Compat;
+import com.sxilverr.variedcommoditiesredux.VCConfig;
 import com.sxilverr.variedcommoditiesredux.VCSounds;
 import com.sxilverr.variedcommoditiesredux.entity.ThrownWeapon;
 import net.minecraft.world.InteractionHand;
@@ -71,7 +72,7 @@ public class VCWeaponItem extends SwordItem {
             Compat.damage(stack, 1, player, entity.getUsedItemHand());
             if (stack.isEmpty()) return;
         }
-        ThrownWeapon weapon = new ThrownWeapon(level, entity, stack, getTier().getAttackDamageBonus(), true);
+        ThrownWeapon weapon = new ThrownWeapon(level, entity, stack, VCConfig.thrownKunaiDamage, true);
         weapon.pickup = creative ? AbstractArrow.Pickup.CREATIVE_ONLY : AbstractArrow.Pickup.ALLOWED;
         weapon.shootFromRotation(entity, entity.getXRot(), entity.getYRot(), 0.0F, 1.2F, 1.0F);
         if (entity instanceof Player player && !creative) player.setItemInHand(entity.getUsedItemHand(), ItemStack.EMPTY);

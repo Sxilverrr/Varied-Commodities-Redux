@@ -15,7 +15,6 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 
@@ -36,13 +35,25 @@ public class ReloadItem extends ChargeItem {
         return kind == Kind.CROSSBOW ? VCItems.CROSSBOW_BOLT.get() : VCItems.BULLET.get();
     }
 
+    private boolean needsAmmo() {
+        return kind == Kind.CROSSBOW || VCConfig.gunsUseBullets;
+    }
+
+    private boolean hasAmmo(Player player) {
+        return !needsAmmo() || ItemUtil.has(player, ammo());
+    }
+
+    private void useAmmo(Player player) {
+        if (needsAmmo()) ItemUtil.consume(player, ammo());
+    }
+
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (!player.getAbilities().instabuild) {
             if (kind == Kind.MACHINE_GUN) {
-                if (!ItemUtil.has(player, ammo())) GunState.update(stack, s -> s.withReloading(true));
-            } else if (ItemUtil.has(player, ammo()) && !GunState.get(stack).loaded()) {
+                if (!hasAmmo(player)) GunState.update(stack, s -> s.withReloading(true));
+            } else if (hasAmmo(player) && !GunState.get(stack).loaded()) {
                 GunState.update(stack, s -> s.withReloading(true));
             }
         }
@@ -63,25 +74,25 @@ public class ReloadItem extends ChargeItem {
             return;
         }
         if (!(entity instanceof Player player) || player.getAbilities().instabuild) return;
-        if (GunState.get(stack).reloading() && ItemUtil.has(player, ammo()) && ticks == (kind == Kind.MUSKET ? 60 : 20)) {
+        if (GunState.get(stack).reloading() && hasAmmo(player) && ticks == (kind == Kind.MUSKET ? VCConfig.musketReloadTime : VCConfig.heavyCrossbowReloadTime)) {
             ItemUtil.playSound(player, kind == Kind.MUSKET ? VCSounds.GUN_RELOAD.get() : SoundEvents.UI_BUTTON_CLICK.value(), 1.0F, 1.0F);
             GunState.update(stack, s -> s.withLoaded(true));
         }
     }
 
     private void machineGunTick(Level level, LivingEntity entity, ItemStack stack, int ticks) {
-        if (ticks % 6 != 0) return;
+        if (ticks % VCConfig.machineGunFireDelay != 0) return;
         if (entity instanceof Player player && !player.getAbilities().instabuild) {
-            int shotsLeft = GunState.get(stack).shots() - ticks / 6;
-            if (GunState.get(stack).reloading() && ItemUtil.has(player, ammo())) {
+            int shotsLeft = GunState.get(stack).shots() - ticks / VCConfig.machineGunFireDelay;
+            if (GunState.get(stack).reloading() && hasAmmo(player)) {
                 if (ticks > 0 && ticks <= 24) ItemUtil.playSound(player, VCSounds.GUN_RELOAD.get(), 1.0F, 1.0F);
                 return;
             }
-            if (shotsLeft <= 0 || !ItemUtil.has(player, ammo())) {
+            if (shotsLeft <= 0 || !hasAmmo(player)) {
                 ItemUtil.playSound(player, VCSounds.GUN_EMPTY.get(), 1.0F, 1.0F);
                 return;
             }
-            ItemUtil.consume(player, ammo());
+            useAmmo(player);
             GunState.update(stack, s -> s.withReloading(false));
         }
         VCProjectile projectile = new VCProjectile(level, entity, new ItemStack(VCItems.BULLET.get()));
@@ -109,7 +120,7 @@ public class ReloadItem extends ChargeItem {
                 GunState.update(stack, s -> s.withReloading(false));
                 return;
             }
-            if (!creative) ItemUtil.consume(player, ammo());
+            if (!creative) useAmmo(player);
             GunState.update(stack, s -> s.withLoaded(false));
         }
         Compat.damage(stack, 1, entity, entity.getUsedItemHand());
@@ -124,12 +135,17 @@ public class ReloadItem extends ChargeItem {
             ItemUtil.playSound(entity, SoundEvents.LIGHTNING_BOLT_THUNDER, 2.0F, level.random.nextFloat() * 0.3F + 1.8F);
         } else {
             //? if >=1.21 {
-            /*Arrow arrow = new Arrow(level, entity, new ItemStack(Items.ARROW), stack);
+            /*Arrow arrow = new Arrow(level, entity, new ItemStack(VCItems.CROSSBOW_BOLT.get()), stack);
             *///?} else {
-            Arrow arrow = new Arrow(level, entity);
+            Arrow arrow = new Arrow(level, entity) {
+                @Override
+                protected ItemStack getPickupItem() {
+                    return new ItemStack(VCItems.CROSSBOW_BOLT.get());
+                }
+            };
             //?}
             arrow.setBaseDamage(VCConfig.heavyCrossbowDamage / 2.0);
-            arrow.pickup = AbstractArrow.Pickup.DISALLOWED;
+            arrow.pickup = VCConfig.heavyCrossbowBoltPickup ? AbstractArrow.Pickup.ALLOWED : AbstractArrow.Pickup.DISALLOWED;
             arrow.shootFromRotation(entity, entity.getXRot(), entity.getYRot(), 0.0F, 2.0F, 2.0F);
             level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.NEUTRAL, 1.0F, level.random.nextFloat() * 0.3F + 0.8F);
             level.addFreshEntity(arrow);
@@ -138,9 +154,9 @@ public class ReloadItem extends ChargeItem {
 
     private void machineGunRelease(ItemStack stack, LivingEntity entity, int ticks) {
         if (!(entity instanceof Player player) || player.getAbilities().instabuild) return;
-        int shotsLeft = GunState.get(stack).shots() - ticks / 6;
+        int shotsLeft = GunState.get(stack).shots() - ticks / VCConfig.machineGunFireDelay;
         if (GunState.get(stack).reloading()) {
-            int loaded = ticks > 40 ? 8 : ticks / 5;
+            int loaded = Math.min(VCConfig.machineGunClipSize, ticks / 5);
             if (loaded > 1) {
                 GunState.update(stack, s -> s.withShots(loaded));
                 GunState.update(stack, s -> s.withReloading(false));
