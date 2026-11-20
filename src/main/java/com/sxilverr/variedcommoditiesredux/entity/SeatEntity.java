@@ -122,7 +122,7 @@ public class SeatEntity extends Entity {
 
     @Override
     protected Vec3 getPassengerAttachmentPoint(Entity passenger, EntityDimensions dimensions, float scale) {
-        return new Vec3(0.0, 0.75, 0.0);
+        return new Vec3(0.0, CHAIR_HEIGHT, 0.0);
     }
     *///?} else {
     @Override
@@ -131,7 +131,7 @@ public class SeatEntity extends Entity {
 
     @Override
     public double getPassengersRidingOffset() {
-        return 0.5;
+        return CHAIR_HEIGHT - 0.25;
     }
     //?}
 
