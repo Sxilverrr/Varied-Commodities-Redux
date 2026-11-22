@@ -7,9 +7,7 @@
     "X X"
   ],
   "key": {
-    "X": {
-      "tag": "c:ingots/mithril"
-    }
+    "X": "#c:ingots/mithril"
   },
   "result": {
     "id": "variedcommoditiesredux:mithril_leggings"

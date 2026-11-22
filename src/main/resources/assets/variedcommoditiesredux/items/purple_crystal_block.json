@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "variedcommoditiesredux:item/purple_crystal_block",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -10082934
+      }
+    ]
+  }
+}

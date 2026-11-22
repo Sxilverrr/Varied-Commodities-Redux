@@ -15,12 +15,6 @@ public class VCBlockEntity extends BlockEntity {
         super(type, pos, state);
     }
 
-    protected void write(CompoundTag tag, HolderLookup.Provider registries) {
-    }
-
-    protected void read(CompoundTag tag, HolderLookup.Provider registries) {
-    }
-
     public void sync() {
         setChanged();
         if (level != null) {
@@ -33,39 +27,8 @@ public class VCBlockEntity extends BlockEntity {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
-    //? if >=1.21 {
-    /*@Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.saveAdditional(tag, registries);
-        write(tag, registries);
-    }
-
-    @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.loadAdditional(tag, registries);
-        read(tag, registries);
-    }
-
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         return saveWithoutMetadata(registries);
     }
-    *///?} else {
-    @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
-        write(tag, null);
-    }
-
-    @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
-        read(tag, null);
-    }
-
-    @Override
-    public CompoundTag getUpdateTag() {
-        return saveWithoutMetadata();
-    }
-    //?}
 }

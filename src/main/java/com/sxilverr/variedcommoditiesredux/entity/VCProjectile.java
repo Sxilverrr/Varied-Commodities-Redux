@@ -5,7 +5,8 @@ import com.sxilverr.variedcommoditiesredux.VCEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -68,11 +69,10 @@ public class VCProjectile extends ThrowableProjectile {
         setOwner(shooter);
         setItem(item);
         float yaw = shooter.getYRot();
-        moveTo(shooter.getX() - Mth.cos(yaw * Mth.DEG_TO_RAD) * 0.1F, shooter.getEyeY() - 0.1F, shooter.getZ() - Mth.sin(yaw * Mth.DEG_TO_RAD) * 0.1F, yaw, shooter.getXRot());
+        snapTo(shooter.getX() - Mth.cos(yaw * Mth.DEG_TO_RAD) * 0.1F, shooter.getEyeY() - 0.1F, shooter.getZ() - Mth.sin(yaw * Mth.DEG_TO_RAD) * 0.1F, yaw, shooter.getXRot());
     }
 
-    //? if >=1.21 {
-    /*@Override
+    @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         builder.define(ITEM, ItemStack.EMPTY);
         builder.define(VELOCITY, 10);
@@ -80,16 +80,6 @@ public class VCProjectile extends ThrowableProjectile {
         builder.define(IS_3D, false);
         builder.define(ROTATING, false);
     }
-    *///?} else {
-    @Override
-    protected void defineSynchedData() {
-        entityData.define(ITEM, ItemStack.EMPTY);
-        entityData.define(VELOCITY, 10);
-        entityData.define(GRAVITY, false);
-        entityData.define(IS_3D, false);
-        entityData.define(ROTATING, false);
-    }
-    //?}
 
     public void setItem(ItemStack item) {
         entityData.set(ITEM, item.copy());
@@ -181,13 +171,13 @@ public class VCProjectile extends ThrowableProjectile {
                 ticksInAir = 0;
             } else {
                 ticksInGround++;
-                if (ticksInGround >= timeToLive && !level().isClientSide) onGroundTimeout();
+                if (ticksInGround >= timeToLive && !level().isClientSide()) onGroundTimeout();
                 return;
             }
         }
         ticksInAir++;
         if (ticksInAir >= timeToLive) {
-            if (!level().isClientSide) discard();
+            if (!level().isClientSide()) discard();
             return;
         }
         Vec3 start = position();
@@ -195,7 +185,7 @@ public class VCProjectile extends ThrowableProjectile {
         Vec3 end = start.add(motion);
         HitResult hit = level().clip(new ClipContext(start, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
         if (hit.getType() != HitResult.Type.MISS) end = hit.getLocation();
-        if (!level().isClientSide && detectsEntities()) {
+        if (!level().isClientSide() && detectsEntities()) {
             EntityHitResult entityHit = ProjectileUtil.getEntityHitResult(level(), this, start, end, getBoundingBox().expandTowards(motion).inflate(1.0), this::canHitEntity);
             if (entityHit != null) hit = entityHit;
         }
@@ -219,7 +209,7 @@ public class VCProjectile extends ThrowableProjectile {
         setXRot(spin(pitch));
         float factor = accelerate ? 0.95F : 1.0F;
         if (isInWater()) {
-            if (level().isClientSide) {
+            if (level().isClientSide()) {
                 for (int i = 0; i < 4; i++) {
                     level().addParticle(ParticleTypes.BUBBLE, x - motion.x * 0.25, y - motion.y * 0.25, z - motion.z * 0.25, motion.x, motion.y, motion.z);
                 }
@@ -231,7 +221,7 @@ public class VCProjectile extends ThrowableProjectile {
         if (accelerate) motion = motion.add(acceleration);
         setDeltaMovement(motion);
         setPos(x, y, z);
-        checkInsideBlocks();
+        applyEffectsFromBlocks();
     }
 
     protected float spin(float pitch) {
@@ -279,7 +269,7 @@ public class VCProjectile extends ThrowableProjectile {
         }
         if (hitEntity != null) {
             float amount = damage == 0.0F ? 0.001F : damage;
-            if (hitEntity.hurt(damageSources().thrown(this, getOwner()), amount)) {
+            if (hitEntity.hurtOrSimulate(damageSources().thrown(this, getOwner()), amount)) {
                 if (!(hitEntity instanceof EnderMan)) discard();
                 breakParticles(hitEntity.blockPosition());
                 if (punch > 0) {
@@ -293,13 +283,13 @@ public class VCProjectile extends ThrowableProjectile {
         } else {
             breakParticles(blockPosition());
         }
-        if (explosiveRadius > 0 && !level().isClientSide) {
+        if (explosiveRadius > 0 && !level().isClientSide()) {
             Entity owner = getOwner();
             level().explode(owner == null ? this : owner, getX(), getY(), getZ(), explosiveRadius,
                     explosiveDamage ? Level.ExplosionInteraction.MOB : Level.ExplosionInteraction.NONE);
             discard();
         }
-        if (!level().isClientSide) discard();
+        if (!level().isClientSide()) discard();
     }
 
     private void breakParticles(BlockPos pos) {
@@ -320,47 +310,47 @@ public class VCProjectile extends ThrowableProjectile {
     }
 
     @Override
-    protected void addAdditionalSaveData(CompoundTag tag) {
-        super.addAdditionalSaveData(tag);
-        tag.put("Item", Compat.saveStack(getItem(), level().registryAccess()));
-        tag.putBoolean("InGround", inGround);
-        tag.putInt("StuckX", stuckPos.getX());
-        tag.putInt("StuckY", stuckPos.getY());
-        tag.putInt("StuckZ", stuckPos.getZ());
-        tag.putFloat("Damage", damage);
-        tag.putInt("Punch", punch);
-        tag.putInt("ExplosiveRadius", explosiveRadius);
-        tag.putBoolean("ExplosiveDamage", explosiveDamage);
-        tag.putBoolean("Accelerate", accelerate);
-        tag.putInt("TimeToLive", timeToLive);
-        tag.putInt("Velocity", entityData.get(VELOCITY));
-        tag.putBoolean("Gravity", hasGravity());
-        tag.putBoolean("Render3D", entityData.get(IS_3D));
-        tag.putBoolean("Spins", isRotating());
+    protected void addAdditionalSaveData(ValueOutput output) {
+        super.addAdditionalSaveData(output);
+        Compat.saveStack(output, "Item", getItem());
+        output.putBoolean("InGround", inGround);
+        output.putInt("StuckX", stuckPos.getX());
+        output.putInt("StuckY", stuckPos.getY());
+        output.putInt("StuckZ", stuckPos.getZ());
+        output.putFloat("Damage", damage);
+        output.putInt("Punch", punch);
+        output.putInt("ExplosiveRadius", explosiveRadius);
+        output.putBoolean("ExplosiveDamage", explosiveDamage);
+        output.putBoolean("Accelerate", accelerate);
+        output.putInt("TimeToLive", timeToLive);
+        output.putInt("Velocity", entityData.get(VELOCITY));
+        output.putBoolean("Gravity", hasGravity());
+        output.putBoolean("Render3D", entityData.get(IS_3D));
+        output.putBoolean("Spins", isRotating());
     }
 
     @Override
-    protected void readAdditionalSaveData(CompoundTag tag) {
-        super.readAdditionalSaveData(tag);
-        ItemStack item = Compat.loadStack(tag.getCompound("Item"), level().registryAccess());
+    protected void readAdditionalSaveData(ValueInput input) {
+        super.readAdditionalSaveData(input);
+        ItemStack item = Compat.loadStack(input, "Item");
         if (item.isEmpty()) {
             discard();
             return;
         }
         setItem(item);
-        inGround = tag.getBoolean("InGround");
-        stuckPos = new BlockPos(tag.getInt("StuckX"), tag.getInt("StuckY"), tag.getInt("StuckZ"));
+        inGround = input.getBooleanOr("InGround", false);
+        stuckPos = new BlockPos(input.getIntOr("StuckX", 0), input.getIntOr("StuckY", 0), input.getIntOr("StuckZ", 0));
         if (inGround) stuckState = level().getBlockState(stuckPos);
-        damage = tag.getFloat("Damage");
-        punch = tag.getInt("Punch");
-        explosiveRadius = tag.getInt("ExplosiveRadius");
-        explosiveDamage = tag.getBoolean("ExplosiveDamage");
-        accelerate = tag.getBoolean("Accelerate");
-        timeToLive = tag.contains("TimeToLive") ? tag.getInt("TimeToLive") : 1200;
-        entityData.set(VELOCITY, tag.getInt("Velocity"));
-        setHasGravity(tag.getBoolean("Gravity"));
-        setIs3D(tag.getBoolean("Render3D"));
-        setRotating(tag.getBoolean("Spins"));
+        damage = input.getFloatOr("Damage", 0.0F);
+        punch = input.getIntOr("Punch", 0);
+        explosiveRadius = input.getIntOr("ExplosiveRadius", 0);
+        explosiveDamage = input.getBooleanOr("ExplosiveDamage", false);
+        accelerate = input.getBooleanOr("Accelerate", false);
+        timeToLive = input.getIntOr("TimeToLive", 1200);
+        entityData.set(VELOCITY, input.getIntOr("Velocity", 0));
+        setHasGravity(input.getBooleanOr("Gravity", false));
+        setIs3D(input.getBooleanOr("Render3D", false));
+        setRotating(input.getBooleanOr("Spins", false));
     }
 
     @Override

@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "variedcommoditiesredux:item/purple_broken_orb",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -10082934
+      }
+    ]
+  }
+}

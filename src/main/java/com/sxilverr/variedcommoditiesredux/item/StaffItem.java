@@ -10,6 +10,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
@@ -25,20 +26,20 @@ public class StaffItem extends ChargeItem {
     private final int[] colors;
 
     public StaffItem(VCMaterial material, Supplier<ItemStack> spell, int[] colors, Properties properties) {
-        super(properties.stacksTo(1));
+        super(properties.stacksTo(1).enchantable(material.enchantability()));
         this.material = material;
         this.spell = spell;
         this.colors = colors;
     }
 
-    public static StaffItem elemental(DyeColor color, Properties properties) {
+    public static Item elemental(DyeColor color, Properties properties) {
         return new StaffItem(VCMaterial.IRON, () -> new ItemStack(VCItems.ORBS.get(color).get()), new int[]{15 - color.getId()}, properties);
     }
 
     @Override
     public void onUseTick(Level level, LivingEntity entity, ItemStack stack, int remaining) {
         int tick = usedTicks(stack, entity, remaining);
-        if (level.isClientSide) {
+        if (level.isClientSide()) {
             for (int color : colors) VCClientHooks.spellParticles(entity, color, colors.length == 1 ? 4 : 2);
             return;
         }
@@ -73,8 +74,8 @@ public class StaffItem extends ChargeItem {
     }
 
     @Override
-    public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int remaining) {
-        if (level.isClientSide) return;
+    protected void release(ItemStack stack, Level level, LivingEntity entity, int remaining) {
+        if (level.isClientSide()) return;
         MagicProjectile projectile = CHARGED.remove(entity);
         if (projectile == null || projectile.isRemoved()) return;
         ItemStack staff = stack.copy();
@@ -90,15 +91,5 @@ public class StaffItem extends ChargeItem {
         projectile.xRotO = entity.getXRot();
         projectile.shoot(2.0F);
         ItemUtil.playSound(entity, VCSounds.MAGIC_SHOT.get(), 1.0F, 1.0F);
-    }
-
-    @Override
-    public boolean isEnchantable(ItemStack stack) {
-        return true;
-    }
-
-    @Override
-    public int getEnchantmentValue() {
-        return material.enchantability();
     }
 }

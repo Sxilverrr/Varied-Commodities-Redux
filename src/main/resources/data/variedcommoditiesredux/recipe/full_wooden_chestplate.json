@@ -7,9 +7,7 @@
     "XXX"
   ],
   "key": {
-    "X": {
-      "tag": "minecraft:logs"
-    }
+    "X": "#minecraft:logs"
   },
   "result": {
     "id": "variedcommoditiesredux:full_wooden_chestplate"

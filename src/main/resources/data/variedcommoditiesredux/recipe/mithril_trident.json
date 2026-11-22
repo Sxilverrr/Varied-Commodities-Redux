@@ -7,12 +7,8 @@
     " Y "
   ],
   "key": {
-    "X": {
-      "tag": "c:ingots/mithril"
-    },
-    "Y": {
-      "item": "minecraft:stick"
-    }
+    "X": "#c:ingots/mithril",
+    "Y": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:mithril_trident"

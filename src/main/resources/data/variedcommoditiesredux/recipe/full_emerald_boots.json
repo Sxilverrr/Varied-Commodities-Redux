@@ -6,9 +6,7 @@
     "X X"
   ],
   "key": {
-    "X": {
-      "item": "minecraft:emerald"
-    }
+    "X": "minecraft:emerald"
   },
   "result": {
     "id": "variedcommoditiesredux:full_emerald_boots"

@@ -7,12 +7,8 @@
     "XXX"
   ],
   "key": {
-    "X": {
-      "item": "minecraft:oak_planks"
-    },
-    "Y": {
-      "item": "minecraft:stick"
-    }
+    "X": "minecraft:oak_planks",
+    "Y": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:oak_weapon_rack"

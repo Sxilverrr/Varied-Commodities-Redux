@@ -6,12 +6,8 @@
     " X "
   ],
   "key": {
-    "X": {
-      "item": "minecraft:iron_ingot"
-    },
-    "Y": {
-      "item": "minecraft:torch"
-    }
+    "X": "minecraft:iron_ingot",
+    "Y": "minecraft:torch"
   },
   "result": {
     "id": "variedcommoditiesredux:candle"

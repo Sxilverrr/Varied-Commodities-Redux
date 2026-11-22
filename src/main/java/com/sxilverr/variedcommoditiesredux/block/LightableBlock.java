@@ -109,7 +109,7 @@ public class LightableBlock extends RotatedBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         if (kind == Kind.CAMPFIRE) return CAMPFIRE;
         Attach attach = state.getValue(ATTACH);
         if (attach == Attach.WALL) {
@@ -131,14 +131,14 @@ public class LightableBlock extends RotatedBlock {
     protected InteractionResult onUse(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (kind != Kind.CAMPFIRE) {
             level.setBlock(pos, state.cycle(LIT), 3);
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.SUCCESS;
         }
         if (hand != InteractionHand.MAIN_HAND) return InteractionResult.PASS;
         ItemStack held = player.getMainHandItem();
         boolean lit = state.getValue(LIT);
         boolean creative = player.getAbilities().instabuild;
         if (!lit && (held.is(Items.FLINT_AND_STEEL) || held.is(Items.FIRE_CHARGE))) {
-            if (!level.isClientSide) {
+            if (!level.isClientSide()) {
                 boolean charge = held.is(Items.FIRE_CHARGE);
                 level.setBlock(pos, state.setValue(LIT, true), 11);
                 level.playSound(null, pos, charge ? SoundEvents.FIRECHARGE_USE : SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.random.nextFloat() * 0.4F + 0.8F);
@@ -149,7 +149,7 @@ public class LightableBlock extends RotatedBlock {
                 }
             }
         } else if (lit && (held.getItem() instanceof ShovelItem || held.is(Items.SAND))) {
-            if (!level.isClientSide) {
+            if (!level.isClientSide()) {
                 level.setBlock(pos, state.setValue(LIT, false), 11);
                 level.levelEvent(null, 1009, pos, 0);
                 level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
@@ -158,7 +158,7 @@ public class LightableBlock extends RotatedBlock {
         } else {
             return InteractionResult.PASS;
         }
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.SUCCESS;
     }
 
     @Override

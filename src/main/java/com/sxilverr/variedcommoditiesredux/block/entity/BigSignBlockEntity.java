@@ -2,10 +2,10 @@ package com.sxilverr.variedcommoditiesredux.block.entity;
 
 import com.sxilverr.variedcommoditiesredux.block.BigSignBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 
 public class BigSignBlockEntity extends VCBlockEntity {
     public boolean waxed;
@@ -32,17 +32,17 @@ public class BigSignBlockEntity extends VCBlockEntity {
     }
 
     @Override
-    protected void write(CompoundTag tag, HolderLookup.Provider registries) {
-        super.write(tag, registries);
-        tag.putString("SignText", text);
-        tag.putBoolean("Waxed", waxed);
+    protected void saveAdditional(ValueOutput output) {
+        super.saveAdditional(output);
+        output.putString("SignText", text);
+        output.putBoolean("Waxed", waxed);
     }
 
     @Override
-    protected void read(CompoundTag tag, HolderLookup.Provider registries) {
-        super.read(tag, registries);
-        text = tag.getString("SignText");
-        waxed = tag.getBoolean("Waxed");
+    protected void loadAdditional(ValueInput input) {
+        super.loadAdditional(input);
+        text = input.getStringOr("SignText", "");
+        waxed = input.getBooleanOr("Waxed", false);
         lines = null;
     }
 }

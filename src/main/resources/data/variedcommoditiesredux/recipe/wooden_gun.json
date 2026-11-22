@@ -6,18 +6,10 @@
     "  A "
   ],
   "key": {
-    "X": {
-      "tag": "minecraft:planks"
-    },
-    "Y": {
-      "item": "minecraft:lever"
-    },
-    "Z": {
-      "item": "minecraft:stone_button"
-    },
-    "A": {
-      "item": "minecraft:stick"
-    }
+    "X": "#minecraft:planks",
+    "Y": "minecraft:lever",
+    "Z": "minecraft:stone_button",
+    "A": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:wooden_gun"

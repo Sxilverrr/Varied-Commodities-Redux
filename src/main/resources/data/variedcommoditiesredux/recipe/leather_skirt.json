@@ -5,9 +5,7 @@
     "XXXX"
   ],
   "key": {
-    "X": {
-      "item": "minecraft:leather"
-    }
+    "X": "minecraft:leather"
   },
   "result": {
     "id": "variedcommoditiesredux:leather_skirt"

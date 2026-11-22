@@ -4,7 +4,7 @@ import com.sxilverr.variedcommoditiesredux.block.entity.BookBlockEntity;
 import com.sxilverr.variedcommoditiesredux.network.VCNetwork;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -33,11 +33,11 @@ public class BookBlock extends FurnitureBlock {
             }
             VCNetwork.openBook(serverPlayer, pos, be.book);
         }
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.SUCCESS;
     }
 
     private static boolean isWand(ItemStack stack) {
-        ResourceLocation id = BuiltInRegistries.ITEM.getKey(stack.getItem());
+        Identifier id = BuiltInRegistries.ITEM.getKey(stack.getItem());
         return id.getNamespace().equals("customnpcs") && (id.getPath().equals("wand") || id.getPath().equals("npcwand"));
     }
 }

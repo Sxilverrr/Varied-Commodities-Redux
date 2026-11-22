@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "variedcommoditiesredux:item/pink_elemental_staff",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -4822913
+      }
+    ]
+  }
+}

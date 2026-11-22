@@ -7,9 +7,7 @@
     "XXX"
   ],
   "key": {
-    "X": {
-      "item": "minecraft:gold_ingot"
-    }
+    "X": "minecraft:gold_ingot"
   },
   "result": {
     "id": "variedcommoditiesredux:full_golden_chestplate"

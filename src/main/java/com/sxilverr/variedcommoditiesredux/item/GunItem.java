@@ -15,13 +15,13 @@ public class GunItem extends ChargeItem {
     private final VCMaterial material;
 
     public GunItem(VCMaterial material, Properties properties) {
-        super(properties.durability(material.maxUses()));
+        super(properties.durability(material.maxUses()).enchantable(material.enchantability()));
         this.material = material;
     }
 
     @Override
-    public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int remaining) {
-        if (level.isClientSide) return;
+    protected void release(ItemStack stack, Level level, LivingEntity entity, int remaining) {
+        if (level.isClientSide()) return;
         if (entity instanceof Player player) {
             boolean free = player.getAbilities().instabuild || !VCConfig.gunsUseBullets || VCEnchants.infinity(level, stack);
             if (!free && !ItemUtil.has(player, VCItems.BULLET.get())) {
@@ -49,18 +49,8 @@ public class GunItem extends ChargeItem {
 
     @Override
     public void onUseTick(Level level, LivingEntity entity, ItemStack stack, int remaining) {
-        if (!level.isClientSide && usedTicks(stack, entity, remaining) == 8) {
+        if (!level.isClientSide() && usedTicks(stack, entity, remaining) == 8) {
             ItemUtil.playSound(entity, VCSounds.GUN_TRIGGER.get(), 1.0F, 1.0F / (level.random.nextFloat() * 0.4F + 0.8F));
         }
-    }
-
-    @Override
-    public boolean isEnchantable(ItemStack stack) {
-        return true;
-    }
-
-    @Override
-    public int getEnchantmentValue() {
-        return material.enchantability();
     }
 }

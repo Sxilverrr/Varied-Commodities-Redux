@@ -50,7 +50,7 @@ dependencies {
     modApi("dev.architectury:architectury-neoforge:${common.mod.dep("architectury")}")
 
     modLocalRuntime("mezz.jei:jei-$minecraft-$loader:${common.mod.dep("jei")}") { isTransitive = false }
-    modLocalRuntime("net.mezzdev.config:mezz_config-$minecraft-$loader:0.5.6") { isTransitive = false }
+    modLocalRuntime("net.mezzdev.config:mezz_config-$minecraft-$loader:0.6.10") { isTransitive = false }
 
     commonBundle(project(common.path, "namedElements")) { isTransitive = false }
     shadowBundle(project(common.path, "transformProductionNeoForge")) { isTransitive = false }
@@ -65,8 +65,7 @@ loom {
 
 java {
     withSourcesJar()
-    val java = if (stonecutter.eval(minecraft, ">=1.20.5"))
-        JavaVersion.VERSION_21 else JavaVersion.VERSION_17
+    val java = JavaVersion.VERSION_21
     targetCompatibility = java
     sourceCompatibility = java
 }
@@ -88,13 +87,12 @@ tasks.shadowJar {
 }
 
 tasks.processResources {
-    properties(listOf("META-INF/neoforge.mods.toml", "pack.mcmeta"),
+    properties(listOf("META-INF/neoforge.mods.toml"),
         "id" to mod.id,
         "name" to mod.name,
         "version" to mod.version,
         "minecraft" to common.mod.prop("mc_dep_forgelike"),
-        "architectury" to common.mod.prop("architectury_dep_forgelike"),
-        "pack_format" to common.mod.prop("pack_format")
+        "architectury" to common.mod.prop("architectury_dep_forgelike")
     )
 }
 

@@ -2,13 +2,5 @@
   "parent": "variedcommoditiesredux:item/basic_shield",
   "textures": {
     "layer0": "variedcommoditiesredux:item/crescent_shield"
-  },
-  "overrides": [
-    {
-      "predicate": {
-        "blocking": 1
-      },
-      "model": "variedcommoditiesredux:item/crescent_shield_blocking"
-    }
-  ]
+  }
 }

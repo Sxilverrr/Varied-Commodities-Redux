@@ -1,104 +1,73 @@
 package com.sxilverr.variedcommoditiesredux.client;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
-import com.sxilverr.variedcommoditiesredux.item.VCArmorItem;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.model.geom.builders.CubeListBuilder;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
+import net.minecraft.client.model.geom.builders.MeshDefinition;
+import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
+import net.minecraft.client.renderer.rendertype.RenderTypes;
+import net.minecraft.core.Direction;
+import net.minecraft.util.Mth;
 
-public class SkirtModel extends HumanoidModel<LivingEntity> {
+import java.util.EnumSet;
+
+public class SkirtModel extends HumanoidModel<HumanoidRenderState> {
+    private static final int PANELS = 10;
     private static SkirtModel instance;
+    private final ModelPart skirt;
+    private final ModelPart[] panels = new ModelPart[PANELS];
 
-    public SkirtModel() {
-        super(Minecraft.getInstance().getEntityModels().bakeLayer(ModelLayers.PLAYER_INNER_ARMOR));
+    private SkirtModel(ModelPart root) {
+        super(root, RenderTypes::armorCutoutNoCull);
+        skirt = root.getChild("skirt");
+        ModelPart scaled = skirt.getChild("scaled");
+        for (int i = 0; i < PANELS; i++) panels[i] = scaled.getChild("turn" + i).getChild("panel");
     }
 
     public static SkirtModel get() {
-        if (instance == null) instance = new SkirtModel();
+        if (instance == null) instance = new SkirtModel(create().bakeRoot());
         return instance;
     }
 
-    private void draw(PoseStack pose, VertexConsumer consumer, int light, int overlay, float r, float g, float b) {
+    private static LayerDefinition create() {
+        MeshDefinition mesh = new MeshDefinition();
+        PartDefinition root = mesh.getRoot();
+        root.addOrReplaceChild("head", CubeListBuilder.create(), PartPose.ZERO).addOrReplaceChild("hat", CubeListBuilder.create(), PartPose.ZERO);
+        root.addOrReplaceChild("body", CubeListBuilder.create(), PartPose.ZERO);
+        root.addOrReplaceChild("right_arm", CubeListBuilder.create(), PartPose.offset(-5.0F, 2.0F, 0.0F));
+        root.addOrReplaceChild("left_arm", CubeListBuilder.create(), PartPose.offset(5.0F, 2.0F, 0.0F));
+        root.addOrReplaceChild("right_leg", CubeListBuilder.create(), PartPose.offset(-1.9F, 12.0F, 0.0F));
+        root.addOrReplaceChild("left_leg", CubeListBuilder.create(), PartPose.offset(1.9F, 12.0F, 0.0F));
+        PartDefinition scaled = root.addOrReplaceChild("skirt", CubeListBuilder.create(), PartPose.ZERO)
+                .addOrReplaceChild("scaled", CubeListBuilder.create(), PartPose.offset(0.0F, -12.0F, 0.0F).scaled(2.1F, 1.04F, 2.1F));
+        for (int i = 0; i < PANELS; i++) {
+            scaled.addOrReplaceChild("turn" + i, CubeListBuilder.create(), PartPose.rotation(0.0F, (i + 1) * 36.0F * Mth.DEG_TO_RAD, 0.0F))
+                    .addOrReplaceChild("panel", plane(-2.6F, -2.6F, 4), PartPose.offset(2.4F, 0.0F, 0.0F))
+                    .addOrReplaceChild("side", plane(-0.6F, 2.6F, 6), PartPose.rotation(0.0F, -Mth.HALF_PI, 0.0F));
+        }
+        return LayerDefinition.create(mesh, 64, 32);
+    }
+
+    private static CubeListBuilder plane(float x, float z, int u) {
+        return CubeListBuilder.create().texOffs(u - 2, 18).addBox(x, 9.0F, z, 0.0F, 9.0F, 2.0F, EnumSet.of(Direction.EAST));
+    }
+
+    @Override
+    public void setupAnim(HumanoidRenderState state) {
+        super.setupAnim(state);
+        skirt.x = (leftLeg.x + rightLeg.x) / 2.0F;
+        skirt.y = (leftLeg.y + rightLeg.y) / 2.0F;
+        skirt.z = (leftLeg.z + rightLeg.z) / 2.0F;
+        skirt.xRot = body.xRot * 0.42F;
         float rotX = 0.3F + leftArm.xRot * 0.01F;
         float rotZ = -0.23F + leftArm.xRot * 0.03F;
-        pose.pushPose();
-        pose.translate((leftLeg.x + rightLeg.x) / 32.0F, (leftLeg.y + rightLeg.y) / 32.0F, (leftLeg.z + rightLeg.z) / 32.0F);
-        pose.mulPose(Axis.XP.rotation(body.xRot * 0.42F));
-        pose.translate(0.0F, -0.75F, 0.0F);
-        pose.scale(2.1F, 1.04F, 2.1F);
-        for (int i = 0; i < 10; i++) {
-            pose.mulPose(Axis.YP.rotationDegrees(36.0F));
-            pose.pushPose();
-            pose.translate(2.4F / 16.0F, 0.0, 0.0);
-            pose.mulPose(Axis.ZP.rotation(rotZ));
-            pose.mulPose(Axis.YP.rotation(-0.2F));
-            pose.mulPose(Axis.XP.rotation(rotX));
-            plane(pose, consumer, light, overlay, r, g, b, -2.6F, -2.6F, 4);
-            pose.pushPose();
-            pose.mulPose(Axis.YP.rotation((float) (-Math.PI / 2)));
-            plane(pose, consumer, light, overlay, r, g, b, -0.6F, 2.6F, 6);
-            pose.popPose();
-            pose.popPose();
+        for (ModelPart panel : panels) {
+            panel.xRot = rotX;
+            panel.yRot = -0.2F;
+            panel.zRot = rotZ;
         }
-        pose.popPose();
-    }
-
-    private static void plane(PoseStack pose, VertexConsumer consumer, int light, int overlay, float r, float g, float b, float x, float z, int u) {
-        PoseStack.Pose last = pose.last();
-        float px = x / 16.0F;
-        float y1 = 9.0F / 16.0F;
-        float y2 = 18.0F / 16.0F;
-        float z1 = z / 16.0F;
-        float z2 = (z + 2.0F) / 16.0F;
-        float u1 = u / 64.0F;
-        float u2 = (u + 2) / 64.0F;
-        float v1 = 20.0F / 32.0F;
-        float v2 = 29.0F / 32.0F;
-        vertex(consumer, last, px, y1, z2, u2, v1, light, overlay, r, g, b);
-        vertex(consumer, last, px, y1, z1, u1, v1, light, overlay, r, g, b);
-        vertex(consumer, last, px, y2, z1, u1, v2, light, overlay, r, g, b);
-        vertex(consumer, last, px, y2, z2, u2, v2, light, overlay, r, g, b);
-    }
-
-    private static void vertex(VertexConsumer consumer, PoseStack.Pose pose, float x, float y, float z, float u, float v, int light, int overlay, float r, float g, float b) {
-        //? if >=1.21 {
-        /*consumer.addVertex(pose, x, y, z).setColor(r, g, b, 1.0F).setUv(u, v).setOverlay(overlay).setLight(light).setNormal(pose, 1.0F, 0.0F, 0.0F);
-        *///?} else {
-        consumer.vertex(pose.pose(), x, y, z).color(r, g, b, 1.0F).uv(u, v).overlayCoords(overlay).uv2(light).normal(pose.normal(), 1.0F, 0.0F, 0.0F).endVertex();
-        //?}
-    }
-
-    //? if >=1.21 {
-    /*@Override
-    public void renderToBuffer(PoseStack pose, VertexConsumer consumer, int light, int overlay, int color) {
-        draw(pose, consumer, light, overlay, (color >> 16 & 255) / 255.0F, (color >> 8 & 255) / 255.0F, (color & 255) / 255.0F);
-    }
-    *///?} else {
-    @Override
-    public void renderToBuffer(PoseStack pose, VertexConsumer consumer, int light, int overlay, float r, float g, float b, float a) {
-        draw(pose, consumer, light, overlay, r, g, b);
-    }
-    //?}
-
-    public static void render(PoseStack pose, MultiBufferSource buffers, int light, ItemStack stack, HumanoidModel<?> parent, int color) {
-        if (!(stack.getItem() instanceof VCArmorItem armor)) return;
-        SkirtModel model = get();
-        @SuppressWarnings("unchecked")
-        HumanoidModel<LivingEntity> source = (HumanoidModel<LivingEntity>) parent;
-        source.copyPropertiesTo(model);
-        //? if >=1.21 {
-        /*VertexConsumer consumer = ItemRenderer.getArmorFoilBuffer(buffers, RenderType.armorCutoutNoCull(armor.layerTexture()), stack.hasFoil());
-        *///?} else {
-        VertexConsumer consumer = ItemRenderer.getArmorFoilBuffer(buffers, RenderType.armorCutoutNoCull(armor.layerTexture()), false, stack.hasFoil());
-        //?}
-        model.draw(pose, consumer, light, OverlayTexture.NO_OVERLAY, (color >> 16 & 255) / 255.0F, (color >> 8 & 255) / 255.0F, (color & 255) / 255.0F);
     }
 }

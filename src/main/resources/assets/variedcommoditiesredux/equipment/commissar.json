@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "variedcommoditiesredux:commissar"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "variedcommoditiesredux:commissar"
+      }
+    ]
+  }
+}

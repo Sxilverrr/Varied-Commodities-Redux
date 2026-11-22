@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "variedcommoditiesredux:x407"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "variedcommoditiesredux:x407"
+      }
+    ]
+  }
+}

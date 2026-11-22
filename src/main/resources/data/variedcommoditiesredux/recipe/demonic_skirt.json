@@ -5,9 +5,7 @@
     "XXXX"
   ],
   "key": {
-    "X": {
-      "item": "variedcommoditiesredux:demonic_ingot"
-    }
+    "X": "variedcommoditiesredux:demonic_ingot"
   },
   "result": {
     "id": "variedcommoditiesredux:demonic_skirt"

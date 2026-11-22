@@ -11,65 +11,63 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.Tiers;
+import net.minecraft.world.item.ToolMaterial;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static com.sxilverr.variedcommoditiesredux.VCItems.ITEMS;
-
 public final class VCWeapons {
-    public static final Map<VCMaterial, RegistrySupplier<Item>> GUNS = family(VCMaterial.GUNS, "gun", m -> new GunItem(m, props()));
-    public static final RegistrySupplier<Item> MACHINE_GUN = ITEMS.register("machine_gun", () -> new ReloadItem(ReloadItem.Kind.MACHINE_GUN, props()));
-    public static final Map<VCMaterial, RegistrySupplier<Item>> STAFFS = family(VCMaterial.ALL, "staff", m -> new StaffItem(m, spell(m), staffColors(m), props()));
-    public static final Map<DyeColor, RegistrySupplier<Item>> ELEMENTAL_STAFFS = VCItems.colored("elemental_staff", c -> StaffItem.elemental(c, props()));
+    public static final Map<VCMaterial, RegistrySupplier<Item>> GUNS = family(VCMaterial.GUNS, "gun", (m, p) -> new GunItem(m, p));
+    public static final RegistrySupplier<Item> MACHINE_GUN = weapons("machine_gun", p -> new ReloadItem(ReloadItem.Kind.MACHINE_GUN, p));
+    public static final Map<VCMaterial, RegistrySupplier<Item>> STAFFS = family(VCMaterial.ALL, "staff", (m, p) -> new StaffItem(m, spell(m), staffColors(m), p));
+    public static final Map<DyeColor, RegistrySupplier<Item>> ELEMENTAL_STAFFS = VCItems.colored("elemental_staff", VCTabs.WEAPONS, StaffItem::elemental);
     public static final Map<VCMaterial, RegistrySupplier<Item>> TRIDENTS = melee("trident", VCMaterial.ALL, 1);
-    public static final RegistrySupplier<Item> CURSED_TRIDENT = weapon("cursed_trident", VCMaterial.EMERALD.tier(), 1);
-    public static final RegistrySupplier<Item> KUNAI = ITEMS.register("kunai", () -> new VCWeaponItem(Tiers.IRON, 1, true, props().stacksTo(1)));
-    public static final RegistrySupplier<Item> REVERSE_KUNAI = ITEMS.register("reverse_kunai", () -> new VCWeaponItem(Tiers.IRON, 1, true, props().stacksTo(1)));
-    public static final RegistrySupplier<Item> SHURIKEN = ITEMS.register("shuriken", () -> new ThrowingItem(ThrowingItem.Kind.SHURIKEN, props()));
-    public static final RegistrySupplier<Item> GIANT_SHURIKEN = ITEMS.register("giant_shuriken", () -> new ThrowingItem(ThrowingItem.Kind.GIANT_SHURIKEN, props()));
-    public static final RegistrySupplier<Item> KATANA = weapon("katana", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> KUKRI = weapon("kukri", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> NINJA_CLAW = weapon("ninja_claw", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> STEEL_CLAW = weapon("steel_claw", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> BEAR_CLAW = weapon("bear_claw", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> KATAR = weapon("katar", Tiers.IRON, 1);
+    public static final RegistrySupplier<Item> CURSED_TRIDENT = weapon("cursed_trident", VCMaterial.EMERALD.material(), 1);
+    public static final RegistrySupplier<Item> KUNAI = weapons("kunai", p -> new VCWeaponItem(ToolMaterial.IRON, 1, true, p.stacksTo(1)));
+    public static final RegistrySupplier<Item> REVERSE_KUNAI = weapons("reverse_kunai", p -> new VCWeaponItem(ToolMaterial.IRON, 1, true, p.stacksTo(1)));
+    public static final RegistrySupplier<Item> SHURIKEN = weapons("shuriken", p -> new ThrowingItem(ThrowingItem.Kind.SHURIKEN, p));
+    public static final RegistrySupplier<Item> GIANT_SHURIKEN = weapons("giant_shuriken", p -> new ThrowingItem(ThrowingItem.Kind.GIANT_SHURIKEN, p));
+    public static final RegistrySupplier<Item> KATANA = weapon("katana", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> KUKRI = weapon("kukri", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> NINJA_CLAW = weapon("ninja_claw", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> STEEL_CLAW = weapon("steel_claw", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> BEAR_CLAW = weapon("bear_claw", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> KATAR = weapon("katar", ToolMaterial.IRON, 1);
     public static final Map<VCMaterial, RegistrySupplier<Item>> SWORDS = melee("sword", VCMaterial.SWORDS, 1);
-    public static final RegistrySupplier<Item> LEAF_BLADE = weapon("leaf_blade", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> GOLF_CLUB = weapon("golf_club", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> HAMMER = weapon("hammer", Tiers.STONE, 1);
-    public static final RegistrySupplier<Item> BASEBALL_BAT = weapon("baseball_bat", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> LEAD_PIPE = weapon("lead_pipe", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> CLEAVER = weapon("cleaver", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> SABER = weapon("saber", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> HOCKEY_STICK = weapon("hockey_stick", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> SLEDGEHAMMER = weapon("sledgehammer", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> BROKEN_BOTTLE = weapon("broken_bottle", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> COMBAT_KNIFE = weapon("combat_knife", Tiers.STONE, 1);
-    public static final RegistrySupplier<Item> MACUAHUITL = weapon("macuahuitl", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> BO_STAFF = weapon("bo_staff", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> SAI = weapon("sai", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> SLINGSHOT = ITEMS.register("slingshot", () -> new ThrowingItem(ThrowingItem.Kind.SLINGSHOT, props()));
-    public static final RegistrySupplier<Item> MUSKET = ITEMS.register("musket", () -> new ReloadItem(ReloadItem.Kind.MUSKET, props()));
-    public static final RegistrySupplier<Item> CROSSBOW = ITEMS.register("crossbow", () -> new ReloadItem(ReloadItem.Kind.CROSSBOW, props()));
-    public static final RegistrySupplier<Item> BATON = weapon("baton", Tiers.STONE, 1);
-    public static final RegistrySupplier<Item> CHAINSAW_GUN = weapon("chainsaw_gun", Tiers.DIAMOND, 1);
-    public static final RegistrySupplier<Item> RAPIER = weapon("rapier", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> CROWBAR = weapon("crowbar", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> PIPE_WRENCH = weapon("pipe_wrench", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> SWISS_ARMY_KNIFE = weapon("swiss_army_knife", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> WRENCH = weapon("wrench", Tiers.IRON, 1);
-    public static final RegistrySupplier<Item> EXCALIBUR = weapon("excalibur", Tiers.DIAMOND, 1);
-    public static final Map<VCMaterial, RegistrySupplier<Item>> ROUND_SHIELDS = family(VCMaterial.ROUND_SHIELDS, "round_shield", m -> new MiscItems.Shield(m, props()));
-    public static final Map<VCMaterial, RegistrySupplier<Item>> SHIELDS = family(VCMaterial.SHIELDS, "shield", m -> new MiscItems.Shield(m, props()));
-    public static final RegistrySupplier<Item> HEATER_SHIELD = ITEMS.register("heater_shield", () -> new MiscItems.Shield(VCMaterial.IRON, props()));
-    public static final RegistrySupplier<Item> CRESCENT_SHIELD = ITEMS.register("crescent_shield", () -> new MiscItems.Shield(VCMaterial.IRON, props()));
-    public static final RegistrySupplier<Item> SCUTUM_SHIELD = ITEMS.register("scutum_shield", () -> new MiscItems.Shield(VCMaterial.IRON, props()));
-    public static final RegistrySupplier<Item> TOWER_SHIELD = ITEMS.register("tower_shield", () -> new MiscItems.Shield(VCMaterial.IRON, props()));
+    public static final RegistrySupplier<Item> LEAF_BLADE = weapon("leaf_blade", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> GOLF_CLUB = weapon("golf_club", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> HAMMER = weapon("hammer", ToolMaterial.STONE, 1);
+    public static final RegistrySupplier<Item> BASEBALL_BAT = weapon("baseball_bat", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> LEAD_PIPE = weapon("lead_pipe", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> CLEAVER = weapon("cleaver", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> SABER = weapon("saber", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> HOCKEY_STICK = weapon("hockey_stick", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> SLEDGEHAMMER = weapon("sledgehammer", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> BROKEN_BOTTLE = weapon("broken_bottle", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> COMBAT_KNIFE = weapon("combat_knife", ToolMaterial.STONE, 1);
+    public static final RegistrySupplier<Item> MACUAHUITL = weapon("macuahuitl", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> BO_STAFF = weapon("bo_staff", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> SAI = weapon("sai", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> SLINGSHOT = weapons("slingshot", p -> new ThrowingItem(ThrowingItem.Kind.SLINGSHOT, p));
+    public static final RegistrySupplier<Item> MUSKET = weapons("musket", p -> new ReloadItem(ReloadItem.Kind.MUSKET, p));
+    public static final RegistrySupplier<Item> CROSSBOW = weapons("crossbow", p -> new ReloadItem(ReloadItem.Kind.CROSSBOW, p));
+    public static final RegistrySupplier<Item> BATON = weapon("baton", ToolMaterial.STONE, 1);
+    public static final RegistrySupplier<Item> CHAINSAW_GUN = weapon("chainsaw_gun", ToolMaterial.DIAMOND, 1);
+    public static final RegistrySupplier<Item> RAPIER = weapon("rapier", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> CROWBAR = weapon("crowbar", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> PIPE_WRENCH = weapon("pipe_wrench", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> SWISS_ARMY_KNIFE = weapon("swiss_army_knife", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> WRENCH = weapon("wrench", ToolMaterial.IRON, 1);
+    public static final RegistrySupplier<Item> EXCALIBUR = weapon("excalibur", ToolMaterial.DIAMOND, 1);
+    public static final Map<VCMaterial, RegistrySupplier<Item>> ROUND_SHIELDS = family(VCMaterial.ROUND_SHIELDS, "round_shield", MiscItems.Shield::new);
+    public static final Map<VCMaterial, RegistrySupplier<Item>> SHIELDS = family(VCMaterial.SHIELDS, "shield", MiscItems.Shield::new);
+    public static final RegistrySupplier<Item> HEATER_SHIELD = weapons("heater_shield", p -> new MiscItems.Shield(VCMaterial.IRON, p));
+    public static final RegistrySupplier<Item> CRESCENT_SHIELD = weapons("crescent_shield", p -> new MiscItems.Shield(VCMaterial.IRON, p));
+    public static final RegistrySupplier<Item> SCUTUM_SHIELD = weapons("scutum_shield", p -> new MiscItems.Shield(VCMaterial.IRON, p));
+    public static final RegistrySupplier<Item> TOWER_SHIELD = weapons("tower_shield", p -> new MiscItems.Shield(VCMaterial.IRON, p));
     public static final Map<VCMaterial, RegistrySupplier<Item>> SPEARS = melee("spear", VCMaterial.ALL, 2);
     public static final Map<VCMaterial, RegistrySupplier<Item>> HALBERDS = melee("halberd", VCMaterial.ALL, 1);
     public static final Map<VCMaterial, RegistrySupplier<Item>> BATTLEAXES = melee("battleaxe", VCMaterial.ALL, 1);
@@ -80,10 +78,10 @@ public final class VCWeapons {
     public static final Map<VCMaterial, RegistrySupplier<Item>> SCYTHES = melee("scythe", VCMaterial.ALL, 1);
     public static final Map<VCMaterial, RegistrySupplier<Item>> GLAIVES = melee("glaive", VCMaterial.ALL, 1);
     public static final Map<VCMaterial, RegistrySupplier<Item>> BROADSWORDS = melee("broadsword", VCMaterial.ALL, 1);
-    public static final RegistrySupplier<Item> HOLY_HAND_GRENADE = ITEMS.register("holy_hand_grenade", () -> new ThrowingItem(ThrowingItem.Kind.HOLY_HAND_GRENADE, props()));
+    public static final RegistrySupplier<Item> HOLY_HAND_GRENADE = weapons("holy_hand_grenade", p -> new ThrowingItem(ThrowingItem.Kind.HOLY_HAND_GRENADE, p));
 
-    public static Item.Properties props() {
-        return new Item.Properties().arch$tab(VCTabs.WEAPONS);
+    private static RegistrySupplier<Item> weapons(String name, Function<Item.Properties, Item> factory) {
+        return VCItems.register(name, VCTabs.WEAPONS, factory);
     }
 
     private static Supplier<ItemStack> spell(VCMaterial material) {
@@ -110,18 +108,18 @@ public final class VCWeapons {
         };
     }
 
-    private static RegistrySupplier<Item> weapon(String name, Tier tier, int durabilityCost) {
-        return ITEMS.register(name, () -> new VCWeaponItem(tier, durabilityCost, false, props()));
+    private static RegistrySupplier<Item> weapon(String name, ToolMaterial tier, int durabilityCost) {
+        return weapons(name, p -> new VCWeaponItem(tier, durabilityCost, false, p));
     }
 
     private static Map<VCMaterial, RegistrySupplier<Item>> melee(String name, VCMaterial[] materials, int durabilityCost) {
-        return family(materials, name, m -> new VCWeaponItem(m.tier(), durabilityCost, false, props()));
+        return family(materials, name, (m, p) -> new VCWeaponItem(m.material(), durabilityCost, false, p));
     }
 
-    private static Map<VCMaterial, RegistrySupplier<Item>> family(VCMaterial[] materials, String name, Function<VCMaterial, Item> factory) {
+    private static Map<VCMaterial, RegistrySupplier<Item>> family(VCMaterial[] materials, String name, BiFunction<VCMaterial, Item.Properties, Item> factory) {
         Map<VCMaterial, RegistrySupplier<Item>> map = new EnumMap<>(VCMaterial.class);
         for (VCMaterial material : materials) {
-            map.put(material, ITEMS.register(material.id() + "_" + name, () -> factory.apply(material)));
+            map.put(material, weapons(material.id() + "_" + name, p -> factory.apply(material, p)));
         }
         return map;
     }

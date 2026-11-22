@@ -17,13 +17,10 @@ public abstract class BookEditScreenMixin {
     @Final
     private List<String> pages;
 
-    @Shadow
-    private String title;
-
     @Inject(method = "saveChanges", at = @At("HEAD"), cancellable = true)
-    private void variedcommoditiesredux$saveToBlock(boolean publish, CallbackInfo ci) {
+    private void variedcommoditiesredux$saveToBlock(CallbackInfo ci) {
         if ((Object) this instanceof OpenBookScreen screen) {
-            screen.save(pages, title, publish);
+            screen.save(pages, "", false);
             ci.cancel();
         }
     }

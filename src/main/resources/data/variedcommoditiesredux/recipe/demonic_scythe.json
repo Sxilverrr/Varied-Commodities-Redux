@@ -7,12 +7,8 @@
     "  Y"
   ],
   "key": {
-    "X": {
-      "item": "variedcommoditiesredux:demonic_ingot"
-    },
-    "Y": {
-      "item": "minecraft:stick"
-    }
+    "X": "variedcommoditiesredux:demonic_ingot",
+    "Y": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:demonic_scythe"

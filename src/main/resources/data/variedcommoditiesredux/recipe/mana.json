@@ -5,12 +5,8 @@
     "XY"
   ],
   "key": {
-    "X": {
-      "item": "minecraft:redstone"
-    },
-    "Y": {
-      "item": "minecraft:glowstone_dust"
-    }
+    "X": "minecraft:redstone",
+    "Y": "minecraft:glowstone_dust"
   },
   "result": {
     "id": "variedcommoditiesredux:mana"

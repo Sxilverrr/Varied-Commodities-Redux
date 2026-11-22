@@ -34,21 +34,21 @@ public final class IconBlocks {
         ItemStack held = player.getItemInHand(hand);
         if (held.isEmpty()) {
             if (!VCConfig.iconReset || !player.isShiftKeyDown() || be.icon.isEmpty()) return InteractionResult.PASS;
-            if (!level.isClientSide) {
+            if (!level.isClientSide()) {
                 be.icon = ItemStack.EMPTY;
                 be.sync();
             }
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.SUCCESS;
         }
         if (dyeable && held.getItem() instanceof DyeItem) {
-            if (!level.isClientSide) RotatedBlock.dye(level, pos, player, hand);
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            if (!level.isClientSide()) RotatedBlock.dye(level, pos, player, hand);
+            return InteractionResult.SUCCESS;
         }
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
             be.icon = held.copyWithCount(1);
             be.sync();
         }
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.SUCCESS;
     }
 
     public static class Banner extends TallBlock {
@@ -107,8 +107,8 @@ public final class IconBlocks {
         @Override
         protected InteractionResult onUse(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
             if (hand != InteractionHand.MAIN_HAND || !(player.getItemInHand(hand).getItem() instanceof DyeItem)) return InteractionResult.PASS;
-            if (!level.isClientSide) RotatedBlock.dye(level, base(state, pos), player, hand);
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            if (!level.isClientSide()) RotatedBlock.dye(level, base(state, pos), player, hand);
+            return InteractionResult.SUCCESS;
         }
     }
 

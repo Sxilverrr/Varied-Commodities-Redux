@@ -68,7 +68,7 @@ public class BigSignBlock extends FurnitureBlock {
     protected InteractionResult onUse(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (!hasText() || hand != InteractionHand.MAIN_HAND || !(level.getBlockEntity(pos) instanceof BigSignBlockEntity be)) return InteractionResult.PASS;
         ItemStack held = player.getItemInHand(hand);
-        if (!level.isClientSide) {
+        if (!level.isClientSide()) {
             if (be.waxed) {
                 level.playSound(null, pos, SoundEvents.WAXED_SIGN_INTERACT_FAIL, SoundSource.BLOCKS);
             } else if (held.is(Items.HONEYCOMB)) {
@@ -81,6 +81,6 @@ public class BigSignBlock extends FurnitureBlock {
                 VCNetwork.openSignEditor(serverPlayer, pos);
             }
         }
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.SUCCESS;
     }
 }

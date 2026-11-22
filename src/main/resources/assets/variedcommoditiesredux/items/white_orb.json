@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "variedcommoditiesredux:item/white_orb",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -1644826
+      }
+    ]
+  }
+}

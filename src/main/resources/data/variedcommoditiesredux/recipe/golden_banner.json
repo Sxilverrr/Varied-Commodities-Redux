@@ -7,12 +7,8 @@
     "YYY"
   ],
   "key": {
-    "X": {
-      "item": "variedcommoditiesredux:golden_wall_banner"
-    },
-    "Y": {
-      "item": "minecraft:gold_ingot"
-    }
+    "X": "variedcommoditiesredux:golden_wall_banner",
+    "Y": "minecraft:gold_ingot"
   },
   "result": {
     "id": "variedcommoditiesredux:golden_banner"

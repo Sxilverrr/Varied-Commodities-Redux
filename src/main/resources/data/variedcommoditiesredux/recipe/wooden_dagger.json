@@ -6,12 +6,8 @@
     "Y "
   ],
   "key": {
-    "X": {
-      "tag": "minecraft:planks"
-    },
-    "Y": {
-      "item": "minecraft:stick"
-    }
+    "X": "#minecraft:planks",
+    "Y": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:wooden_dagger"

@@ -6,12 +6,8 @@
     "XY  "
   ],
   "key": {
-    "X": {
-      "item": "minecraft:spruce_planks"
-    },
-    "Y": {
-      "item": "minecraft:stick"
-    }
+    "X": "minecraft:spruce_planks",
+    "Y": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:spruce_shelf",

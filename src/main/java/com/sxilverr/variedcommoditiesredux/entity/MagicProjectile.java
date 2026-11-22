@@ -22,7 +22,7 @@ public class MagicProjectile extends VCProjectile {
 
     @Override
     public void tick() {
-        if (!level().isClientSide && (caster == null || caster.getMainHandItem() != equipped)) {
+        if (!level().isClientSide() && (caster == null || caster.getMainHandItem() != equipped)) {
             discard();
             return;
         }

@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "variedcommoditiesredux:ninja"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "variedcommoditiesredux:ninja"
+      }
+    ]
+  }
+}

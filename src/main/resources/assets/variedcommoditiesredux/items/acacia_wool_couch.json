@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "variedcommoditiesredux:item/acacia_wool_couch",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -13408564
+      }
+    ]
+  }
+}

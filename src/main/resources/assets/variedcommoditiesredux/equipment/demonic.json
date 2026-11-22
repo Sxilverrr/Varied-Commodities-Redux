@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "variedcommoditiesredux:demonic"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "variedcommoditiesredux:demonic"
+      }
+    ]
+  }
+}

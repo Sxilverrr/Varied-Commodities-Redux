@@ -9,10 +9,10 @@ import com.sxilverr.variedcommoditiesredux.entity.VCProjectile;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.level.Level;
 
 public class ThrowingItem extends ChargeItem {
@@ -28,13 +28,13 @@ public class ThrowingItem extends ChargeItem {
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack stack) {
-        return kind == Kind.SLINGSHOT ? UseAnim.BOW : UseAnim.SPEAR;
+    public ItemUseAnimation getUseAnimation(ItemStack stack) {
+        return kind == Kind.SLINGSHOT ? ItemUseAnimation.BOW : ItemUseAnimation.TRIDENT;
     }
 
     @Override
-    public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int remaining) {
-        if (level.isClientSide) return;
+    protected void release(ItemStack stack, Level level, LivingEntity entity, int remaining) {
+        if (level.isClientSide()) return;
         int ticks = usedTicks(stack, entity, remaining);
         boolean creative = entity instanceof Player player && player.getAbilities().instabuild;
         switch (kind) {

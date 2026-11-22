@@ -5,7 +5,7 @@ import com.sxilverr.variedcommoditiesredux.block.entity.BookBlockEntity;
 import com.sxilverr.variedcommoditiesredux.block.entity.IconBlockEntity;
 import com.sxilverr.variedcommoditiesredux.block.entity.StorageBlockEntity;
 import com.sxilverr.variedcommoditiesredux.block.entity.TradingBlockEntity;
-import com.sxilverr.variedcommoditiesredux.block.entity.VCBlockEntity;
+import com.sxilverr.variedcommoditiesredux.platform.VCPlatform;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.BlockPos;
@@ -41,7 +41,7 @@ public final class VCBlockEntities {
     private static <T extends BlockEntity> RegistrySupplier<BlockEntityType<T>> register(String name, Factory<T> factory, Supplier<Iterable<RegistrySupplier<Block>>> blocks) {
         return BLOCK_ENTITIES.register(name, () -> {
             AtomicReference<BlockEntityType<T>> self = new AtomicReference<>();
-            BlockEntityType<T> type = BlockEntityType.Builder.of((pos, state) -> factory.create(self.get(), pos, state), VCBlocks.all(blocks.get())).build(null);
+            BlockEntityType<T> type = VCPlatform.blockEntityType((pos, state) -> factory.create(self.get(), pos, state), VCBlocks.all(blocks.get()));
             self.set(type);
             return type;
         });

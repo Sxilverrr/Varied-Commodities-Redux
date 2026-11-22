@@ -7,15 +7,9 @@
     "ZZZ"
   ],
   "key": {
-    "X": {
-      "tag": "minecraft:wool"
-    },
-    "Y": {
-      "item": "minecraft:torch"
-    },
-    "Z": {
-      "item": "minecraft:stone"
-    }
+    "X": "#minecraft:wool",
+    "Y": "minecraft:torch",
+    "Z": "minecraft:stone"
   },
   "result": {
     "id": "variedcommoditiesredux:stone_tall_lamp"

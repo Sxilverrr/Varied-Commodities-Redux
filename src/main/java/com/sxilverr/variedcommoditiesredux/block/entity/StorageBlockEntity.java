@@ -19,10 +19,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
+import net.minecraft.world.entity.ContainerUser;
 
-//? if >=1.21 {
-/*import net.minecraft.core.HolderLookup;
-*///?}
+import net.minecraft.core.HolderLookup;
 
 public class StorageBlockEntity extends RandomizableContainerBlockEntity {
     private NonNullList<ItemStack> items;
@@ -90,15 +91,15 @@ public class StorageBlockEntity extends RandomizableContainerBlockEntity {
     }
 
     @Override
-    public void startOpen(Player player) {
-        if (isChest() && !player.isSpectator() && level != null) {
+    public void startOpen(ContainerUser user) {
+        if (isChest() && !user.getLivingEntity().isSpectator() && level != null) {
             level.playSound(null, worldPosition, SoundEvents.CHEST_OPEN, SoundSource.BLOCKS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
         }
     }
 
     @Override
-    public void stopOpen(Player player) {
-        if (isChest() && !player.isSpectator() && level != null) {
+    public void stopOpen(ContainerUser user) {
+        if (isChest() && !user.getLivingEntity().isSpectator() && level != null) {
             level.playSound(null, worldPosition, SoundEvents.CHEST_CLOSE, SoundSource.BLOCKS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
         }
     }
@@ -108,41 +109,21 @@ public class StorageBlockEntity extends RandomizableContainerBlockEntity {
         return isChest() ? null : ClientboundBlockEntityDataPacket.create(this);
     }
 
-    //? if >=1.21 {
-    /*@Override
-    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.saveAdditional(tag, registries);
-        if (!trySaveLootTable(tag)) ContainerHelper.saveAllItems(tag, items, registries);
+    @Override
+    protected void saveAdditional(ValueOutput output) {
+        super.saveAdditional(output);
+        if (!trySaveLootTable(output)) ContainerHelper.saveAllItems(output, items);
     }
 
     @Override
-    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        super.loadAdditional(tag, registries);
+    protected void loadAdditional(ValueInput input) {
+        super.loadAdditional(input);
         items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
-        if (!tryLoadLootTable(tag)) ContainerHelper.loadAllItems(tag, items, registries);
+        if (!tryLoadLootTable(input)) ContainerHelper.loadAllItems(input, items);
     }
 
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         return isChest() ? super.getUpdateTag(registries) : saveWithoutMetadata(registries);
     }
-    *///?} else {
-    @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
-        if (!trySaveLootTable(tag)) ContainerHelper.saveAllItems(tag, items);
-    }
-
-    @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
-        items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
-        if (!tryLoadLootTable(tag)) ContainerHelper.loadAllItems(tag, items);
-    }
-
-    @Override
-    public CompoundTag getUpdateTag() {
-        return isChest() ? super.getUpdateTag() : saveWithoutMetadata();
-    }
-    //?}
 }

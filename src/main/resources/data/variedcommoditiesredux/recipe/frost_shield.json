@@ -7,9 +7,7 @@
     " XX "
   ],
   "key": {
-    "X": {
-      "item": "minecraft:packed_ice"
-    }
+    "X": "minecraft:packed_ice"
   },
   "result": {
     "id": "variedcommoditiesredux:frost_shield"

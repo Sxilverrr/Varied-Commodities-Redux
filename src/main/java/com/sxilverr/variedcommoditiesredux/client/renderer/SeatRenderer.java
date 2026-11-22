@@ -4,10 +4,9 @@ import com.sxilverr.variedcommoditiesredux.entity.SeatEntity;
 import net.minecraft.client.renderer.culling.Frustum;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.texture.TextureAtlas;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.client.renderer.entity.state.EntityRenderState;
 
-public class SeatRenderer extends EntityRenderer<SeatEntity> {
+public class SeatRenderer extends EntityRenderer<SeatEntity, EntityRenderState> {
     public SeatRenderer(EntityRendererProvider.Context context) {
         super(context);
     }
@@ -18,8 +17,7 @@ public class SeatRenderer extends EntityRenderer<SeatEntity> {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public ResourceLocation getTextureLocation(SeatEntity entity) {
-        return TextureAtlas.LOCATION_BLOCKS;
+    public EntityRenderState createRenderState() {
+        return new EntityRenderState();
     }
 }

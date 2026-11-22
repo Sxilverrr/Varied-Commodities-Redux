@@ -7,12 +7,8 @@
     "Y Y"
   ],
   "key": {
-    "X": {
-      "item": "minecraft:iron_ingot"
-    },
-    "Y": {
-      "tag": "minecraft:wool"
-    }
+    "X": "minecraft:iron_ingot",
+    "Y": "#minecraft:wool"
   },
   "result": {
     "id": "variedcommoditiesredux:iron_wall_banner"

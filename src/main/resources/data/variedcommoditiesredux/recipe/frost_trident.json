@@ -7,12 +7,8 @@
     " Y "
   ],
   "key": {
-    "X": {
-      "item": "minecraft:packed_ice"
-    },
-    "Y": {
-      "item": "minecraft:stick"
-    }
+    "X": "minecraft:packed_ice",
+    "Y": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:frost_trident"

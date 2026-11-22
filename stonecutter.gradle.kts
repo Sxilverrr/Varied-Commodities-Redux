@@ -4,7 +4,7 @@ plugins {
     id("architectury-plugin") version "3.5.168" apply false
     id("com.gradleup.shadow") version "9.0.0" apply false
 }
-stonecutter active "1.20.1" /* [SC] DO NOT EDIT */
+stonecutter active "1.21.11" /* [SC] DO NOT EDIT */
 
 stonecutter registerChiseled tasks.register("chiseledBuild", stonecutter.chiseled) {
     group = "project"

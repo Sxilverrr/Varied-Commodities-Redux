@@ -1,14 +1,15 @@
 package com.sxilverr.variedcommoditiesredux.client.screen;
 
-import com.mojang.blaze3d.platform.Lighting;
 import com.sxilverr.variedcommoditiesredux.block.BigSignBlock;
 import com.sxilverr.variedcommoditiesredux.block.entity.BigSignBlockEntity;
-import com.sxilverr.variedcommoditiesredux.client.renderer.BlockRenderers;
+import com.sxilverr.variedcommoditiesredux.mixin.GuiGraphicsAccessor;
 import com.sxilverr.variedcommoditiesredux.network.VCNetwork;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.font.TextFieldHelper;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.input.CharacterEvent;
+import net.minecraft.client.input.KeyEvent;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import org.lwjgl.glfw.GLFW;
@@ -55,7 +56,8 @@ public class BigSignEditScreen extends Screen {
     }
 
     @Override
-    public boolean keyPressed(int key, int scanCode, int modifiers) {
+    public boolean keyPressed(KeyEvent event) {
+        int key = event.key();
         if (key == GLFW.GLFW_KEY_UP) {
             move(-1);
             return true;
@@ -64,7 +66,7 @@ public class BigSignEditScreen extends Screen {
             move(1);
             return true;
         }
-        return field.keyPressed(key) || super.keyPressed(key, scanCode, modifiers);
+        return field.keyPressed(event) || super.keyPressed(event);
     }
 
     private void move(int direction) {
@@ -73,27 +75,20 @@ public class BigSignEditScreen extends Screen {
     }
 
     @Override
-    public boolean charTyped(char c, int modifiers) {
-        field.charTyped(c);
+    public boolean charTyped(CharacterEvent event) {
+        field.charTyped(event);
         return true;
     }
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        //? if <1.21 {
-        renderBackground(graphics);
-        //?}
         super.render(graphics, mouseX, mouseY, partialTick);
         float size = size();
-        graphics.drawCenteredString(font, title, width / 2, center() - (int) (size / 2) - 16, 0xFFFFFF);
-        Lighting.setupForFlatItems();
-        graphics.pose().pushPose();
-        graphics.pose().translate(width / 2.0F, center(), 50.0F);
-        graphics.pose().scale(size, -size, size);
-        BlockRenderers.signPreview(block, graphics.pose(), graphics.bufferSource(), lines, frame / 6 % 2 == 0 ? line : -1, field.getCursorPos());
-        graphics.flush();
-        graphics.pose().popPose();
-        Lighting.setupFor3DItems();
+        graphics.drawCenteredString(font, title, width / 2, center() - (int) (size / 2) - 16, 0xFFFFFFFF);
+        int half = (int) size;
+        ((GuiGraphicsAccessor) graphics).variedcommoditiesredux$guiRenderState().submitPicturesInPictureState(new SignPreviewRenderer.State(
+                block, lines.clone(), frame / 6 % 2 == 0 ? line : -1, field.getCursorPos(),
+                width / 2 - half, center() - half, width / 2 + half, center() + half, size));
     }
 
     @Override

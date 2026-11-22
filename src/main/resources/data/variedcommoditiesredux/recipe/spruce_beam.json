@@ -4,9 +4,7 @@
     "XXXX"
   ],
   "key": {
-    "X": {
-      "item": "minecraft:spruce_planks"
-    }
+    "X": "minecraft:spruce_planks"
   },
   "result": {
     "id": "variedcommoditiesredux:spruce_beam",

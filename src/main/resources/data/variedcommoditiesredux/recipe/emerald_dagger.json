@@ -6,12 +6,8 @@
     "Y "
   ],
   "key": {
-    "X": {
-      "item": "minecraft:emerald"
-    },
-    "Y": {
-      "item": "minecraft:stick"
-    }
+    "X": "minecraft:emerald",
+    "Y": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:emerald_dagger"

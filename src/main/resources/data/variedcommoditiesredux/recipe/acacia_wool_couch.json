@@ -7,12 +7,8 @@
     "YYYY"
   ],
   "key": {
-    "X": {
-      "tag": "minecraft:wool"
-    },
-    "Y": {
-      "item": "minecraft:acacia_planks"
-    }
+    "X": "#minecraft:wool",
+    "Y": "minecraft:acacia_planks"
   },
   "result": {
     "id": "variedcommoditiesredux:acacia_wool_couch"

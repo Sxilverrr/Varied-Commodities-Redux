@@ -5,9 +5,7 @@
     "XXXX"
   ],
   "key": {
-    "X": {
-      "tag": "c:ingots/bronze"
-    }
+    "X": "#c:ingots/bronze"
   },
   "result": {
     "id": "variedcommoditiesredux:bronze_skirt"

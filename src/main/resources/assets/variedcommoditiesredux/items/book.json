@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:special",
+    "base": "variedcommoditiesredux:item/book",
+    "model": {
+      "type": "variedcommoditiesredux:book"
+    }
+  }
+}

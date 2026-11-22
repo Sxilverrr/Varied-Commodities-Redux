@@ -7,12 +7,8 @@
     "Y Y"
   ],
   "key": {
-    "X": {
-      "item": "minecraft:diamond"
-    },
-    "Y": {
-      "tag": "minecraft:wool"
-    }
+    "X": "minecraft:diamond",
+    "Y": "#minecraft:wool"
   },
   "result": {
     "id": "variedcommoditiesredux:diamond_wall_banner"

@@ -8,14 +8,14 @@ import com.sxilverr.variedcommoditiesredux.entity.VCProjectile;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.projectile.Arrow;
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
+import net.minecraft.world.entity.projectile.arrow.Arrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.level.Level;
 
 public class ReloadItem extends ChargeItem {
@@ -48,7 +48,7 @@ public class ReloadItem extends ChargeItem {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (!player.getAbilities().instabuild) {
             if (kind == Kind.MACHINE_GUN) {
@@ -61,13 +61,13 @@ public class ReloadItem extends ChargeItem {
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack stack) {
-        return GunState.get(stack).reloading() ? UseAnim.NONE : UseAnim.BOW;
+    public ItemUseAnimation getUseAnimation(ItemStack stack) {
+        return GunState.get(stack).reloading() ? ItemUseAnimation.NONE : ItemUseAnimation.BOW;
     }
 
     @Override
     public void onUseTick(Level level, LivingEntity entity, ItemStack stack, int remaining) {
-        if (level.isClientSide) return;
+        if (level.isClientSide()) return;
         int ticks = usedTicks(stack, entity, remaining);
         if (kind == Kind.MACHINE_GUN) {
             machineGunTick(level, entity, stack, ticks);
@@ -104,12 +104,12 @@ public class ReloadItem extends ChargeItem {
     }
 
     @Override
-    public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int remaining) {
+    protected void release(ItemStack stack, Level level, LivingEntity entity, int remaining) {
         if (kind == Kind.MACHINE_GUN) {
             machineGunRelease(stack, entity, usedTicks(stack, entity, remaining));
             return;
         }
-        if (level.isClientSide) return;
+        if (level.isClientSide()) return;
         if (entity instanceof Player player) {
             boolean creative = player.getAbilities().instabuild;
             if (!GunState.get(stack).loaded() && !creative) {
@@ -134,16 +134,7 @@ public class ReloadItem extends ChargeItem {
             ItemUtil.playSound(entity, Compat.explodeSound(), 0.9F, level.random.nextFloat() * 0.3F + 1.8F);
             ItemUtil.playSound(entity, SoundEvents.LIGHTNING_BOLT_THUNDER, 2.0F, level.random.nextFloat() * 0.3F + 1.8F);
         } else {
-            //? if >=1.21 {
-            /*Arrow arrow = new Arrow(level, entity, new ItemStack(VCItems.CROSSBOW_BOLT.get()), stack);
-            *///?} else {
-            Arrow arrow = new Arrow(level, entity) {
-                @Override
-                protected ItemStack getPickupItem() {
-                    return new ItemStack(VCItems.CROSSBOW_BOLT.get());
-                }
-            };
-            //?}
+            Arrow arrow = new Arrow(level, entity, new ItemStack(VCItems.CROSSBOW_BOLT.get()), stack);
             arrow.setBaseDamage(VCConfig.heavyCrossbowDamage / 2.0);
             arrow.pickup = VCConfig.heavyCrossbowBoltPickup ? AbstractArrow.Pickup.ALLOWED : AbstractArrow.Pickup.DISALLOWED;
             arrow.shootFromRotation(entity, entity.getXRot(), entity.getYRot(), 0.0F, 2.0F, 2.0F);

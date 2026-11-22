@@ -4,18 +4,21 @@ import com.sxilverr.variedcommoditiesredux.item.MiscItems;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.FlintAndSteelItem;
 import net.minecraft.world.item.Item;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public final class VCItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(VariedCommodities.MODID, Registries.ITEM);
 
-    public static final RegistrySupplier<Item> RECIPE_BOOK = ITEMS.register("recipe_book", () -> new MiscItems.RecipeBook(props()));
+    public static final RegistrySupplier<Item> RECIPE_BOOK = item("recipe_book", MiscItems.RecipeBook::new);
     public static final RegistrySupplier<Item> WOODEN_COIN = basic("wooden_coin");
     public static final RegistrySupplier<Item> STONE_COIN = basic("stone_coin");
     public static final RegistrySupplier<Item> BRONZE_COIN = basic("bronze_coin");
@@ -30,14 +33,14 @@ public final class VCItems {
     public static final RegistrySupplier<Item> STEEL_INGOT = basic("steel_ingot");
     public static final RegistrySupplier<Item> DEMONIC_INGOT = basic("demonic_ingot");
     public static final RegistrySupplier<Item> MITHRIL_INGOT = basic("mithril_ingot");
-    public static final RegistrySupplier<Item> BANJO = ITEMS.register("banjo", () -> new MiscItems.Music(false, props()));
-    public static final RegistrySupplier<Item> VIOLIN = ITEMS.register("violin", () -> new MiscItems.Music(true, props()));
-    public static final RegistrySupplier<Item> VIOLIN_BOW = ITEMS.register("violin_bow", () -> new Item(props().stacksTo(1)));
-    public static final RegistrySupplier<Item> HARP = ITEMS.register("harp", () -> new MiscItems.Music(true, props()));
-    public static final RegistrySupplier<Item> GUITAR = ITEMS.register("guitar", () -> new MiscItems.Music(false, props()));
-    public static final RegistrySupplier<Item> FRENCH_HORN = ITEMS.register("french_horn", () -> new MiscItems.Music(false, props()));
-    public static final RegistrySupplier<Item> OCARINA = ITEMS.register("ocarina", () -> new MiscItems.Music(true, props()));
-    public static final RegistrySupplier<Item> CLARINET = ITEMS.register("clarinet", () -> new MiscItems.Music(true, props()));
+    public static final RegistrySupplier<Item> BANJO = item("banjo", p -> new MiscItems.Music(false, p));
+    public static final RegistrySupplier<Item> VIOLIN = item("violin", p -> new MiscItems.Music(true, p));
+    public static final RegistrySupplier<Item> VIOLIN_BOW = item("violin_bow", p -> new Item(p.stacksTo(1)));
+    public static final RegistrySupplier<Item> HARP = item("harp", p -> new MiscItems.Music(true, p));
+    public static final RegistrySupplier<Item> GUITAR = item("guitar", p -> new MiscItems.Music(false, p));
+    public static final RegistrySupplier<Item> FRENCH_HORN = item("french_horn", p -> new MiscItems.Music(false, p));
+    public static final RegistrySupplier<Item> OCARINA = item("ocarina", p -> new MiscItems.Music(true, p));
+    public static final RegistrySupplier<Item> CLARINET = item("clarinet", p -> new MiscItems.Music(true, p));
     public static final RegistrySupplier<Item> EARTH_ELEMENT = basic("earth_element");
     public static final RegistrySupplier<Item> WATER_ELEMENT = basic("water_element");
     public static final RegistrySupplier<Item> FIRE_ELEMENT = basic("fire_element");
@@ -77,31 +80,35 @@ public final class VCItems {
     public static final RegistrySupplier<Item> BLUEPRINT = basic("blueprint");
     public static final RegistrySupplier<Item> RING = basic("ring");
     public static final RegistrySupplier<Item> SKULL = basic("skull");
-    public static final RegistrySupplier<Item> LIGHTER = ITEMS.register("lighter", () -> new FlintAndSteelItem(props().durability(64)));
-    public static final RegistrySupplier<Item> CHICKEN_SWORD = ITEMS.register("chicken_sword", () -> new Item(props().stacksTo(1)));
-    public static final RegistrySupplier<Item> HANDCUFFS = ITEMS.register("handcuffs", () -> new Item(props().stacksTo(1)));
-    public static final RegistrySupplier<Item> MAGIC_WAND = ITEMS.register("magic_wand", () -> new MiscItems.Wand(props()));
+    public static final RegistrySupplier<Item> LIGHTER = item("lighter", p -> new FlintAndSteelItem(p.durability(64)));
+    public static final RegistrySupplier<Item> CHICKEN_SWORD = item("chicken_sword", p -> new Item(p.stacksTo(1)));
+    public static final RegistrySupplier<Item> HANDCUFFS = item("handcuffs", p -> new Item(p.stacksTo(1)));
+    public static final RegistrySupplier<Item> MAGIC_WAND = item("magic_wand", MiscItems.Wand::new);
 
-    public static final RegistrySupplier<Item> BULLET = ITEMS.register("bullet", () -> new Item(VCWeapons.props()));
-    public static final RegistrySupplier<Item> MANA = ITEMS.register("mana", () -> new Item(VCWeapons.props()));
-    public static final RegistrySupplier<Item> CROSSBOW_BOLT = ITEMS.register("crossbow_bolt", () -> new Item(VCWeapons.props()));
+    public static final RegistrySupplier<Item> BULLET = register("bullet", VCTabs.WEAPONS, Item::new);
+    public static final RegistrySupplier<Item> MANA = register("mana", VCTabs.WEAPONS, Item::new);
+    public static final RegistrySupplier<Item> CROSSBOW_BOLT = register("crossbow_bolt", VCTabs.WEAPONS, Item::new);
 
-    public static Item.Properties props() {
-        return new Item.Properties().arch$tab(VCTabs.ITEMS);
+    public static RegistrySupplier<Item> register(String name, RegistrySupplier<CreativeModeTab> tab, Function<Item.Properties, Item> factory) {
+        return ITEMS.register(name, () -> factory.apply(new Item.Properties().arch$tab(tab).setId(ResourceKey.create(Registries.ITEM, VariedCommodities.id(name)))));
+    }
+
+    private static RegistrySupplier<Item> item(String name, Function<Item.Properties, Item> factory) {
+        return register(name, VCTabs.ITEMS, factory);
     }
 
     private static RegistrySupplier<Item> basic(String name) {
-        return ITEMS.register(name, () -> new Item(props()));
+        return item(name, Item::new);
     }
 
     private static Map<DyeColor, RegistrySupplier<Item>> colored(String name) {
-        return colored(name, color -> new MiscItems.Colored(color, props()));
+        return colored(name, VCTabs.ITEMS, (color, p) -> new Item(p));
     }
 
-    static Map<DyeColor, RegistrySupplier<Item>> colored(String name, Function<DyeColor, Item> factory) {
+    static Map<DyeColor, RegistrySupplier<Item>> colored(String name, RegistrySupplier<CreativeModeTab> tab, BiFunction<DyeColor, Item.Properties, Item> factory) {
         Map<DyeColor, RegistrySupplier<Item>> map = new EnumMap<>(DyeColor.class);
         for (DyeColor color : DyeColor.values()) {
-            map.put(color, ITEMS.register(color.getName() + "_" + name, () -> factory.apply(color)));
+            map.put(color, register(color.getName() + "_" + name, tab, p -> factory.apply(color, p)));
         }
         return map;
     }

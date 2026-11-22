@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "variedcommoditiesredux:item/blue_crystal_block",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -13814913
+      }
+    ]
+  }
+}

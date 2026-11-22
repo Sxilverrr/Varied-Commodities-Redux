@@ -6,18 +6,10 @@
     "  A "
   ],
   "key": {
-    "X": {
-      "item": "minecraft:stone"
-    },
-    "Y": {
-      "item": "minecraft:lever"
-    },
-    "Z": {
-      "item": "minecraft:stone_button"
-    },
-    "A": {
-      "item": "minecraft:stick"
-    }
+    "X": "minecraft:stone",
+    "Y": "minecraft:lever",
+    "Z": "minecraft:stone_button",
+    "A": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:stone_gun"

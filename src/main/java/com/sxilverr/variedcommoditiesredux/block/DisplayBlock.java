@@ -3,13 +3,12 @@ package com.sxilverr.variedcommoditiesredux.block;
 import com.sxilverr.variedcommoditiesredux.block.entity.StorageBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.Containers;
+import com.sxilverr.variedcommoditiesredux.item.VCWeaponItem;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -40,14 +39,14 @@ public final class DisplayBlock {
 
     static InteractionResult swap(Level level, BlockPos pos, Player player, InteractionHand hand, int slot, boolean swordsOnly) {
         if (hand != InteractionHand.MAIN_HAND) return InteractionResult.PASS;
-        if (level.isClientSide) return InteractionResult.SUCCESS;
+        if (level.isClientSide()) return InteractionResult.SUCCESS;
         if (!(level.getBlockEntity(pos) instanceof StorageBlockEntity be)) return InteractionResult.CONSUME;
         ItemStack held = player.getMainHandItem();
         ItemStack stored = be.getItem(slot);
         if (held.isEmpty() && !stored.isEmpty()) {
             be.setItem(slot, ItemStack.EMPTY);
             player.setItemInHand(hand, stored);
-        } else if (!held.isEmpty() && stored.isEmpty() && (swordsOnly ? held.getItem() instanceof SwordItem : !(held.getItem() instanceof BlockItem))) {
+        } else if (!held.isEmpty() && stored.isEmpty() && (swordsOnly ? VCWeaponItem.isSword(held) : !(held.getItem() instanceof BlockItem))) {
             be.setItem(slot, held);
             player.setItemInHand(hand, ItemStack.EMPTY);
         } else {
@@ -62,12 +61,6 @@ public final class DisplayBlock {
         return level.getBlockEntity(pos) instanceof StorageBlockEntity be ? Math.min(15, be.filledSlots() * perItem) : 0;
     }
 
-    static void drop(BlockState state, Level level, BlockPos pos, BlockState newState) {
-        if (!state.is(newState.getBlock()) && level.getBlockEntity(pos) instanceof StorageBlockEntity be) {
-            Containers.dropContents(level, pos, be);
-        }
-    }
-
     public static class Pedestal extends FurnitureBlock {
         public Pedestal(VCVariant variant, Supplier<? extends BlockEntityType<?>> type, Properties properties) {
             super(variant, type, PEDESTAL, true, properties);
@@ -79,24 +72,18 @@ public final class DisplayBlock {
         }
 
         @Override
-        public boolean isSignalSource(BlockState state) {
+        protected boolean isSignalSource(BlockState state) {
             return true;
         }
 
         @Override
-        public int getSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+        protected int getSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
             return power(level, pos, 15);
         }
 
         @Override
-        public int getDirectSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+        protected int getDirectSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
             return power(level, pos, 15);
-        }
-
-        @Override
-        public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean moved) {
-            drop(state, level, pos, newState);
-            super.onRemove(state, level, pos, newState, moved);
         }
     }
 
@@ -120,24 +107,18 @@ public final class DisplayBlock {
         }
 
         @Override
-        public boolean isSignalSource(BlockState state) {
+        protected boolean isSignalSource(BlockState state) {
             return true;
         }
 
         @Override
-        public int getSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+        protected int getSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
             return power(level, base(state, pos), 5);
         }
 
         @Override
-        public int getDirectSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+        protected int getDirectSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
             return power(level, base(state, pos), 5);
-        }
-
-        @Override
-        public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean moved) {
-            drop(state, level, pos, newState);
-            super.onRemove(state, level, pos, newState, moved);
         }
     }
 

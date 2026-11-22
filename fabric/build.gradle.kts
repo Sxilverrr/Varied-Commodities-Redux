@@ -56,7 +56,7 @@ dependencies {
     modImplementation("maven.modrinth:modmenu:${common.mod.dep("mod_menu")}") { isTransitive = false }
 
     modLocalRuntime("mezz.jei:jei-$minecraft-$loader:${common.mod.dep("jei")}") { isTransitive = false }
-    if (stonecutter.eval(minecraft, ">=1.21")) modLocalRuntime("net.mezzdev.config:mezz_config-$minecraft-$loader:0.5.6") { isTransitive = false }
+    modLocalRuntime("net.mezzdev.config:mezz_config-$minecraft-$loader:0.6.10") { isTransitive = false }
 
     commonBundle(project(common.path, "namedElements")) { isTransitive = false }
     shadowBundle(project(common.path, "transformProductionFabric")) { isTransitive = false }
@@ -71,8 +71,7 @@ loom {
 
 java {
     withSourcesJar()
-    val java = if (stonecutter.eval(minecraft, ">=1.20.5"))
-        JavaVersion.VERSION_21 else JavaVersion.VERSION_17
+    val java = JavaVersion.VERSION_21
     targetCompatibility = java
     sourceCompatibility = java
 }

@@ -7,47 +7,47 @@ import com.sxilverr.variedcommoditiesredux.VariedCommodities;
 import com.sxilverr.variedcommoditiesredux.menu.CarpentryMenu;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.IRecipeManager;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.recipe.transfer.IRecipeTransferInfo;
-import mezz.jei.api.constants.RecipeTypes;
+import mezz.jei.api.recipe.types.IRecipeType;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IRecipeTransferRegistration;
-import net.minecraft.client.Minecraft;
+import mezz.jei.api.runtime.IJeiRuntime;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-//? if >=1.21 {
-/*import net.minecraft.world.item.crafting.RecipeHolder;
-*///?}
-
 @JeiPlugin
 public class VCJeiPlugin implements IModPlugin {
-    private static final RecipeType<VCRecipes.Carpentry> CARPENTRY = RecipeType.create(VariedCommodities.MODID, "carpentry", VCRecipes.Carpentry.class);
+    private static final IRecipeType<VCRecipes.Entry> CARPENTRY = IRecipeType.create(VariedCommodities.MODID, "carpentry", VCRecipes.Entry.class);
+    private static List<VCRecipes.Entry> shown = List.of();
 
     @Override
-    public ResourceLocation getPluginUid() {
+    public Identifier getPluginUid() {
         return VariedCommodities.id("jei");
+    }
+
+    private static List<VCRecipes.Entry> carpentry() {
+        return VCRecipes.synced.stream().filter(VCRecipes.Entry::carpentry).toList();
     }
 
     @Override
@@ -57,20 +57,30 @@ public class VCJeiPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        if (Minecraft.getInstance().level == null) return;
-        //? if >=1.21 {
-        /*List<VCRecipes.Carpentry> recipes = new ArrayList<>(Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(VCRecipes.CARPENTRY.get()).stream().map(RecipeHolder::value).toList());
-        *///?} else {
-        List<VCRecipes.Carpentry> recipes = new ArrayList<>(Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(VCRecipes.CARPENTRY.get()));
-        //?}
-        recipes.sort(Comparator.comparingInt(recipe -> Item.getId(recipe.result().getItem())));
-        registration.addRecipes(CARPENTRY, recipes);
+        shown = carpentry();
+        registration.addRecipes(CARPENTRY, shown);
+    }
+
+    @Override
+    public void onRuntimeAvailable(IJeiRuntime runtime) {
+        VCRecipes.onSync = () -> {
+            IRecipeManager manager = runtime.getRecipeManager();
+            if (!shown.isEmpty()) manager.hideRecipes(CARPENTRY, shown);
+            shown = carpentry();
+            if (!shown.isEmpty()) manager.addRecipes(CARPENTRY, shown);
+        };
+    }
+
+    @Override
+    public void onRuntimeUnavailable() {
+        VCRecipes.onSync = () -> {
+        };
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(VCBlocks.CARPENTRY_BENCH.get(), CARPENTRY, RecipeTypes.CRAFTING);
-        registration.addRecipeCatalyst(VCBlocks.BLACKSMITH_ANVIL.get(), CARPENTRY, RecipeTypes.CRAFTING);
+        registration.addCraftingStation(CARPENTRY, VCBlocks.CARPENTRY_BENCH.get(), VCBlocks.BLACKSMITH_ANVIL.get());
+        registration.addCraftingStation(RecipeTypes.CRAFTING, VCBlocks.CARPENTRY_BENCH.get(), VCBlocks.BLACKSMITH_ANVIL.get());
     }
 
     @Override
@@ -79,16 +89,16 @@ public class VCJeiPlugin implements IModPlugin {
         registration.addRecipeTransferHandler(new BenchTransfer<>(RecipeTypes.CRAFTING, recipe -> List.of(0, 1, 2, 4, 5, 6, 8, 9, 10)));
     }
 
-    private static List<Integer> carpentryCells(VCRecipes.Carpentry recipe) {
+    private static List<Integer> carpentryCells(VCRecipes.Entry recipe) {
         List<Integer> cells = new ArrayList<>();
-        List<Ingredient> inputs = recipe.getIngredients();
+        List<Optional<Ingredient>> inputs = recipe.inputs();
         for (int i = 0; i < inputs.size(); i++) {
-            if (!inputs.get(i).isEmpty()) cells.add(i / recipe.width() * 4 + i % recipe.width());
+            if (inputs.get(i).isPresent()) cells.add(i / recipe.width() * 4 + i % recipe.width());
         }
         return cells;
     }
 
-    private record BenchTransfer<R>(RecipeType<R> type, Function<R, List<Integer>> cells) implements IRecipeTransferInfo<CarpentryMenu, R> {
+    private record BenchTransfer<R>(IRecipeType<R> type, Function<R, List<Integer>> cells) implements IRecipeTransferInfo<CarpentryMenu, R> {
         @Override
         public Class<CarpentryMenu> getContainerClass() {
             return CarpentryMenu.class;
@@ -100,7 +110,7 @@ public class VCJeiPlugin implements IModPlugin {
         }
 
         @Override
-        public RecipeType<R> getRecipeType() {
+        public IRecipeType<R> getRecipeType() {
             return type;
         }
 
@@ -124,7 +134,7 @@ public class VCJeiPlugin implements IModPlugin {
         }
     }
 
-    private static class Category implements IRecipeCategory<VCRecipes.Carpentry> {
+    private static class Category implements IRecipeCategory<VCRecipes.Entry> {
         private final IDrawable background;
         private final IDrawable icon;
 
@@ -134,7 +144,7 @@ public class VCJeiPlugin implements IModPlugin {
         }
 
         @Override
-        public RecipeType<VCRecipes.Carpentry> getRecipeType() {
+        public IRecipeType<VCRecipes.Entry> getRecipeType() {
             return CARPENTRY;
         }
 
@@ -159,18 +169,19 @@ public class VCJeiPlugin implements IModPlugin {
         }
 
         @Override
-        public void draw(VCRecipes.Carpentry recipe, IRecipeSlotsView slots, GuiGraphics graphics, double mouseX, double mouseY) {
+        public void draw(VCRecipes.Entry recipe, IRecipeSlotsView slots, GuiGraphics graphics, double mouseX, double mouseY) {
             background.draw(graphics);
         }
 
         @Override
-        public void setRecipe(IRecipeLayoutBuilder builder, VCRecipes.Carpentry recipe, IFocusGroup focuses) {
-            List<Ingredient> inputs = recipe.getIngredients();
+        public void setRecipe(IRecipeLayoutBuilder builder, VCRecipes.Entry recipe, IFocusGroup focuses) {
+            List<Optional<Ingredient>> inputs = recipe.inputs();
             for (int i = 0; i < inputs.size(); i++) {
-                if (inputs.get(i).isEmpty()) continue;
-                builder.addSlot(RecipeIngredientRole.INPUT, 5 + i % recipe.width() * 18, 4 + i / recipe.width() * 18).addIngredients(inputs.get(i));
+                Optional<Ingredient> input = inputs.get(i);
+                if (input.isEmpty()) continue;
+                builder.addSlot(RecipeIngredientRole.INPUT, 5 + i % recipe.width() * 18, 4 + i / recipe.width() * 18).add(input.get());
             }
-            builder.addSlot(RecipeIngredientRole.OUTPUT, 121, 31).addItemStack(recipe.result());
+            builder.addSlot(RecipeIngredientRole.OUTPUT, 121, 31).add(recipe.result());
         }
     }
 }

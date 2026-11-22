@@ -5,9 +5,7 @@
     "XX"
   ],
   "key": {
-    "X": {
-      "item": "minecraft:book"
-    }
+    "X": "minecraft:book"
   },
   "result": {
     "id": "variedcommoditiesredux:recipe_book"

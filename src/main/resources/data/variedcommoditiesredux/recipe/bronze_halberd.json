@@ -7,12 +7,8 @@
     " Y "
   ],
   "key": {
-    "X": {
-      "tag": "c:ingots/bronze"
-    },
-    "Y": {
-      "item": "minecraft:stick"
-    }
+    "X": "#c:ingots/bronze",
+    "Y": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:bronze_halberd"

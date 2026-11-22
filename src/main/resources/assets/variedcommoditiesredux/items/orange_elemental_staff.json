@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "variedcommoditiesredux:item/orange_elemental_staff",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -4562923
+      }
+    ]
+  }
+}

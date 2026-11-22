@@ -7,12 +7,8 @@
     "XXX"
   ],
   "key": {
-    "X": {
-      "item": "minecraft:jungle_planks"
-    },
-    "Y": {
-      "item": "minecraft:stick"
-    }
+    "X": "minecraft:jungle_planks",
+    "Y": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:jungle_weapon_rack"

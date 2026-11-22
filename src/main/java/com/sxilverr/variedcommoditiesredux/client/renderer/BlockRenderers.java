@@ -2,224 +2,329 @@ package com.sxilverr.variedcommoditiesredux.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import com.sxilverr.variedcommoditiesredux.VariedCommodities;
 import com.sxilverr.variedcommoditiesredux.block.BigSignBlock;
 import com.sxilverr.variedcommoditiesredux.block.RotatedBlock;
 import com.sxilverr.variedcommoditiesredux.block.entity.BigSignBlockEntity;
 import com.sxilverr.variedcommoditiesredux.block.entity.IconBlockEntity;
 import com.sxilverr.variedcommoditiesredux.block.entity.StorageBlockEntity;
-import com.sxilverr.variedcommoditiesredux.block.entity.VCBlockEntity;
+import com.sxilverr.variedcommoditiesredux.block.entity.BookBlockEntity;
 import com.sxilverr.variedcommoditiesredux.client.VCRender;
-import com.sxilverr.variedcommoditiesredux.client.model.InkModel;
-import net.minecraft.client.Minecraft;
+import com.sxilverr.variedcommoditiesredux.item.VCWeaponItem;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.model.BookModel;
-import net.minecraft.client.model.geom.ModelLayers;
-import net.minecraft.client.renderer.LightTexture;
-import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.block.model.ItemTransform;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
+import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
+import net.minecraft.client.renderer.item.ItemModelResolver;
+import net.minecraft.client.renderer.item.ItemStackRenderState;
+import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Style;
+import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.phys.Vec3;
+import org.jspecify.annotations.Nullable;
 
 public final class BlockRenderers {
-    private static final ResourceLocation INK = VariedCommodities.id("textures/models/block/ink.png");
-    private static final ResourceLocation ENCHANTING_BOOK = VariedCommodities.rl("minecraft", "textures/entity/enchanting_table_book.png");
-    private static final InkModel INK_MODEL = new InkModel();
-    private static BookModel book;
-
-    public interface Drawer<T extends BlockEntity> {
-        void draw(T be, PoseStack pose, MultiBufferSource buffers, int light, int overlay);
+    public interface TextOut {
+        void draw(String text, float x, float y, int color, PoseStack pose);
     }
 
-    public static <T extends BlockEntity> BlockEntityRendererProvider<T> of(Drawer<T> drawer) {
-        return context -> new Renderer<>(drawer);
+    public static class State extends BlockEntityRenderState {
+        public int rotation;
+        public final ItemStackRenderState[] items = {new ItemStackRenderState(), new ItemStackRenderState(), new ItemStackRenderState()};
+        public final float[] flip = new float[3];
+        public final float[][] scale = new float[3][3];
+        public boolean sword;
+        public String[] lines = new String[0];
+        public int style;
+        public boolean text;
     }
 
-    private record Renderer<T extends BlockEntity>(Drawer<T> drawer) implements BlockEntityRenderer<T> {
-        @Override
-        public void render(T be, float partialTick, PoseStack pose, MultiBufferSource buffers, int light, int overlay) {
-            pose.pushPose();
-            drawer.draw(be, pose, buffers, light, overlay);
-            pose.popPose();
+    private abstract static class Renderer<T extends BlockEntity> implements BlockEntityRenderer<T, State> {
+        protected final ItemModelResolver items;
+        protected final Font font;
+        private final ItemStackRenderState probe = new ItemStackRenderState();
+        private final int distance;
+
+        Renderer(BlockEntityRendererProvider.Context context, int distance) {
+            this.items = context.itemModelResolver();
+            this.font = context.font();
+            this.distance = distance;
         }
 
         @Override
-        public boolean shouldRenderOffScreen(T be) {
+        public State createRenderState() {
+            return new State();
+        }
+
+        @Override
+        public void extractRenderState(T be, State state, float partialTick, Vec3 camera, ModelFeatureRenderer.@Nullable CrumblingOverlay crumbling) {
+            BlockEntityRenderer.super.extractRenderState(be, state, partialTick, camera, crumbling);
+            state.rotation = RotatedBlock.rotation(be.getBlockState());
+            extract(be, state);
+        }
+
+        protected abstract void extract(T be, State state);
+
+        protected void displayed(State state, int slot, ItemStack stack, Level level, int seed) {
+            items.updateForTopItem(probe, stack, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND, level, null, seed);
+            ItemTransform transform = VCRender.transform(probe);
+            state.flip[slot] = Math.round(transform.rotation().x() / 180.0F) * 180.0F;
+            state.scale[slot][0] = transform.scale().x();
+            state.scale[slot][1] = transform.scale().y();
+            state.scale[slot][2] = transform.scale().z();
+            items.updateForTopItem(state.items[slot], stack, VCRender.special(probe) ? ItemDisplayContext.FIXED : ItemDisplayContext.NONE, level, null, seed);
+        }
+
+        protected void icon(State state, ItemStack stack, Level level, int seed) {
+            items.updateForTopItem(state.items[0], stack, ItemDisplayContext.GUI, level, null, seed);
+        }
+
+        @Override
+        public boolean shouldRenderOffScreen() {
+            return true;
+        }
+
+        @Override
+        public int getViewDistance() {
+            return distance;
+        }
+
+        protected void submitItem(State state, int slot, PoseStack pose, SubmitNodeCollector collector) {
+            state.items[slot].submit(pose, collector, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
+        }
+
+        protected void submitIcon(State state, PoseStack pose, SubmitNodeCollector collector, float scaleX, float scaleY, float scaleZ) {
+            pose.pushPose();
+            pose.scale(scaleX, scaleY, scaleZ);
+            pose.scale(16.0F, -16.0F, 16.0F);
+            submitItem(state, 0, pose, collector);
+            pose.popPose();
+        }
+
+        protected TextOut text(SubmitNodeCollector collector, int light) {
+            return (line, x, y, color, pose) -> collector.submitText(pose, x, y, FormattedCharSequence.forward(line, Style.EMPTY), false, Font.DisplayMode.POLYGON_OFFSET, light, color, 0, 0);
+        }
+    }
+
+    public static class WeaponRack extends Renderer<StorageBlockEntity> {
+        public WeaponRack(BlockEntityRendererProvider.Context context) {
+            super(context, 26);
+        }
+
+        @Override
+        protected void extract(StorageBlockEntity be, State state) {
+            int seed = (int) be.getBlockPos().asLong();
+            for (int i = 0; i < 3; i++) displayed(state, i, be.getItem(i), be.getLevel(), seed + i);
+        }
+
+        @Override
+        public void submit(State state, PoseStack pose, SubmitNodeCollector collector, CameraRenderState camera) {
+            pose.pushPose();
+            pose.translate(0.5, 1.34, 0.5);
+            pose.scale(0.9F, 0.9F, 0.9F);
+            VCRender.rotate(pose, 90 * state.rotation);
+            for (int i = 0; i < 3; i++) {
+                if (state.items[i].isEmpty()) continue;
+                pose.pushPose();
+                pose.translate(-0.37F + i * 0.37F, 0.6F, 0.33F);
+                pose.mulPose(Axis.YP.rotationDegrees(state.flip[i]));
+                pose.mulPose(Axis.XP.rotationDegrees(180.0F));
+                pose.scale(state.scale[i][0], state.scale[i][1], state.scale[i][2]);
+                pose.mulPose(Axis.YP.rotationDegrees(90.0F));
+                pose.mulPose(Axis.ZP.rotationDegrees(45.0F));
+                submitItem(state, i, pose, collector);
+                pose.popPose();
+            }
+            pose.popPose();
+        }
+    }
+
+    public static class Pedestal extends Renderer<StorageBlockEntity> {
+        public Pedestal(BlockEntityRendererProvider.Context context) {
+            super(context, 40);
+        }
+
+        @Override
+        protected void extract(StorageBlockEntity be, State state) {
+            ItemStack stack = be.getItem(0);
+            state.sword = VCWeaponItem.isSword(stack);
+            displayed(state, 0, stack, be.getLevel(), (int) be.getBlockPos().asLong());
+        }
+
+        @Override
+        public void submit(State state, PoseStack pose, SubmitNodeCollector collector, CameraRenderState camera) {
+            if (state.items[0].isEmpty()) return;
+            pose.pushPose();
+            pose.translate(0.5, 1.5, 0.5);
+            VCRender.rotate(pose, 90 * state.rotation);
+            pose.scale(1.0F, 0.99F, 1.0F);
+            pose.translate(0.0, 0.6, 0.0);
+            if (!state.sword) pose.mulPose(Axis.XP.rotationDegrees(180.0F));
+            pose.scale(state.scale[0][0], state.scale[0][1], state.scale[0][2]);
+            pose.mulPose(Axis.ZP.rotationDegrees(45.0F));
+            submitItem(state, 0, pose, collector);
+            pose.popPose();
+        }
+    }
+
+    public static class ShopSign extends Renderer<IconBlockEntity> {
+        public ShopSign(BlockEntityRendererProvider.Context context) {
+            super(context, 20);
+        }
+
+        @Override
+        protected void extract(IconBlockEntity be, State state) {
+            icon(state, be.icon, be.getLevel(), (int) be.getBlockPos().asLong());
+        }
+
+        @Override
+        public void submit(State state, PoseStack pose, SubmitNodeCollector collector, CameraRenderState camera) {
+            if (state.items[0].isEmpty()) return;
+            pose.pushPose();
+            pose.translate(0.5, 1.62, 0.5);
+            VCRender.rotate(pose, 90 * state.rotation);
+            pose.translate(0.0, 1.02, 0.03);
+            submitIcon(state, pose, collector, -0.024F, 0.024F, 0.001F);
+            pose.translate(0.0, 0.0, -0.06);
+            pose.mulPose(Axis.YP.rotationDegrees(180.0F));
+            submitIcon(state, pose, collector, -0.024F, 0.024F, 0.001F);
+            pose.popPose();
+        }
+    }
+
+    public static class Banner extends Renderer<IconBlockEntity> {
+        private final double y;
+        private final double z;
+
+        private Banner(BlockEntityRendererProvider.Context context, double y, double z) {
+            super(context, 26);
+            this.y = y;
+            this.z = z;
+        }
+
+        public static Banner standing(BlockEntityRendererProvider.Context context) {
+            return new Banner(context, 1.3, -0.14);
+        }
+
+        public static Banner wall(BlockEntityRendererProvider.Context context) {
+            return new Banner(context, 0.2, 0.26);
+        }
+
+        @Override
+        protected void extract(IconBlockEntity be, State state) {
+            icon(state, be.icon, be.getLevel(), (int) be.getBlockPos().asLong());
+        }
+
+        @Override
+        public void submit(State state, PoseStack pose, SubmitNodeCollector collector, CameraRenderState camera) {
+            if (state.items[0].isEmpty()) return;
+            pose.pushPose();
+            pose.translate(0.5, y, 0.5);
+            VCRender.rotate(pose, 90 * state.rotation);
+            pose.translate(0.0, 0.0, z);
+            submitIcon(state, pose, collector, 0.05F, 0.05F, -0.001F);
+            pose.popPose();
+        }
+    }
+
+    public static class Sign extends Renderer<BigSignBlockEntity> {
+        public Sign(BlockEntityRendererProvider.Context context) {
+            super(context, 20);
+        }
+
+        @Override
+        protected void extract(BigSignBlockEntity be, State state) {
+            state.lines = be.lines().clone();
+            if (be.getBlockState().getBlock() instanceof BigSignBlock sign) {
+                state.style = sign.style();
+                state.text = sign.hasText();
+            }
+        }
+
+        @Override
+        public void submit(State state, PoseStack pose, SubmitNodeCollector collector, CameraRenderState camera) {
+            if (!state.text) return;
+            pose.pushPose();
+            TextOut out = text(collector, state.lightCoords);
+            if (state.style < 0) {
+                int rotation = state.rotation;
+                double x = rotation == 1 ? -0.44 : rotation == 3 ? 0.44 : 0.0;
+                double z = rotation == 2 ? -0.44 : rotation == 0 ? 0.44 : 0.0;
+                pose.translate(0.5 + x, 0.5, 0.5 + z);
+                pose.mulPose(Axis.YP.rotationDegrees(90 * rotation));
+                if (rotation % 2 == 0) pose.mulPose(Axis.YP.rotationDegrees(180.0F));
+                bigSignText(font, out, pose, state.lines, -1, 0);
+            } else {
+                pose.translate(0.5, 1.5, 0.5);
+                pose.mulPose(Axis.YP.rotationDegrees(-90 * state.rotation));
+                tombstoneText(font, out, state.style, pose, state.lines, -1, 0);
+            }
+            pose.popPose();
+        }
+    }
+
+    public static class Book implements BlockEntityRenderer<BookBlockEntity, State> {
+        private final BookRenderer book;
+
+        public Book(BlockEntityRendererProvider.Context context) {
+            book = new BookRenderer(context.entityModelSet());
+        }
+
+        @Override
+        public State createRenderState() {
+            return new State();
+        }
+
+        @Override
+        public void extractRenderState(BookBlockEntity be, State state, float partialTick, Vec3 camera, ModelFeatureRenderer.@Nullable CrumblingOverlay crumbling) {
+            BlockEntityRenderer.super.extractRenderState(be, state, partialTick, camera, crumbling);
+            state.rotation = RotatedBlock.rotation(be.getBlockState());
+        }
+
+        @Override
+        public void submit(State state, PoseStack pose, SubmitNodeCollector collector, CameraRenderState camera) {
+            book.submit(pose, collector, state.lightCoords, OverlayTexture.NO_OVERLAY, 90 * state.rotation - 90);
+        }
+
+        @Override
+        public boolean shouldRenderOffScreen() {
             return true;
         }
     }
 
-    private static boolean item(BlockEntity be) {
-        return be.getLevel() == null;
-    }
-
-    private static int rotation(BlockEntity be) {
-        return item(be) ? 0 : RotatedBlock.rotation(be.getBlockState());
-    }
-
-    private static boolean tooFar(BlockEntity be, double distance) {
-        if (item(be)) return true;
-        Vec3 camera = Minecraft.getInstance().gameRenderer.getMainCamera().getPosition();
-        return camera.distanceToSqr(Vec3.atCenterOf(be.getBlockPos())) > distance * distance;
-    }
-
-    public static void weaponRack(StorageBlockEntity be, PoseStack pose, MultiBufferSource buffers, int light, int overlay) {
-        if (tooFar(be, 26)) return;
-        pose.translate(0.5, 1.34, 0.5);
-        pose.scale(0.9F, 0.9F, 0.9F);
-        VCRender.rotate(pose, 90 * rotation(be));
-        for (int i = 0; i < 3; i++) {
-            ItemStack stack = be.getItem(i);
-            if (stack.isEmpty()) continue;
-            pose.pushPose();
-            pose.translate(-0.37F + i * 0.37F, 0.6F, 0.33F);
-            ItemTransform transform = VCRender.thirdPerson(stack, be.getLevel());
-            pose.mulPose(Axis.YP.rotationDegrees(Math.round(transform.rotation.x() / 180.0F) * 180.0F));
-            pose.mulPose(Axis.XP.rotationDegrees(180.0F));
-            pose.scale(transform.scale.x(), transform.scale.y(), transform.scale.z());
-            pose.mulPose(Axis.YP.rotationDegrees(90.0F));
-            pose.mulPose(Axis.ZP.rotationDegrees(45.0F));
-            VCRender.item(pose, buffers, light, overlay, stack, displayContext(stack, be), be.getLevel());
-            pose.popPose();
-        }
-    }
-
-    public static void pedestal(StorageBlockEntity be, PoseStack pose, MultiBufferSource buffers, int light, int overlay) {
-        ItemStack stack = be.getItem(0);
-        if (stack.isEmpty() || tooFar(be, 40)) return;
-        pose.translate(0.5, 1.5, 0.5);
-        VCRender.rotate(pose, 90 * rotation(be));
-        pose.scale(1.0F, 0.99F, 1.0F);
-        pose.translate(0.0, 0.6, 0.0);
-        if (!(stack.getItem() instanceof SwordItem)) pose.mulPose(Axis.XP.rotationDegrees(180.0F));
-        ItemTransform transform = VCRender.thirdPerson(stack, be.getLevel());
-        pose.scale(transform.scale.x(), transform.scale.y(), transform.scale.z());
-        pose.mulPose(Axis.ZP.rotationDegrees(45.0F));
-        VCRender.item(pose, buffers, light, overlay, stack, displayContext(stack, be), be.getLevel());
-    }
-
-    private static ItemDisplayContext displayContext(ItemStack stack, BlockEntity be) {
-        return Minecraft.getInstance().getItemRenderer().getModel(stack, be.getLevel(), null, 0).isCustomRenderer() ? ItemDisplayContext.FIXED : ItemDisplayContext.NONE;
-    }
-
-    public static void shopSign(IconBlockEntity be, PoseStack pose, MultiBufferSource buffers, int light, int overlay) {
-        if (be.icon.isEmpty() || tooFar(be, 20)) return;
-        pose.translate(0.5, 1.62, 0.5);
-        VCRender.rotate(pose, 90 * rotation(be));
-        pose.translate(0.0, 1.02, 0.03);
-        VCRender.icon(pose, buffers, light, be.icon, be.getLevel(), -0.024F, 0.024F, 0.001F);
-        pose.translate(0.0, 0.0, -0.06);
-        pose.mulPose(Axis.YP.rotationDegrees(180.0F));
-        VCRender.icon(pose, buffers, light, be.icon, be.getLevel(), -0.024F, 0.024F, 0.001F);
-    }
-
-    public static void banner(IconBlockEntity be, PoseStack pose, MultiBufferSource buffers, int light, int overlay) {
-        icon(be, pose, buffers, light, 1.3, -0.14);
-    }
-
-    public static void wallBanner(IconBlockEntity be, PoseStack pose, MultiBufferSource buffers, int light, int overlay) {
-        icon(be, pose, buffers, light, 0.2, 0.26);
-    }
-
-    private static void icon(IconBlockEntity be, PoseStack pose, MultiBufferSource buffers, int light, double y, double z) {
-        if (be.icon.isEmpty() || tooFar(be, 26)) return;
-        pose.translate(0.5, y, 0.5);
-        VCRender.rotate(pose, 90 * rotation(be));
-        pose.translate(0.0, 0.0, z);
-        VCRender.icon(pose, buffers, light, be.icon, be.getLevel(), 0.05F, 0.05F, -0.001F);
-    }
-
-    public static void bigSign(BigSignBlockEntity be, PoseStack pose, MultiBufferSource buffers, int light, int overlay) {
-        if (tooFar(be, 20)) return;
-        int rotation = rotation(be);
-        double x = rotation == 1 ? -0.44 : rotation == 3 ? 0.44 : 0.0;
-        double z = rotation == 2 ? -0.44 : rotation == 0 ? 0.44 : 0.0;
-        pose.translate(0.5 + x, 0.5, 0.5 + z);
-        pose.mulPose(Axis.YP.rotationDegrees(90 * rotation));
-        if (rotation % 2 == 0) pose.mulPose(Axis.YP.rotationDegrees(180.0F));
-        bigSignText(pose, buffers, light, be.lines(), -1, 0);
-    }
-
-    public static void tombstone(BigSignBlockEntity be, PoseStack pose, MultiBufferSource buffers, int light, int overlay) {
-        if (!(be.getBlockState().getBlock() instanceof BigSignBlock sign) || !sign.hasText() || tooFar(be, 20)) return;
-        pose.translate(0.5, 1.5, 0.5);
-        pose.mulPose(Axis.YP.rotationDegrees(-90 * rotation(be)));
-        tombstoneText(sign.style(), pose, buffers, light, be.lines(), -1, 0);
-    }
-
-    public static void signPreview(BigSignBlock block, PoseStack pose, MultiBufferSource buffers, String[] lines, int cursorLine, int cursor) {
-        int light = LightTexture.FULL_BRIGHT;
-        if (block.style() < 0) {
-            pose.pushPose();
-            pose.mulPose(Axis.YP.rotationDegrees(180.0F));
-            pose.translate(-0.5, -0.5, -0.94);
-            Minecraft.getInstance().getBlockRenderer().renderSingleBlock(block.defaultBlockState(), pose, buffers, light, OverlayTexture.NO_OVERLAY);
-            pose.popPose();
-            bigSignText(pose, buffers, light, lines, cursorLine, cursor);
-        } else {
-            pose.mulPose(Axis.YP.rotationDegrees(180.0F));
-            pose.translate(0.0, 1.0, 0.0);
-            pose.pushPose();
-            pose.translate(-0.5, -1.5, -0.5);
-            Minecraft.getInstance().getBlockRenderer().renderSingleBlock(block.defaultBlockState(), pose, buffers, light, OverlayTexture.NO_OVERLAY);
-            pose.popPose();
-            tombstoneText(block.style(), pose, buffers, light, lines, cursorLine, cursor);
-        }
-    }
-
-    private static void bigSignText(PoseStack pose, MultiBufferSource buffers, int light, String[] lines, int cursorLine, int cursor) {
+    public static void bigSignText(Font font, TextOut out, PoseStack pose, String[] lines, int cursorLine, int cursor) {
         pose.translate(0.0, 0.5, 0.065);
         float scale = 0.0133F * 0.6666667F;
         pose.scale(scale, -scale, scale);
-        text(pose, buffers, light, lines, 0.5F, 0, cursorLine, cursor);
+        text(font, out, pose, lines, 0.5F, 0xFF000000, cursorLine, cursor);
     }
 
-    private static void tombstoneText(int style, PoseStack pose, MultiBufferSource buffers, int light, String[] lines, int cursorLine, int cursor) {
+    public static void tombstoneText(Font font, TextOut out, int style, PoseStack pose, String[] lines, int cursorLine, int cursor) {
         VCRender.rotate(pose, 0.0F);
         pose.mulPose(Axis.XP.rotationDegrees(180.0F));
         pose.translate(0.0, -0.64, style == 0 ? 0.095 : 0.126);
         float scale = 0.00665F;
         pose.scale(scale, -scale, scale);
-        text(pose, buffers, light, lines, 0.0F, 0xFFFFFF, cursorLine, cursor);
+        text(font, out, pose, lines, 0.0F, 0xFFFFFFFF, cursorLine, cursor);
     }
 
-    private static void text(PoseStack pose, MultiBufferSource buffers, int light, String[] lines, float top, int color, int cursorLine, int cursor) {
-        Font font = Minecraft.getInstance().font;
+    private static void text(Font font, TextOut out, PoseStack pose, String[] lines, float top, int color, int cursorLine, int cursor) {
         for (int i = 0; i < lines.length; i++) {
             String line = lines[i];
             float x = -font.width(line) / 2.0F;
             int y = (int) ((top + i) * (font.lineHeight - 0.3F));
-            if (!line.isEmpty()) draw(font, line, x, y, color, pose, buffers, light);
+            if (!line.isEmpty()) out.draw(line, x, y, color, pose);
             if (i != cursorLine) continue;
-            if (cursor >= line.length()) draw(font, "_", x + font.width(line), y, color, pose, buffers, light);
-            else draw(font, "|", x + font.width(line.substring(0, cursor)) - 1.0F, y, color, pose, buffers, light);
+            if (cursor >= line.length()) out.draw("_", x + font.width(line), y, color, pose);
+            else out.draw("|", x + font.width(line.substring(0, cursor)) - 1.0F, y, color, pose);
         }
-    }
-
-    private static void draw(Font font, String text, float x, int y, int color, PoseStack pose, MultiBufferSource buffers, int light) {
-        font.drawInBatch(text, x, y, color, false, pose.last().pose(), buffers, Font.DisplayMode.POLYGON_OFFSET, 0, light);
-    }
-
-    public static void book(VCBlockEntity be, PoseStack pose, MultiBufferSource buffers, int light, int overlay) {
-        if (book == null) book = new BookModel(Minecraft.getInstance().getEntityModels().bakeLayer(ModelLayers.BOOK));
-        pose.translate(0.5, 1.5, 0.5);
-        VCRender.rotate(pose, item(be) ? 0 : 90 * rotation(be) - 90);
-        INK_MODEL.render(pose, VCRender.culled(buffers, INK), light, overlay);
-        pose.mulPose(Axis.ZP.rotationDegrees(-90.0F));
-        pose.translate(-1.49, -0.18, 0.0);
-        book.setupAnim(0.0F, 0.0F, 1.0F, 1.24F);
-        //? if >=1.21 {
-        /*book.renderToBuffer(pose, VCRender.culled(buffers, ENCHANTING_BOOK), light, overlay, 0xFFFFFFFF);
-        *///?} else {
-        book.renderToBuffer(pose, VCRender.culled(buffers, ENCHANTING_BOOK), light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
-        //?}
     }
 
     private BlockRenderers() {

@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "variedcommoditiesredux:item/diamond_tall_lamp",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -13408564
+      }
+    ]
+  }
+}

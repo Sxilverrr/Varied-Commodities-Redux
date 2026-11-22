@@ -39,7 +39,7 @@ public class HolyHandGrenade extends VCProjectile {
             yRotO += 180.0F;
             ticksInAir = 0;
         } else if (hit instanceof BlockHitResult blockHit) {
-            if (!level().isClientSide) {
+            if (!level().isClientSide()) {
                 level().playSound(null, getX(), getY(), getZ(), VCSounds.HALLELUJAH.get(), SoundSource.NEUTRAL, 4.0F, 1.0F);
             }
             stick(blockHit);

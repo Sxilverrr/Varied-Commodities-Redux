@@ -7,12 +7,8 @@
     "YYY"
   ],
   "key": {
-    "X": {
-      "item": "minecraft:iron_ingot"
-    },
-    "Y": {
-      "item": "minecraft:jungle_planks"
-    }
+    "X": "minecraft:iron_ingot",
+    "Y": "minecraft:jungle_planks"
   },
   "result": {
     "id": "variedcommoditiesredux:jungle_shop_sign",

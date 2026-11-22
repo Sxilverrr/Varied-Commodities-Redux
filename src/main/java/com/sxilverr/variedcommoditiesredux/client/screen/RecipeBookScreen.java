@@ -2,33 +2,26 @@ package com.sxilverr.variedcommoditiesredux.client.screen;
 
 import com.sxilverr.variedcommoditiesredux.VCRecipes;
 import com.sxilverr.variedcommoditiesredux.VariedCommodities;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
-import net.minecraft.core.RegistryAccess;
+import net.minecraft.client.renderer.RenderPipelines;
+import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.Recipe;
-import net.minecraft.world.item.crafting.ShapedRecipe;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-
-//? if >=1.21 {
-/*import net.minecraft.world.item.crafting.RecipeHolder;
-*///?}
+import java.util.Optional;
 
 public class RecipeBookScreen extends Screen {
-    private static final ResourceLocation BACKGROUND = VariedCommodities.id("textures/gui/recipes.png");
-    private static final ResourceLocation SLOT = VariedCommodities.id("textures/gui/slot.png");
-    private final List<Entry> recipes = load();
+    private static final Identifier BACKGROUND = VariedCommodities.id("textures/gui/recipes.png");
+    private static final Identifier SLOT = VariedCommodities.id("textures/gui/slot.png");
+    private final List<VCRecipes.Entry> recipes = VCRecipes.synced;
     private int page;
     private Button next;
     private Button previous;
@@ -68,19 +61,15 @@ public class RecipeBookScreen extends Screen {
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        //? if <1.21 {
-        renderBackground(graphics);
-        graphics.blit(BACKGROUND, left(), top(), 0, 0, 256, 182);
-        //?}
         super.render(graphics, mouseX, mouseY, partialTick);
-        graphics.drawString(font, title, left() + 5, top() + 5, 0x404040, false);
+        graphics.drawString(font, title, left() + 5, top() + 5, 0xFF404040, false);
         String number = (page + 1) + "/" + pages();
-        graphics.drawString(font, number, left() + (256 - font.width(number)) / 2, top() + 168, 0x404040, false);
+        graphics.drawString(font, number, left() + (256 - font.width(number)) / 2, top() + 168, 0xFF404040, false);
         ItemStack hovered = ItemStack.EMPTY;
         for (int i = 0; i < 4; i++) {
             int index = i + page * 4;
             if (index >= recipes.size()) break;
-            Entry recipe = recipes.get(index);
+            VCRecipes.Entry recipe = recipes.get(index);
             int x = left() + 5 + i / 2 * 126;
             int y = top() + 15 + i % 2 * 76;
             hovered = item(graphics, recipe.result(), x + 98, y + 28, mouseX, mouseY, hovered);
@@ -89,51 +78,24 @@ public class RecipeBookScreen extends Screen {
             for (int j = 0; j < recipe.inputs().size(); j++) {
                 int x2 = x + j % recipe.width() * 18;
                 int y2 = y + j / recipe.width() * 18;
-                graphics.blit(SLOT, x2, y2, 0, 0, 18, 18);
+                graphics.blit(RenderPipelines.GUI_TEXTURED, SLOT, x2, y2, 0.0F, 0.0F, 18, 18, 256, 256);
                 hovered = item(graphics, cycle(recipe.inputs().get(j)), x2 + 1, y2 + 1, mouseX, mouseY, hovered);
             }
         }
-        if (!hovered.isEmpty()) graphics.renderTooltip(font, hovered, mouseX, mouseY);
+        if (!hovered.isEmpty()) graphics.setTooltipForNextFrame(font, hovered, mouseX, mouseY);
     }
 
-    //? if >=1.21 {
-    /*@Override
+    @Override
     public void renderBackground(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         super.renderBackground(graphics, mouseX, mouseY, partialTick);
-        graphics.blit(BACKGROUND, left(), top(), 0, 0, 256, 182);
-    }
-    *///?}
-
-    private record Entry(int width, int height, List<Ingredient> inputs, ItemStack result) {
+        graphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, left(), top(), 0.0F, 0.0F, 256, 182, 256, 256);
     }
 
-    private static List<Entry> load() {
-        Minecraft minecraft = Minecraft.getInstance();
-        List<Entry> list = new ArrayList<>();
-        if (minecraft.level == null) return list;
-        RegistryAccess access = minecraft.level.registryAccess();
-        //? if >=1.21 {
-        /*for (RecipeHolder<?> holder : minecraft.level.getRecipeManager().getRecipes()) {
-            if (!holder.id().getNamespace().equals(VariedCommodities.MODID)) continue;
-            Recipe<?> recipe = holder.value();
-        *///?} else {
-        for (Recipe<?> recipe : minecraft.level.getRecipeManager().getRecipes()) {
-            if (!recipe.getId().getNamespace().equals(VariedCommodities.MODID)) continue;
-        //?}
-            if (recipe instanceof ShapedRecipe shaped) {
-                list.add(new Entry(shaped.getWidth(), shaped.getHeight(), shaped.getIngredients(), shaped.getResultItem(access)));
-            } else if (recipe instanceof VCRecipes.Carpentry carpentry) {
-                list.add(new Entry(carpentry.width(), carpentry.height(), carpentry.getIngredients(), carpentry.result()));
-            }
-        }
-        list.sort(Comparator.comparingInt(entry -> Item.getId(entry.result().getItem())));
-        return list;
-    }
-
-    private static ItemStack cycle(Ingredient ingredient) {
-        ItemStack[] items = ingredient.getItems();
-        if (items.length == 0) return ItemStack.EMPTY;
-        return items[(int) (System.currentTimeMillis() / 1000L % items.length)];
+    private static ItemStack cycle(Optional<Ingredient> ingredient) {
+        if (ingredient.isEmpty()) return ItemStack.EMPTY;
+        List<Holder<Item>> items = ingredient.get().items().toList();
+        if (items.isEmpty()) return ItemStack.EMPTY;
+        return new ItemStack(items.get((int) (System.currentTimeMillis() / 1000L % items.size())));
     }
 
     private ItemStack item(GuiGraphics graphics, ItemStack stack, int x, int y, int mouseX, int mouseY, ItemStack hovered) {

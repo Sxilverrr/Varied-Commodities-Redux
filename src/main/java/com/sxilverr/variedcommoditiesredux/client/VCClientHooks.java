@@ -4,6 +4,7 @@ import com.sxilverr.variedcommoditiesredux.Compat;
 import com.sxilverr.variedcommoditiesredux.client.screen.RecipeBookScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.SingleQuadParticle;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -27,7 +28,7 @@ public final class VCClientHooks {
             double z = entity.getZ() + (random.nextDouble() - 0.5) * entity.getBbWidth() + dz;
             Particle particle = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.PORTAL, x, y, z,
                     (random.nextDouble() - 0.5) * 2.0, -random.nextDouble(), (random.nextDouble() - 0.5) * 2.0);
-            if (particle != null) particle.setColor(r, g, b);
+            if (particle instanceof SingleQuadParticle quad) quad.setColor(r, g, b);
         }
     }
 

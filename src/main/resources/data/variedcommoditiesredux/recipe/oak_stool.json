@@ -6,9 +6,7 @@
     "X  X"
   ],
   "key": {
-    "X": {
-      "item": "minecraft:oak_planks"
-    }
+    "X": "minecraft:oak_planks"
   },
   "result": {
     "id": "variedcommoditiesredux:oak_stool"

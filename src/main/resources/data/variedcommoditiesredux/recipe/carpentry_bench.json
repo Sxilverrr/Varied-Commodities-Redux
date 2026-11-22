@@ -7,15 +7,9 @@
     "Z Z"
   ],
   "key": {
-    "X": {
-      "tag": "minecraft:planks"
-    },
-    "Y": {
-      "item": "minecraft:crafting_table"
-    },
-    "Z": {
-      "item": "minecraft:stick"
-    }
+    "X": "#minecraft:planks",
+    "Y": "minecraft:crafting_table",
+    "Z": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:carpentry_bench"

@@ -1,0 +1,15 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "dyeable": {
+          "color_when_undyed": -6265536
+        },
+        "texture": "variedcommoditiesredux:paper_crown"
+      },
+      {
+        "texture": "variedcommoditiesredux:paper_crown_overlay"
+      }
+    ]
+  }
+}

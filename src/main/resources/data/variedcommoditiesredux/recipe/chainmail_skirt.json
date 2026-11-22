@@ -5,9 +5,7 @@
     "XXXX"
   ],
   "key": {
-    "X": {
-      "item": "minecraft:chain"
-    }
+    "X": "minecraft:iron_chain"
   },
   "result": {
     "id": "variedcommoditiesredux:chainmail_skirt"

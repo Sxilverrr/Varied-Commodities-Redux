@@ -7,12 +7,8 @@
     "X   "
   ],
   "key": {
-    "X": {
-      "item": "minecraft:iron_ingot"
-    },
-    "Y": {
-      "item": "minecraft:stick"
-    }
+    "X": "minecraft:iron_ingot",
+    "Y": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:iron_glaive"

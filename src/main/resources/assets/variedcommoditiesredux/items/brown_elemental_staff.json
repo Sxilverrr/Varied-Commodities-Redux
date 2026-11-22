@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "variedcommoditiesredux:item/brown_elemental_staff",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -10338523
+      }
+    ]
+  }
+}

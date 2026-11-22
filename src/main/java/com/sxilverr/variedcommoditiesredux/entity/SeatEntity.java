@@ -5,7 +5,9 @@ import com.sxilverr.variedcommoditiesredux.VCEntities;
 import com.sxilverr.variedcommoditiesredux.block.CouchBlock;
 import com.sxilverr.variedcommoditiesredux.block.SeatBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
@@ -19,10 +21,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 
-//? if >=1.21 {
-/*import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityDimensions;
-*///?}
 
 public class SeatEntity extends Entity {
     private static final double CHAIR_HEIGHT = 0.58;
@@ -36,15 +36,15 @@ public class SeatEntity extends Entity {
 
     public static InteractionResult mount(Level level, BlockPos pos, Player player, double height, float yaw) {
         if (!VCConfig.seats || VCConfig.seatsNeedEmptyHand && !player.getMainHandItem().isEmpty()) return InteractionResult.PASS;
-        if (level.isClientSide) return InteractionResult.SUCCESS;
+        if (level.isClientSide()) return InteractionResult.SUCCESS;
         if (player.isPassenger() || !level.getEntitiesOfClass(SeatEntity.class, new AABB(pos).inflate(0.0, 1.0, 0.0), seat -> pos.equals(seat.seatPos)).isEmpty()) {
             return InteractionResult.CONSUME;
         }
         SeatEntity seat = new SeatEntity(VCEntities.SEAT.get(), level);
         seat.seatPos = pos.immutable();
-        seat.moveTo(pos.getX() + 0.5, pos.getY() + height - CHAIR_HEIGHT, pos.getZ() + 0.5, yaw, 0.0F);
+        seat.snapTo(pos.getX() + 0.5, pos.getY() + height - CHAIR_HEIGHT, pos.getZ() + 0.5, yaw, 0.0F);
         level.addFreshEntity(seat);
-        player.startRiding(seat, true);
+        player.startRiding(seat, true, true);
         return InteractionResult.CONSUME;
     }
 
@@ -56,7 +56,7 @@ public class SeatEntity extends Entity {
     @Override
     public void tick() {
         super.tick();
-        if (level().isClientSide) return;
+        if (level().isClientSide()) return;
         Block block = level().getBlockState(seatPos()).getBlock();
         if (getPassengers().isEmpty() || !(block instanceof SeatBlock || block instanceof CouchBlock)) {
             ejectPassengers();
@@ -101,8 +101,8 @@ public class SeatEntity extends Entity {
     }
 
     @Override
-    public boolean isInvulnerableTo(DamageSource source) {
-        return true;
+    public boolean hurtServer(ServerLevel level, DamageSource source, float amount) {
+        return false;
     }
 
     @Override
@@ -115,8 +115,7 @@ public class SeatEntity extends Entity {
         return false;
     }
 
-    //? if >=1.21 {
-    /*@Override
+    @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
     }
 
@@ -124,24 +123,14 @@ public class SeatEntity extends Entity {
     protected Vec3 getPassengerAttachmentPoint(Entity passenger, EntityDimensions dimensions, float scale) {
         return new Vec3(0.0, CHAIR_HEIGHT, 0.0);
     }
-    *///?} else {
+
     @Override
-    protected void defineSynchedData() {
+    protected void readAdditionalSaveData(ValueInput input) {
+        input.getLong("SeatPos").ifPresent(pos -> seatPos = BlockPos.of(pos));
     }
 
     @Override
-    public double getPassengersRidingOffset() {
-        return CHAIR_HEIGHT - 0.25;
-    }
-    //?}
-
-    @Override
-    protected void readAdditionalSaveData(CompoundTag tag) {
-        if (tag.contains("SeatPos")) seatPos = BlockPos.of(tag.getLong("SeatPos"));
-    }
-
-    @Override
-    protected void addAdditionalSaveData(CompoundTag tag) {
-        tag.putLong("SeatPos", seatPos().asLong());
+    protected void addAdditionalSaveData(ValueOutput output) {
+        output.putLong("SeatPos", seatPos().asLong());
     }
 }

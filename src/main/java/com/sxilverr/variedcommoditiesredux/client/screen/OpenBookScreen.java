@@ -5,7 +5,9 @@ import com.sxilverr.variedcommoditiesredux.network.VCNetwork;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.BookEditScreen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +16,11 @@ public class OpenBookScreen extends BookEditScreen {
     private final BlockPos pos;
 
     public OpenBookScreen(BlockPos pos, List<String> pages) {
-        super(Minecraft.getInstance().player, BookPages.writable(pages), InteractionHand.MAIN_HAND);
+        this(pos, BookPages.writable(pages));
+    }
+
+    private OpenBookScreen(BlockPos pos, ItemStack book) {
+        super(Minecraft.getInstance().player, book, InteractionHand.MAIN_HAND, book.get(DataComponents.WRITABLE_BOOK_CONTENT));
         this.pos = pos;
     }
 

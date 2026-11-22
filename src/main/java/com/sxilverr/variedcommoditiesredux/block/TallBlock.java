@@ -1,6 +1,10 @@
 package com.sxilverr.variedcommoditiesredux.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -40,7 +44,7 @@ public class TallBlock extends FurnitureBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockPos above = context.getClickedPos().above();
-        if (above.getY() >= context.getLevel().getMaxBuildHeight() || !context.getLevel().getBlockState(above).canBeReplaced(context)) {
+        if (above.getY() > context.getLevel().getMaxY() || !context.getLevel().getBlockState(above).canBeReplaced(context)) {
             return null;
         }
         return super.getStateForPlacement(context);
@@ -61,18 +65,16 @@ public class TallBlock extends FurnitureBlock {
     }
 
     @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean moved) {
-        if (!state.is(newState.getBlock())) {
-            BlockPos other = state.getValue(TOP) ? pos.below() : pos.above();
-            if (level.getBlockState(other).is(this)) {
-                level.removeBlock(other, false);
-            }
+    protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighbor, RandomSource random) {
+        boolean top = state.getValue(TOP);
+        if (direction == (top ? Direction.DOWN : Direction.UP) && !(neighbor.is(this) && neighbor.getValue(TOP) != top)) {
+            return Blocks.AIR.defaultBlockState();
         }
-        super.onRemove(state, level, pos, newState, moved);
+        return state;
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         VoxelShape shape = super.getShape(state, level, pos, context);
         return state.getValue(TOP) ? topShape(state, shape) : shape;
     }

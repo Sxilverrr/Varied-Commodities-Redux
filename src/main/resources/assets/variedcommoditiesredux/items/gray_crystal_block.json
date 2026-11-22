@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "variedcommoditiesredux:item/gray_crystal_block",
+    "tints": [
+      {
+        "type": "minecraft:constant",
+        "value": -13288643
+      }
+    ]
+  }
+}

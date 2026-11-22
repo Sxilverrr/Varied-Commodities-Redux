@@ -6,18 +6,10 @@
     "  A "
   ],
   "key": {
-    "X": {
-      "tag": "c:ingots/bronze"
-    },
-    "Y": {
-      "item": "minecraft:lever"
-    },
-    "Z": {
-      "item": "minecraft:stone_button"
-    },
-    "A": {
-      "item": "minecraft:stick"
-    }
+    "X": "#c:ingots/bronze",
+    "Y": "minecraft:lever",
+    "Z": "minecraft:stone_button",
+    "A": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:bronze_gun"

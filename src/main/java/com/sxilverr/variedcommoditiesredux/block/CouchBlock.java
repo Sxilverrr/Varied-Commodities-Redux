@@ -11,7 +11,9 @@ import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -60,7 +62,7 @@ public class CouchBlock extends FurnitureBlock {
     }
 
     @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighbor, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+    protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess ticks, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighbor, RandomSource random) {
         return direction.getAxis().isHorizontal() ? connect(level, pos, state) : state;
     }
 
@@ -108,8 +110,8 @@ public class CouchBlock extends FurnitureBlock {
     @Override
     protected InteractionResult onUse(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         if (hand == InteractionHand.MAIN_HAND && player.getMainHandItem().getItem() instanceof DyeItem) {
-            if (!level.isClientSide) dye(level, pos, player, hand);
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            if (!level.isClientSide()) dye(level, pos, player, hand);
+            return InteractionResult.SUCCESS;
         }
         return SeatEntity.mount(level, pos, player, wool ? 0.5 : 0.31, facingYaw(state) + 180.0F);
     }

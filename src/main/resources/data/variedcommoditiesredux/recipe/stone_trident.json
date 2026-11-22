@@ -7,12 +7,8 @@
     " Y "
   ],
   "key": {
-    "X": {
-      "item": "minecraft:stone"
-    },
-    "Y": {
-      "item": "minecraft:stick"
-    }
+    "X": "minecraft:stone",
+    "Y": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:stone_trident"

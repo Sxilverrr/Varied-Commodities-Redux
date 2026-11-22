@@ -39,7 +39,7 @@ public final class StationBlock {
             if (player instanceof ServerPlayer serverPlayer) {
                 MenuRegistry.openExtendedMenu(serverPlayer, provider(getName(), pos, (id, inv) -> new CarpentryMenu(id, inv, pos)));
             }
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.SUCCESS;
         }
     }
 
@@ -58,7 +58,7 @@ public final class StationBlock {
                     be.addTrader(serverPlayer);
                 }
             }
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.SUCCESS;
         }
     }
 

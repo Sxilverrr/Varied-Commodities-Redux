@@ -3,7 +3,8 @@ package com.sxilverr.variedcommoditiesredux.entity;
 import com.sxilverr.variedcommoditiesredux.Compat;
 import com.sxilverr.variedcommoditiesredux.VCConfig;
 import com.sxilverr.variedcommoditiesredux.VCEntities;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.storage.ValueInput;
+import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -12,11 +13,14 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.EnderMan;
-import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+
+import java.util.Collection;
+import java.util.List;
 
 public class ThrownWeapon extends AbstractArrow {
     private static final EntityDataAccessor<ItemStack> ITEM = SynchedEntityData.defineId(ThrownWeapon.class, EntityDataSerializers.ITEM_STACK);
@@ -28,8 +32,7 @@ public class ThrownWeapon extends AbstractArrow {
         super(type, level);
     }
 
-    //? if >=1.21 {
-    /*public ThrownWeapon(Level level, LivingEntity owner, ItemStack stack, float damage, boolean returns) {
+    public ThrownWeapon(Level level, LivingEntity owner, ItemStack stack, float damage, boolean returns) {
         super(VCEntities.THROWN_WEAPON.get(), owner, level, stack.copy(), null);
         setup(stack, damage, returns);
     }
@@ -44,23 +47,6 @@ public class ThrownWeapon extends AbstractArrow {
     protected ItemStack getDefaultPickupItem() {
         return getItem().copy();
     }
-    *///?} else {
-    public ThrownWeapon(Level level, LivingEntity owner, ItemStack stack, float damage, boolean returns) {
-        super(VCEntities.THROWN_WEAPON.get(), owner, level);
-        setup(stack, damage, returns);
-    }
-
-    @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        entityData.define(ITEM, ItemStack.EMPTY);
-    }
-
-    @Override
-    protected ItemStack getPickupItem() {
-        return getItem().copy();
-    }
-    //?}
 
     private void setup(ItemStack stack, float damage, boolean returns) {
         entityData.set(ITEM, stack.copy());
@@ -73,7 +59,7 @@ public class ThrownWeapon extends AbstractArrow {
     }
 
     public boolean isStuck() {
-        return inGround;
+        return isInGround();
     }
 
     @Override
@@ -82,12 +68,18 @@ public class ThrownWeapon extends AbstractArrow {
     }
 
     @Override
+    protected Collection<EntityHitResult> findHitEntities(Vec3 start, Vec3 end) {
+        EntityHitResult hit = findHitEntity(start, end);
+        return hit != null ? List.of(hit) : List.of();
+    }
+
+    @Override
     protected void onHitEntity(EntityHitResult result) {
         Entity target = result.getEntity();
         Entity owner = getOwner();
-        if (target.hurt(damageSources().thrown(this, owner == null ? this : owner), damage)) {
+        if (target.hurtOrSimulate(damageSources().thrown(this, owner == null ? this : owner), damage)) {
             if (target instanceof EnderMan) return;
-            if (target instanceof LivingEntity living && !level().isClientSide) living.setArrowCount(living.getArrowCount() + 1);
+            if (target instanceof LivingEntity living && !level().isClientSide()) living.setArrowCount(living.getArrowCount() + 1);
             playSound(SoundEvents.ARROW_HIT, 1.0F, 1.2F / (random.nextFloat() * 0.2F + 0.9F));
             if (!returns) {
                 discard();
@@ -108,20 +100,21 @@ public class ThrownWeapon extends AbstractArrow {
     }
 
     @Override
-    public void addAdditionalSaveData(CompoundTag tag) {
-        super.addAdditionalSaveData(tag);
-        tag.put("Weapon", Compat.saveStack(getItem(), level().registryAccess()));
-        tag.putFloat("WeaponDamage", damage);
-        tag.putBoolean("Returns", returns);
-        tag.putBoolean("DealtDamage", dealtDamage);
+    protected void addAdditionalSaveData(ValueOutput output) {
+        super.addAdditionalSaveData(output);
+        Compat.saveStack(output, "Weapon", getItem());
+        output.putFloat("WeaponDamage", damage);
+        output.putBoolean("Returns", returns);
+        output.putBoolean("DealtDamage", dealtDamage);
     }
 
     @Override
-    public void readAdditionalSaveData(CompoundTag tag) {
-        super.readAdditionalSaveData(tag);
-        entityData.set(ITEM, Compat.loadStack(tag.getCompound("Weapon"), level().registryAccess()));
-        damage = tag.getFloat("WeaponDamage");
-        returns = tag.getBoolean("Returns");
-        dealtDamage = tag.getBoolean("DealtDamage");
+    protected void readAdditionalSaveData(ValueInput input) {
+        super.readAdditionalSaveData(input);
+        entityData.set(ITEM, Compat.loadStack(input, "Weapon"));
+        if (getPickupItemStackOrigin().isEmpty() && !getItem().isEmpty()) setPickupItemStack(getItem().copy());
+        damage = input.getFloatOr("WeaponDamage", 0.0F);
+        returns = input.getBooleanOr("Returns", false);
+        dealtDamage = input.getBooleanOr("DealtDamage", false);
     }
 }

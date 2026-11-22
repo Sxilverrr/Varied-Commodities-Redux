@@ -5,9 +5,7 @@
     "X  X"
   ],
   "key": {
-    "X": {
-      "item": "minecraft:diamond"
-    }
+    "X": "minecraft:diamond"
   },
   "result": {
     "id": "variedcommoditiesredux:full_diamond_helmet"

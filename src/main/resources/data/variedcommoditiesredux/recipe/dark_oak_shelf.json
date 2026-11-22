@@ -6,12 +6,8 @@
     "XY  "
   ],
   "key": {
-    "X": {
-      "item": "minecraft:dark_oak_planks"
-    },
-    "Y": {
-      "item": "minecraft:stick"
-    }
+    "X": "minecraft:dark_oak_planks",
+    "Y": "minecraft:stick"
   },
   "result": {
     "id": "variedcommoditiesredux:dark_oak_shelf",

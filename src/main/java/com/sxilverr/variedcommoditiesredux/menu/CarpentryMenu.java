@@ -1,6 +1,5 @@
 package com.sxilverr.variedcommoditiesredux.menu;
 
-import com.sxilverr.variedcommoditiesredux.Compat;
 import com.sxilverr.variedcommoditiesredux.VCMenus;
 import com.sxilverr.variedcommoditiesredux.VCRecipes;
 import com.sxilverr.variedcommoditiesredux.block.StationBlock;
@@ -19,11 +18,11 @@ import net.minecraft.world.level.Level;
 
 import java.util.Optional;
 
-//? if >=1.21 {
-/*import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.CraftingInput;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.item.crafting.CraftingRecipe;
+import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.crafting.RecipeHolder;
-*///?}
 
 public class CarpentryMenu extends AbstractContainerMenu {
     private final TransientCraftingContainer grid = new TransientCraftingContainer(this, 4, 4);
@@ -61,20 +60,20 @@ public class CarpentryMenu extends AbstractContainerMenu {
 
     @Override
     public void slotsChanged(Container container) {
-        if (container != grid || level.isClientSide) return;
+        if (container != grid || level.isClientSide()) return;
         remaining = NonNullList.withSize(16, ItemStack.EMPTY);
         result.setItem(0, craft());
         broadcastChanges();
     }
 
     private ItemStack craft() {
-        //? if >=1.21 {
-        /*CraftingInput.Positioned positioned = CraftingInput.ofPositioned(4, 4, grid.getItems());
+        CraftingInput.Positioned positioned = CraftingInput.ofPositioned(4, 4, grid.getItems());
         CraftingInput input = positioned.input();
         if (input.isEmpty()) return ItemStack.EMPTY;
-        Optional<Recipe<CraftingInput>> recipe = level.getRecipeManager().getRecipeFor(VCRecipes.CARPENTRY.get(), input, level).<Recipe<CraftingInput>>map(RecipeHolder::value);
+        RecipeManager recipes = ((ServerLevel) level).recipeAccess();
+        Optional<CraftingRecipe> recipe = recipes.getRecipeFor(VCRecipes.CARPENTRY.get(), input, level).map(RecipeHolder::value);
         if (recipe.isEmpty() && input.width() <= 3 && input.height() <= 3) {
-            recipe = level.getRecipeManager().getRecipeFor(RecipeType.CRAFTING, input, level).map(RecipeHolder::value);
+            recipe = recipes.getRecipeFor(RecipeType.CRAFTING, input, level).map(RecipeHolder::value);
         }
         return recipe.map(r -> {
             NonNullList<ItemStack> leftovers = r.getRemainingItems(input);
@@ -85,43 +84,6 @@ public class CarpentryMenu extends AbstractContainerMenu {
             }
             return r.assemble(input, level.registryAccess());
         }).orElse(ItemStack.EMPTY);
-        *///?} else {
-        if (grid.isEmpty()) return ItemStack.EMPTY;
-        Optional<VCRecipes.Carpentry> carpentry = level.getRecipeManager().getRecipeFor(VCRecipes.CARPENTRY.get(), grid, level);
-        if (carpentry.isPresent()) {
-            remaining = carpentry.get().getRemainingItems(grid);
-            return carpentry.get().assemble(grid, level.registryAccess());
-        }
-        int minX = 4, minY = 4, maxX = -1, maxY = -1;
-        for (int i = 0; i < 16; i++) {
-            if (grid.getItem(i).isEmpty()) continue;
-            minX = Math.min(minX, i % 4);
-            maxX = Math.max(maxX, i % 4);
-            minY = Math.min(minY, i / 4);
-            maxY = Math.max(maxY, i / 4);
-        }
-        if (maxX < 0 || maxX - minX > 2 || maxY - minY > 2) return ItemStack.EMPTY;
-        NonNullList<ItemStack> items = NonNullList.withSize(9, ItemStack.EMPTY);
-        for (int y = 0; y < 3; y++) {
-            for (int x = 0; x < 3; x++) {
-                int gx = minX + x;
-                int gy = minY + y;
-                if (gx < 4 && gy < 4) items.set(x + y * 3, grid.getItem(gx + gy * 4));
-            }
-        }
-        TransientCraftingContainer container = new TransientCraftingContainer(this, 3, 3, items);
-        int offsetX = minX;
-        int offsetY = minY;
-        return level.getRecipeManager().getRecipeFor(RecipeType.CRAFTING, container, level).map(recipe -> {
-            NonNullList<ItemStack> leftovers = recipe.getRemainingItems(container);
-            for (int y = 0; y < 3; y++) {
-                for (int x = 0; x < 3; x++) {
-                    if (offsetX + x < 4 && offsetY + y < 4) remaining.set(offsetX + x + (offsetY + y) * 4, leftovers.get(x + y * 3));
-                }
-            }
-            return recipe.assemble(container, level.registryAccess());
-        }).orElse(ItemStack.EMPTY);
-        //?}
     }
 
     private void consume() {
@@ -136,7 +98,7 @@ public class CarpentryMenu extends AbstractContainerMenu {
             if (leftover.isEmpty()) continue;
             if (stack.isEmpty()) {
                 grid.setItem(i, leftover.copy());
-            } else if (Compat.sameItemSameData(stack, leftover)) {
+            } else if (ItemStack.isSameItemSameComponents(stack, leftover)) {
                 leftover.grow(stack.getCount());
                 grid.setItem(i, leftover.copy());
             } else if (!player.getInventory().add(leftover.copy())) {
@@ -149,7 +111,7 @@ public class CarpentryMenu extends AbstractContainerMenu {
     @Override
     public void removed(Player player) {
         super.removed(player);
-        if (!level.isClientSide) clearContainer(player, grid);
+        if (!level.isClientSide()) clearContainer(player, grid);
     }
 
     @Override
@@ -198,7 +160,7 @@ public class CarpentryMenu extends AbstractContainerMenu {
 
         @Override
         public void onTake(Player player, ItemStack stack) {
-            stack.onCraftedBy(player.level(), player, stack.getCount());
+            stack.onCraftedBy(player, stack.getCount());
             consume();
         }
     }

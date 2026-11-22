@@ -7,12 +7,8 @@
     "YYY"
   ],
   "key": {
-    "X": {
-      "item": "variedcommoditiesredux:stone_wall_banner"
-    },
-    "Y": {
-      "item": "minecraft:stone"
-    }
+    "X": "variedcommoditiesredux:stone_wall_banner",
+    "Y": "minecraft:stone"
   },
   "result": {
     "id": "variedcommoditiesredux:stone_banner"
