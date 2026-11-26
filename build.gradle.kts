@@ -1,5 +1,5 @@
 plugins {
-    id("dev.architectury.loom")
+    id("dev.architectury.loom-no-remap")
     id("architectury-plugin")
 }
 
@@ -22,17 +22,23 @@ repositories {
 
 dependencies {
     minecraft("com.mojang:minecraft:$minecraft")
-    mappings(loom.officialMojangMappings())
-    modImplementation("net.fabricmc:fabric-loader:${mod.dep("fabric_loader")}")
-    modApi("dev.architectury:architectury:${mod.dep("architectury")}")
+    implementation("net.fabricmc:fabric-loader:${mod.dep("fabric_loader")}")
+    implementation("dev.architectury:architectury:${mod.dep("architectury")}")
     compileOnly("mezz.jei:jei-$minecraft-common-api:${mod.dep("jei")}")
 }
 
 java {
     withSourcesJar()
-    val java = JavaVersion.VERSION_21
+    val java = JavaVersion.VERSION_25
     targetCompatibility = java
     sourceCompatibility = java
+}
+
+tasks.processResources {
+    inputs.property("minecraft", minecraft)
+    if (stonecutter.eval(minecraft, ">=26.3")) filesMatching("data/**/*.json") {
+        filter { it.replace(Regex("\"(condition|function)\"\\s*:"), "\"type\":") }
+    }
 }
 
 tasks.build {

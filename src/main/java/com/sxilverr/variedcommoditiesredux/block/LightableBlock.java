@@ -6,13 +6,13 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -141,19 +141,19 @@ public class LightableBlock extends RotatedBlock {
             if (!level.isClientSide()) {
                 boolean charge = held.is(Items.FIRE_CHARGE);
                 level.setBlock(pos, state.setValue(LIT, true), 11);
-                level.playSound(null, pos, charge ? SoundEvents.FIRECHARGE_USE : SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.random.nextFloat() * 0.4F + 0.8F);
+                level.playSound(null, pos, charge ? SoundEvents.FIRECHARGE_USE : SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
                 level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
                 if (!creative) {
                     if (charge) held.shrink(1);
                     else Compat.damage(held, 1, player, hand);
                 }
             }
-        } else if (lit && (held.getItem() instanceof ShovelItem || held.is(Items.SAND))) {
+        } else if (lit && (held.is(ItemTags.SHOVELS) || held.is(Items.SAND))) {
             if (!level.isClientSide()) {
                 level.setBlock(pos, state.setValue(LIT, false), 11);
                 level.levelEvent(null, 1009, pos, 0);
                 level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
-                if (!creative && held.getItem() instanceof ShovelItem) Compat.damage(held, 1, player, hand);
+                if (!creative && held.is(ItemTags.SHOVELS)) Compat.damage(held, 1, player, hand);
             }
         } else {
             return InteractionResult.PASS;

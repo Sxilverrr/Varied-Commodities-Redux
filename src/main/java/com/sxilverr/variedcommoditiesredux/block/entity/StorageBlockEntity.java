@@ -93,14 +93,14 @@ public class StorageBlockEntity extends RandomizableContainerBlockEntity {
     @Override
     public void startOpen(ContainerUser user) {
         if (isChest() && !user.getLivingEntity().isSpectator() && level != null) {
-            level.playSound(null, worldPosition, SoundEvents.CHEST_OPEN, SoundSource.BLOCKS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
+            level.playSound(null, worldPosition, SoundEvents.CHEST_OPEN, SoundSource.BLOCKS, 0.5F, level.getRandom().nextFloat() * 0.1F + 0.9F);
         }
     }
 
     @Override
     public void stopOpen(ContainerUser user) {
         if (isChest() && !user.getLivingEntity().isSpectator() && level != null) {
-            level.playSound(null, worldPosition, SoundEvents.CHEST_CLOSE, SoundSource.BLOCKS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
+            level.playSound(null, worldPosition, SoundEvents.CHEST_CLOSE, SoundSource.BLOCKS, 0.5F, level.getRandom().nextFloat() * 0.1F + 0.9F);
         }
     }
 

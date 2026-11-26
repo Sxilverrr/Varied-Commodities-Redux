@@ -99,7 +99,7 @@ public class ReloadItem extends ChargeItem {
         projectile.damage = VCConfig.machineGunDamage;
         projectile.setSpeed(40);
         projectile.shoot(2.0F);
-        ItemUtil.playSound(entity, VCSounds.GUN_SHOT.get(), 0.9F, level.random.nextFloat() * 0.3F + 0.8F);
+        ItemUtil.playSound(entity, VCSounds.GUN_SHOT.get(), 0.9F, level.getRandom().nextFloat() * 0.3F + 0.8F);
         level.addFreshEntity(projectile);
     }
 
@@ -131,14 +131,14 @@ public class ReloadItem extends ChargeItem {
             projectile.setSpeed(50);
             projectile.shoot(2.0F);
             level.addFreshEntity(projectile);
-            ItemUtil.playSound(entity, Compat.explodeSound(), 0.9F, level.random.nextFloat() * 0.3F + 1.8F);
-            ItemUtil.playSound(entity, SoundEvents.LIGHTNING_BOLT_THUNDER, 2.0F, level.random.nextFloat() * 0.3F + 1.8F);
+            ItemUtil.playSound(entity, Compat.explodeSound(), 0.9F, level.getRandom().nextFloat() * 0.3F + 1.8F);
+            ItemUtil.playSound(entity, SoundEvents.LIGHTNING_BOLT_THUNDER, 2.0F, level.getRandom().nextFloat() * 0.3F + 1.8F);
         } else {
             Arrow arrow = new Arrow(level, entity, new ItemStack(VCItems.CROSSBOW_BOLT.get()), stack);
             arrow.setBaseDamage(VCConfig.heavyCrossbowDamage / 2.0);
             arrow.pickup = VCConfig.heavyCrossbowBoltPickup ? AbstractArrow.Pickup.ALLOWED : AbstractArrow.Pickup.DISALLOWED;
             arrow.shootFromRotation(entity, entity.getXRot(), entity.getYRot(), 0.0F, 2.0F, 2.0F);
-            level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.NEUTRAL, 1.0F, level.random.nextFloat() * 0.3F + 0.8F);
+            level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.NEUTRAL, 1.0F, level.getRandom().nextFloat() * 0.3F + 0.8F);
             level.addFreshEntity(arrow);
         }
     }

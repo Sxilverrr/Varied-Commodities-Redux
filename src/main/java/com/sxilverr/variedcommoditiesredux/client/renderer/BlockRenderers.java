@@ -12,14 +12,14 @@ import com.sxilverr.variedcommoditiesredux.client.VCRender;
 import com.sxilverr.variedcommoditiesredux.item.VCWeaponItem;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.SubmitNodeCollector;
-import net.minecraft.client.renderer.block.model.ItemTransform;
+import net.minecraft.client.resources.model.cuboid.ItemTransform;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
 import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
-import net.minecraft.client.renderer.state.CameraRenderState;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.network.chat.Style;
 import net.minecraft.util.FormattedCharSequence;
@@ -33,6 +33,10 @@ import org.jspecify.annotations.Nullable;
 public final class BlockRenderers {
     public interface TextOut {
         void draw(String text, float x, float y, int color, PoseStack pose);
+    }
+
+    public static TextOut text(SubmitNodeCollector collector, int light) {
+        return (line, x, y, color, pose) -> collector.submitText(pose, x, y, FormattedCharSequence.forward(line, Style.EMPTY), false, Font.DisplayMode.POLYGON_OFFSET, light, color, 0, 0);
     }
 
     public static class State extends BlockEntityRenderState {
@@ -106,10 +110,6 @@ public final class BlockRenderers {
             pose.scale(16.0F, -16.0F, 16.0F);
             submitItem(state, 0, pose, collector);
             pose.popPose();
-        }
-
-        protected TextOut text(SubmitNodeCollector collector, int light) {
-            return (line, x, y, color, pose) -> collector.submitText(pose, x, y, FormattedCharSequence.forward(line, Style.EMPTY), false, Font.DisplayMode.POLYGON_OFFSET, light, color, 0, 0);
         }
     }
 

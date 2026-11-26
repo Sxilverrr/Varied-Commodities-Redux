@@ -12,7 +12,11 @@ public class SeatRenderer extends EntityRenderer<SeatEntity, EntityRenderState> 
     }
 
     @Override
+    //? if >=26.3 {
+    /*public boolean shouldRender(SeatEntity entity, Frustum frustum, double x, double y, double z, float partialTicks) {
+    *///?} else {
     public boolean shouldRender(SeatEntity entity, Frustum frustum, double x, double y, double z) {
+    //?}
         return false;
     }
 

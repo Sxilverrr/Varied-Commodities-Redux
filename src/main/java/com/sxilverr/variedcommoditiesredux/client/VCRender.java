@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import com.sxilverr.variedcommoditiesredux.mixin.ItemStackRenderStateAccessor;
 import com.sxilverr.variedcommoditiesredux.mixin.LayerRenderStateAccessor;
-import net.minecraft.client.renderer.block.model.ItemTransform;
+import net.minecraft.client.resources.model.cuboid.ItemTransform;
 import net.minecraft.client.renderer.item.ItemStackRenderState;
 
 public final class VCRender {

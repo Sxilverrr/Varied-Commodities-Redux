@@ -5,13 +5,13 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.CraftingRecipe;
@@ -43,8 +43,8 @@ public final class VCRecipes {
             return VariedCommodities.MODID + ":carpentry";
         }
     });
-    public static final RegistrySupplier<RecipeSerializer<Carpentry>> CARPENTRY_SERIALIZER = SERIALIZERS.register("carpentry", Carpentry.Serializer::new);
-    public static final RegistrySupplier<RecipeSerializer<FlipDagger>> FLIP_DAGGER = SERIALIZERS.register("flip_dagger", () -> new CustomRecipe.Serializer<>(FlipDagger::new));
+    public static final RegistrySupplier<RecipeSerializer<Carpentry>> CARPENTRY_SERIALIZER = SERIALIZERS.register("carpentry", () -> Carpentry.SERIALIZER);
+    public static final RegistrySupplier<RecipeSerializer<FlipDagger>> FLIP_DAGGER = SERIALIZERS.register("flip_dagger", () -> FlipDagger.SERIALIZER);
 
     public static List<Entry> synced = List.of();
     public static Runnable onSync = () -> {
@@ -62,12 +62,12 @@ public final class VCRecipes {
                 Entry::new);
     }
 
-    public static List<Entry> entries(RecipeManager manager, HolderLookup.Provider registries) {
+    public static List<Entry> entries(RecipeManager manager) {
         List<Entry> list = new ArrayList<>();
         for (RecipeHolder<?> holder : manager.getRecipes()) {
             if (!holder.id().identifier().getNamespace().equals(VariedCommodities.MODID)) continue;
             if (holder.value() instanceof ShapedRecipe shaped) {
-                list.add(new Entry(false, shaped.getWidth(), shaped.getHeight(), shaped.getIngredients(), shaped.assemble(CraftingInput.EMPTY, registries)));
+                list.add(new Entry(false, shaped.getWidth(), shaped.getHeight(), shaped.getIngredients(), shaped.assemble(CraftingInput.EMPTY)));
             } else if (holder.value() instanceof Carpentry carpentry) {
                 list.add(new Entry(true, carpentry.width(), carpentry.height(), carpentry.inputs(), carpentry.result()));
             }
@@ -79,12 +79,12 @@ public final class VCRecipes {
     public static class Carpentry implements CraftingRecipe {
         private final List<String> pattern;
         private final Map<String, Ingredient> key;
-        private final ItemStack result;
+        private final ItemStackTemplate result;
         private final int width;
         private final List<Optional<Ingredient>> inputs;
         private PlacementInfo placement;
 
-        public Carpentry(List<String> pattern, Map<String, Ingredient> key, ItemStack result) {
+        public Carpentry(List<String> pattern, Map<String, Ingredient> key, ItemStackTemplate result) {
             this.pattern = List.copyOf(pattern);
             this.key = Map.copyOf(key);
             this.result = result;
@@ -114,7 +114,7 @@ public final class VCRecipes {
         }
 
         public ItemStack result() {
-            return result;
+            return result.create();
         }
 
         public List<Optional<Ingredient>> inputs() {
@@ -151,8 +151,18 @@ public final class VCRecipes {
         }
 
         @Override
-        public ItemStack assemble(CraftingInput input, HolderLookup.Provider registries) {
-            return result.copy();
+        public ItemStack assemble(CraftingInput input) {
+            return result.create();
+        }
+
+        @Override
+        public boolean showNotification() {
+            return true;
+        }
+
+        @Override
+        public String group() {
+            return "";
         }
 
         @Override
@@ -176,34 +186,22 @@ public final class VCRecipes {
             return CARPENTRY.get();
         }
 
-        public static class Serializer implements RecipeSerializer<Carpentry> {
-            private static final MapCodec<Carpentry> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
-                    Codec.STRING.listOf().fieldOf("pattern").forGetter(r -> r.pattern),
-                    Codec.unboundedMap(Codec.STRING, Ingredient.CODEC).fieldOf("key").forGetter(r -> r.key),
-                    ItemStack.STRICT_CODEC.fieldOf("result").forGetter(r -> r.result)
-            ).apply(instance, Carpentry::new));
-            private static final StreamCodec<RegistryFriendlyByteBuf, Carpentry> STREAM_CODEC = StreamCodec.composite(
-                    ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), r -> r.pattern,
-                    ByteBufCodecs.map(HashMap::new, ByteBufCodecs.STRING_UTF8, Ingredient.CONTENTS_STREAM_CODEC), r -> new HashMap<>(r.key),
-                    ItemStack.STREAM_CODEC, r -> r.result,
-                    Carpentry::new);
-
-            @Override
-            public MapCodec<Carpentry> codec() {
-                return CODEC;
-            }
-
-            @Override
-            public StreamCodec<RegistryFriendlyByteBuf, Carpentry> streamCodec() {
-                return STREAM_CODEC;
-            }
-        }
+        private static final MapCodec<Carpentry> CODEC = RecordCodecBuilder.mapCodec(instance -> instance.group(
+                Codec.STRING.listOf().fieldOf("pattern").forGetter(r -> r.pattern),
+                Codec.unboundedMap(Codec.STRING, Ingredient.CODEC).fieldOf("key").forGetter(r -> r.key),
+                ItemStackTemplate.CODEC.fieldOf("result").forGetter(r -> r.result)
+        ).apply(instance, Carpentry::new));
+        private static final StreamCodec<RegistryFriendlyByteBuf, Carpentry> STREAM_CODEC = StreamCodec.composite(
+                ByteBufCodecs.STRING_UTF8.apply(ByteBufCodecs.list()), r -> r.pattern,
+                ByteBufCodecs.map(HashMap::new, ByteBufCodecs.STRING_UTF8, Ingredient.CONTENTS_STREAM_CODEC), r -> new HashMap<>(r.key),
+                ItemStackTemplate.STREAM_CODEC, r -> r.result,
+                Carpentry::new);
+        static final RecipeSerializer<Carpentry> SERIALIZER = new RecipeSerializer<>(CODEC, STREAM_CODEC);
     }
 
     public static class FlipDagger extends CustomRecipe {
-        public FlipDagger(CraftingBookCategory category) {
-            super(category);
-        }
+        private static final FlipDagger INSTANCE = new FlipDagger();
+        static final RecipeSerializer<FlipDagger> SERIALIZER = new RecipeSerializer<>(MapCodec.unit(INSTANCE), StreamCodec.unit(INSTANCE));
 
         @Override
         public boolean matches(CraftingInput input, Level level) {
@@ -211,7 +209,7 @@ public final class VCRecipes {
         }
 
         @Override
-        public ItemStack assemble(CraftingInput input, HolderLookup.Provider registries) {
+        public ItemStack assemble(CraftingInput input) {
             return flip(input.size(), input::getItem);
         }
 

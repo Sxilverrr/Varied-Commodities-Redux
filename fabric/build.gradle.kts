@@ -1,7 +1,7 @@
 @file:Suppress("UnstableApiUsage")
 
 plugins {
-    id("dev.architectury.loom")
+    id("dev.architectury.loom-no-remap")
     id("architectury-plugin")
     id("com.gradleup.shadow")
 }
@@ -46,19 +46,19 @@ repositories {
 
 dependencies {
     minecraft("com.mojang:minecraft:$minecraft")
-    mappings(loom.officialMojangMappings())
-    modImplementation("net.fabricmc:fabric-loader:${common.mod.dep("fabric_loader")}")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:${common.mod.dep("fabric_api")}")
-    modApi("dev.architectury:architectury-fabric:${common.mod.dep("architectury")}")
-    modImplementation("me.shedaniel.cloth:cloth-config-fabric:${common.mod.dep("cloth_config")}") {
+    implementation("net.fabricmc:fabric-loader:${common.mod.dep("fabric_loader")}")
+    implementation("net.fabricmc.fabric-api:fabric-api:${common.mod.dep("fabric_api")}")
+    implementation("dev.architectury:architectury-fabric:${common.mod.dep("architectury")}")
+    implementation("me.shedaniel.cloth:cloth-config-fabric:${common.mod.dep("cloth_config")}") {
         exclude(group = "net.fabricmc.fabric-api")
     }
-    modImplementation("maven.modrinth:modmenu:${common.mod.dep("mod_menu")}") { isTransitive = false }
+    implementation("maven.modrinth:modmenu:${common.mod.dep("mod_menu")}") { isTransitive = false }
 
-    modLocalRuntime("mezz.jei:jei-$minecraft-$loader:${common.mod.dep("jei")}") { isTransitive = false }
-    modLocalRuntime("net.mezzdev.config:mezz_config-$minecraft-$loader:0.6.10") { isTransitive = false }
+    localRuntime("mezz.jei:jei-$minecraft-$loader:${common.mod.dep("jei")}") { isTransitive = false }
+    localRuntime("net.mezzdev.config:mezz_config-$minecraft-$loader:${common.mod.dep("mezz_config")}") { isTransitive = false }
+    localRuntime("net.mezzdev.config:mezz_config_gui-$minecraft-$loader:${common.mod.dep("mezz_config_gui")}") { isTransitive = false }
 
-    commonBundle(project(common.path, "namedElements")) { isTransitive = false }
+    commonBundle(project(common.path)) { isTransitive = false }
     shadowBundle(project(common.path, "transformProductionFabric")) { isTransitive = false }
 }
 
@@ -71,21 +71,15 @@ loom {
 
 java {
     withSourcesJar()
-    val java = JavaVersion.VERSION_21
+    val java = JavaVersion.VERSION_25
     targetCompatibility = java
     sourceCompatibility = java
 }
 
 tasks.shadowJar {
     configurations = listOf(shadowBundle)
-    archiveClassifier = "dev-shadow"
-    exclude("architectury.common.json")
-}
-
-tasks.remapJar {
-    input = tasks.shadowJar.get().archiveFile
     archiveClassifier = null
-    dependsOn(tasks.shadowJar)
+    exclude("architectury.common.json")
 }
 
 tasks.jar {
@@ -102,6 +96,10 @@ tasks.processResources {
     )
 }
 
+tasks.assemble {
+    dependsOn(tasks.shadowJar)
+}
+
 tasks.build {
     group = "versioned"
     description = "Must run through 'chiseledBuild'"
@@ -110,7 +108,7 @@ tasks.build {
 tasks.register<Copy>("buildAndCollect") {
     group = "versioned"
     description = "Must run through 'chiseledBuild'"
-    from(tasks.remapJar.get().archiveFile, tasks.remapSourcesJar.get().archiveFile)
+    from(tasks.shadowJar.get().archiveFile, tasks.named<Jar>("sourcesJar").get().archiveFile)
     into(rootProject.layout.buildDirectory.file("libs/${mod.version}/$loader"))
     dependsOn("build")
 }

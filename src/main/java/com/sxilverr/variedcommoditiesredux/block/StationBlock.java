@@ -52,7 +52,7 @@ public final class StationBlock {
         protected InteractionResult onUse(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
             if (player instanceof ServerPlayer serverPlayer && level.getBlockEntity(pos) instanceof TradingBlockEntity be) {
                 if (be.isFull()) {
-                    player.displayClientMessage(Component.translatable("trader.variedcommoditiesredux.busy"), true);
+                    player.sendOverlayMessage(Component.translatable("trader.variedcommoditiesredux.busy"));
                 } else {
                     MenuRegistry.openExtendedMenu(serverPlayer, provider(getName(), pos, (id, inv) -> new TradingMenu(id, inv, pos)));
                     be.addTrader(serverPlayer);

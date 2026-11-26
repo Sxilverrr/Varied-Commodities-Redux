@@ -23,19 +23,22 @@ import dev.architectury.event.events.client.ClientLifecycleEvent;
 import dev.architectury.registry.client.level.entity.EntityRendererRegistry;
 import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import dev.architectury.registry.client.rendering.ColorHandlerRegistry;
-import dev.architectury.registry.client.rendering.RenderTypeRegistry;
 import dev.architectury.registry.client.gui.MenuScreenRegistry;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.BookViewScreen;
-import net.minecraft.client.renderer.chunk.ChunkSectionLayer;
+import net.minecraft.client.color.block.BlockTintSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Property;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public final class VCClient {
     public static void init() {
@@ -65,9 +68,6 @@ public final class VCClient {
         BlockEntityRendererRegistry.register(VCBlockEntities.BIG_SIGN.get(), BlockRenderers.Sign::new);
         BlockEntityRendererRegistry.register(VCBlockEntities.TOMBSTONE.get(), BlockRenderers.Sign::new);
         BlockEntityRendererRegistry.register(VCBlockEntities.BOOK.get(), BlockRenderers.Book::new);
-        RenderTypeRegistry.register(ChunkSectionLayer.TRANSLUCENT, VCBlocks.all(VCBlocks.CRYSTALS.values()));
-        RenderTypeRegistry.register(ChunkSectionLayer.CUTOUT, VCBlocks.all(VCBlocks.BLOOD));
-        RenderTypeRegistry.register(ChunkSectionLayer.CUTOUT, VCBlocks.all(VCBlocks.FURNITURE));
     }
 
     private static int rgb(int color) {
@@ -77,21 +77,31 @@ public final class VCClient {
 
     @SuppressWarnings("unchecked")
     private static void registerColors() {
-        ColorHandlerRegistry.registerBlockColors((state, level, pos, tint) -> 0xFF000000 | ((CrystalBlock) state.getBlock()).color().getMapColor().col,
+        ColorHandlerRegistry.registerBlockColors(state -> 0xFF000000 | ((CrystalBlock) state.getBlock()).color().getMapColor().col,
                 VCBlocks.CRYSTALS.values().toArray(RegistrySupplier[]::new));
         List<RegistrySupplier<Block>> tinted = new ArrayList<>();
         tinted.addAll(VCBlocks.BANNERS.values());
         tinted.addAll(VCBlocks.WALL_BANNERS.values());
         tinted.addAll(VCBlocks.TALL_LAMPS.values());
         tinted.addAll(VCBlocks.WOOL_COUCHES.values());
-        ColorHandlerRegistry.registerBlockColors((state, level, pos, tint) -> rgb(state.getValue(RotatedBlock.COLOR).getId()), tinted.toArray(RegistrySupplier[]::new));
+        ColorHandlerRegistry.registerBlockColors(new BlockTintSource() {
+            @Override
+            public int color(BlockState state) {
+                return rgb(state.getValue(RotatedBlock.COLOR).getId());
+            }
+
+            @Override
+            public Set<Property<?>> relevantProperties() {
+                return Set.of(RotatedBlock.COLOR);
+            }
+        }, tinted.toArray(RegistrySupplier[]::new));
     }
 
     private static void openSignEditor(BlockPos pos) {
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.level != null && minecraft.level.getBlockEntity(pos) instanceof BigSignBlockEntity sign
                 && sign.getBlockState().getBlock() instanceof BigSignBlock block && block.hasText()) {
-            minecraft.setScreen(new BigSignEditScreen(sign, block));
+            open(new BigSignEditScreen(sign, block));
         }
     }
 
@@ -99,10 +109,18 @@ public final class VCClient {
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.level == null) return;
         if (book.is(Items.WRITTEN_BOOK)) {
-            minecraft.setScreen(new BookViewScreen(BookViewScreen.BookAccess.fromItem(book)));
+            open(new BookViewScreen(BookViewScreen.BookAccess.fromItem(book)));
         } else {
-            minecraft.setScreen(new OpenBookScreen(pos, BookPages.pages(book)));
+            open(new OpenBookScreen(pos, BookPages.pages(book)));
         }
+    }
+
+    public static void open(Screen screen) {
+        //? if >=26.2 {
+        /*Minecraft.getInstance().gui.setScreen(screen);
+        *///?} else {
+        Minecraft.getInstance().setScreen(screen);
+        //?}
     }
 
     private VCClient() {

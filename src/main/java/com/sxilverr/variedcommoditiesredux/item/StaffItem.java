@@ -49,7 +49,7 @@ public class StaffItem extends ChargeItem {
                 if (!ItemUtil.consume(player, VCItems.MANA.get())) return;
             }
             ItemUtil.playSound(entity, VCSounds.MAGIC_CHARGE.get(), 1.0F, 1.0F);
-            int damage = 6 + material.damage() + level.random.nextInt(4);
+            int damage = 6 + material.damage() + level.getRandom().nextInt(4);
             damage = (int) (damage + damage * VCEnchants.damage(level, stack) * 0.5F);
             MagicProjectile projectile = new MagicProjectile(level, entity, spell.get());
             projectile.damage = (float) (damage * VCConfig.staffDamageMultiplier);

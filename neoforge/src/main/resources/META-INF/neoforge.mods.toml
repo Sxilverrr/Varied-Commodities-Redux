@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[4,)"
+loaderVersion = "[1,)"
 license = "CC BY-NC 3.0"
 
 [[mods]]
@@ -8,8 +8,8 @@ version = "${version}"
 displayName = "${name}"
 authors = "Noppes, Sxilverr"
 description = '''A modern port of Varied Commodities by Noppes'''
-logoFile = "assets/${id}/icon.png"
-logoBlur = false
+iconFile = "assets/${id}/icon.png"
+iconBlur = false
 
 [[mixins]]
 config = "variedcommoditiesredux.mixins.json"
@@ -17,7 +17,7 @@ config = "variedcommoditiesredux.mixins.json"
 [[dependencies.${id}]]
 modId = "neoforge"
 type = "required"
-versionRange = "[21.11,)"
+versionRange = "[26.1,)"
 ordering = "NONE"
 side = "BOTH"
 

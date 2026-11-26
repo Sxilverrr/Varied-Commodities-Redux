@@ -90,7 +90,11 @@ public final class VCBlocks {
             CRYSTALS.put(color, plain(color.getName() + "_crystal_block", p -> new CrystalBlock(color, p
                     .mapColor(color).strength(5.0F, 6.0F).sound(SoundType.GLASS).noOcclusion().lightLevel(s -> 12)
                     .isValidSpawn((s, l, pos, e) -> false).isRedstoneConductor((s, l, pos) -> false)
+                    //? if >=26.3 {
+                    /*.isSuffocating((s, l, pos) -> false).isViewBlocking((s, l, pos, box) -> false))));
+                    *///?} else {
                     .isSuffocating((s, l, pos) -> false).isViewBlocking((s, l, pos) -> false))));
+                    //?}
         }
         for (int i = 0; i < 16; i++) {
             PLACEHOLDERS.add(plain("placeholder_" + i, p -> new Block(p.mapColor(MapColor.STONE).sound(SoundType.WOOD))));

@@ -1,10 +1,18 @@
 plugins {
     id("dev.kikugie.stonecutter")
-    id("dev.architectury.loom") version "1.17-SNAPSHOT" apply false
-    id("architectury-plugin") version "3.5.168" apply false
-    id("com.gradleup.shadow") version "9.0.0" apply false
+    id("dev.architectury.loom-no-remap") version "1.17-SNAPSHOT" apply false
+    id("architectury-plugin") version "3.5.170" apply false
+    id("com.gradleup.shadow") version "9.4.3" apply false
 }
-stonecutter active "1.21.11" /* [SC] DO NOT EDIT */
+stonecutter active "26.1.2" /* [SC] DO NOT EDIT */
+
+stonecutter parameters {
+    val v26_3 = eval(metadata.version, ">=26.3")
+    replacement(v26_3, "pose.mulPose(", "pose.rotate(")
+    replacement(v26_3, "monster.EnderMan", "monster.Enderman")
+    replacement(v26_3, "instanceof EnderMan", "instanceof Enderman")
+    replacement(v26_3, "PushReaction.DESTROY", "PushReaction.POPPED")
+}
 
 stonecutter registerChiseled tasks.register("chiseledBuild", stonecutter.chiseled) {
     group = "project"

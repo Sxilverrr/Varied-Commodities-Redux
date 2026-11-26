@@ -8,7 +8,7 @@ import com.sxilverr.variedcommoditiesredux.mixin.SpecialModelRenderersAccessor;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
-import net.fabricmc.fabric.api.client.rendering.v1.SpecialGuiElementRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.PictureInPictureRendererRegistry;
 import net.minecraft.client.renderer.entity.layers.EquipmentLayerRenderer;
 import net.minecraft.client.resources.model.EquipmentClientInfo;
 import net.minecraft.core.component.DataComponents;
@@ -19,7 +19,11 @@ public final class VariedCommoditiesFabricClient implements ClientModInitializer
     @Override
     public void onInitializeClient() {
         SpecialModelRenderersAccessor.variedcommoditiesredux$idMapper().put(BookRenderer.ID, BookRenderer.Unbaked.CODEC);
-        SpecialGuiElementRegistry.register(context -> new SignPreviewRenderer(context.vertexConsumers()));
+        //? if >=26.2 {
+        /*PictureInPictureRendererRegistry.register(context -> new SignPreviewRenderer());
+        *///?} else {
+        PictureInPictureRendererRegistry.register(context -> new SignPreviewRenderer(context.bufferSource()));
+        //?}
         ArmorRenderer.register(context -> {
             EquipmentLayerRenderer equipment = context.getEquipmentRenderer();
             return (pose, collector, stack, state, slot, light, model) -> {

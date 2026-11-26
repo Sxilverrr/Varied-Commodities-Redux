@@ -150,7 +150,11 @@ public final class NeoForgeConfig {
     }
 
     static void register(IEventBus modBus, ModContainer container) {
+        //? if >=26.3 {
+        /*container.registerConfig(ModConfig.Type.LOCAL, SPEC);
+        *///?} else {
         container.registerConfig(ModConfig.Type.COMMON, SPEC);
+        //?}
         modBus.addListener((ModConfigEvent.Loading e) -> sync());
         modBus.addListener((ModConfigEvent.Reloading e) -> sync());
     }

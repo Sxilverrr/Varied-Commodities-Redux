@@ -15,7 +15,6 @@ import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.special.NoDataSpecialModelRenderer;
 import net.minecraft.client.renderer.special.SpecialModelRenderer;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.ItemDisplayContext;
 import org.joml.Vector3fc;
 
 import java.util.function.Consumer;
@@ -23,8 +22,8 @@ import java.util.function.Consumer;
 public final class BookRenderer {
     public static final Identifier ID = VariedCommodities.id("book");
     private static final Identifier INK = VariedCommodities.id("textures/models/block/ink.png");
-    private static final Identifier ENCHANTING_BOOK = Identifier.withDefaultNamespace("textures/entity/enchanting_table_book.png");
-    private static final BookModel.State OPEN = new BookModel.State(0.0F, 0.0F, 1.0F, 1.24F);
+    private static final Identifier ENCHANTING_BOOK = Identifier.withDefaultNamespace("textures/entity/enchantment/enchanting_table_book.png");
+    private static final BookModel.State OPEN = BookModel.State.forAnimation(0.0F, 0.0F, 1.0F, 1.24F);
     private final ModelPart ink = InkModel.create();
     private final BookModel book;
 
@@ -37,7 +36,11 @@ public final class BookRenderer {
         transformInk(pose, yaw);
         collector.submitModelPart(ink, pose, RenderTypes.entityCutout(INK), light, overlay, null);
         transformBook(pose);
-        collector.submitModel(book, OPEN, pose, RenderTypes.entityCutout(ENCHANTING_BOOK), light, overlay, -1, null, 0, null);
+        //? if >=26.3 {
+        /*collector.submitModel(book, OPEN, pose, RenderTypes.entityCutout(ENCHANTING_BOOK), light, overlay, 0);
+        *///?} else {
+        collector.submitModel(book, OPEN, pose, RenderTypes.entityCutout(ENCHANTING_BOOK), light, overlay, 0, null);
+        //?}
         pose.popPose();
     }
 
@@ -53,7 +56,7 @@ public final class BookRenderer {
 
     public record Item(BookRenderer renderer) implements NoDataSpecialModelRenderer {
         @Override
-        public void submit(ItemDisplayContext context, PoseStack pose, SubmitNodeCollector collector, int light, int overlay, boolean foil, int outline) {
+        public void submit(PoseStack pose, SubmitNodeCollector collector, int light, int overlay, boolean foil, int outline) {
             renderer.submit(pose, collector, light, overlay, 0.0F);
         }
 
@@ -67,11 +70,11 @@ public final class BookRenderer {
         }
     }
 
-    public record Unbaked() implements SpecialModelRenderer.Unbaked {
+    public record Unbaked() implements NoDataSpecialModelRenderer.Unbaked {
         public static final MapCodec<Unbaked> CODEC = MapCodec.unit(new Unbaked());
 
         @Override
-        public SpecialModelRenderer<?> bake(SpecialModelRenderer.BakingContext context) {
+        public SpecialModelRenderer<Void> bake(SpecialModelRenderer.BakingContext context) {
             return new Item(new BookRenderer(context.entityModelSet()));
         }
 

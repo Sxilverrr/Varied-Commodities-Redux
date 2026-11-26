@@ -43,14 +43,14 @@ public class GunItem extends ChargeItem {
         };
         projectile.setSpeed(40);
         projectile.shoot(material.damage() + 1);
-        ItemUtil.playSound(entity, VCSounds.GUN_SHOT.get(), 1.0F, level.random.nextFloat() * 0.3F + 0.8F);
+        ItemUtil.playSound(entity, VCSounds.GUN_SHOT.get(), 1.0F, level.getRandom().nextFloat() * 0.3F + 0.8F);
         level.addFreshEntity(projectile);
     }
 
     @Override
     public void onUseTick(Level level, LivingEntity entity, ItemStack stack, int remaining) {
         if (!level.isClientSide() && usedTicks(stack, entity, remaining) == 8) {
-            ItemUtil.playSound(entity, VCSounds.GUN_TRIGGER.get(), 1.0F, 1.0F / (level.random.nextFloat() * 0.4F + 0.8F));
+            ItemUtil.playSound(entity, VCSounds.GUN_TRIGGER.get(), 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
         }
     }
 }

@@ -2,7 +2,7 @@ package com.sxilverr.variedcommoditiesredux.client.screen;
 
 import com.sxilverr.variedcommoditiesredux.VCRecipes;
 import com.sxilverr.variedcommoditiesredux.VariedCommodities;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.PageButton;
@@ -60,11 +60,11 @@ public class RecipeBookScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        super.render(graphics, mouseX, mouseY, partialTick);
-        graphics.drawString(font, title, left() + 5, top() + 5, 0xFF404040, false);
+    public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
+        super.extractRenderState(graphics, mouseX, mouseY, partialTick);
+        graphics.text(font, title, left() + 5, top() + 5, 0xFF404040, false);
         String number = (page + 1) + "/" + pages();
-        graphics.drawString(font, number, left() + (256 - font.width(number)) / 2, top() + 168, 0xFF404040, false);
+        graphics.text(font, number, left() + (256 - font.width(number)) / 2, top() + 168, 0xFF404040, false);
         ItemStack hovered = ItemStack.EMPTY;
         for (int i = 0; i < 4; i++) {
             int index = i + page * 4;
@@ -86,8 +86,8 @@ public class RecipeBookScreen extends Screen {
     }
 
     @Override
-    public void renderBackground(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        super.renderBackground(graphics, mouseX, mouseY, partialTick);
+    public void extractBackground(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
+        super.extractBackground(graphics, mouseX, mouseY, partialTick);
         graphics.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, left(), top(), 0.0F, 0.0F, 256, 182, 256, 256);
     }
 
@@ -98,10 +98,10 @@ public class RecipeBookScreen extends Screen {
         return new ItemStack(items.get((int) (System.currentTimeMillis() / 1000L % items.size())));
     }
 
-    private ItemStack item(GuiGraphics graphics, ItemStack stack, int x, int y, int mouseX, int mouseY, ItemStack hovered) {
+    private ItemStack item(GuiGraphicsExtractor graphics, ItemStack stack, int x, int y, int mouseX, int mouseY, ItemStack hovered) {
         if (stack.isEmpty()) return hovered;
-        graphics.renderItem(stack, x, y);
-        graphics.renderItemDecorations(font, stack, x, y);
+        graphics.item(stack, x, y);
+        graphics.itemDecorations(font, stack, x, y);
         return mouseX >= x - 1 && mouseX < x + 17 && mouseY >= y - 1 && mouseY < y + 17 ? stack : hovered;
     }
 

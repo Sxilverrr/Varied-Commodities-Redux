@@ -7,18 +7,9 @@ import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 
-import com.mojang.serialization.MapCodec;
-
 public class BloodBlock extends MultifaceBlock {
-    private static final MapCodec<BloodBlock> CODEC = simpleCodec(BloodBlock::new);
-
     public BloodBlock(Properties properties) {
         super(properties);
-    }
-
-    @Override
-    protected MapCodec<BloodBlock> codec() {
-        return CODEC;
     }
 
     @Override

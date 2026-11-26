@@ -4,7 +4,8 @@ import com.sxilverr.variedcommoditiesredux.block.BigSignBlock;
 import com.sxilverr.variedcommoditiesredux.block.entity.BigSignBlockEntity;
 import com.sxilverr.variedcommoditiesredux.mixin.GuiGraphicsAccessor;
 import com.sxilverr.variedcommoditiesredux.network.VCNetwork;
-import net.minecraft.client.gui.GuiGraphics;
+import com.mojang.blaze3d.platform.InputConstants;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.font.TextFieldHelper;
 import net.minecraft.client.gui.screens.Screen;
@@ -12,7 +13,7 @@ import net.minecraft.client.input.CharacterEvent;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import org.lwjgl.glfw.GLFW;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
@@ -47,22 +48,27 @@ public class BigSignEditScreen extends Screen {
                 TextFieldHelper.createClipboardGetter(minecraft), TextFieldHelper.createClipboardSetter(minecraft),
                 text -> font.width(text) <= block.lineWidth());
         field.setCursorToEnd();
+        //? if >=26.3 {
+        /*minecraft.textInputManager().startTextInput(this);
+        *///?} else {
+        minecraft.textInputManager().startTextInput();
+        //?}
     }
 
     @Override
     public void tick() {
         frame++;
-        if (sign.isRemoved() || minecraft.player == null || minecraft.player.distanceToSqr(sign.getBlockPos().getCenter()) > 64.0) onClose();
+        if (sign.isRemoved() || minecraft.player == null || minecraft.player.distanceToSqr(Vec3.atCenterOf(sign.getBlockPos())) > 64.0) onClose();
     }
 
     @Override
     public boolean keyPressed(KeyEvent event) {
         int key = event.key();
-        if (key == GLFW.GLFW_KEY_UP) {
+        if (key == InputConstants.KEY_UP) {
             move(-1);
             return true;
         }
-        if (key == GLFW.GLFW_KEY_DOWN || key == GLFW.GLFW_KEY_ENTER || key == GLFW.GLFW_KEY_KP_ENTER) {
+        if (key == InputConstants.KEY_DOWN || key == InputConstants.KEY_RETURN || key == InputConstants.KEY_NUMPADENTER) {
             move(1);
             return true;
         }
@@ -81,12 +87,12 @@ public class BigSignEditScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        super.render(graphics, mouseX, mouseY, partialTick);
+    public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
+        super.extractRenderState(graphics, mouseX, mouseY, partialTick);
         float size = size();
-        graphics.drawCenteredString(font, title, width / 2, center() - (int) (size / 2) - 16, 0xFFFFFFFF);
+        graphics.centeredText(font, title, width / 2, center() - (int) (size / 2) - 16, 0xFFFFFFFF);
         int half = (int) size;
-        ((GuiGraphicsAccessor) graphics).variedcommoditiesredux$guiRenderState().submitPicturesInPictureState(new SignPreviewRenderer.State(
+        ((GuiGraphicsAccessor) graphics).variedcommoditiesredux$guiRenderState().addPicturesInPictureState(new SignPreviewRenderer.State(
                 block, lines.clone(), frame / 6 % 2 == 0 ? line : -1, field.getCursorPos(),
                 width / 2 - half, center() - half, width / 2 + half, center() + half, size));
     }
@@ -94,6 +100,11 @@ public class BigSignEditScreen extends Screen {
     @Override
     public void removed() {
         if (minecraft.level != null) VCNetwork.sendToServer(new VCNetwork.SaveSign(sign.getBlockPos(), List.of(lines)));
+        //? if >=26.3 {
+        /*minecraft.textInputManager().stopTextInput(this);
+        *///?} else {
+        minecraft.textInputManager().stopTextInput();
+        //?}
     }
 
     @Override

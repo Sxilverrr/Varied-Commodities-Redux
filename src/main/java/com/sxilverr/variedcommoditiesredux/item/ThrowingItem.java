@@ -49,7 +49,7 @@ public class ThrowingItem extends ChargeItem {
                 projectile.setHasGravity(true);
                 projectile.setSpeed(14);
                 projectile.shoot(1.0F);
-                ItemUtil.playSound(entity, SoundEvents.ARROW_SHOOT, 1.0F, level.random.nextFloat() * 0.3F + 0.8F);
+                ItemUtil.playSound(entity, SoundEvents.ARROW_SHOOT, 1.0F, level.getRandom().nextFloat() * 0.3F + 0.8F);
                 level.addFreshEntity(projectile);
             }
             case HOLY_HAND_GRENADE -> {

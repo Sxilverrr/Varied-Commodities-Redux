@@ -22,6 +22,7 @@ import net.minecraft.world.entity.projectile.ThrowableProjectile;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -299,7 +300,7 @@ public class VCProjectile extends ThrowableProjectile {
         if (item.getItem() instanceof BlockItem block) {
             server.levelEvent(2001, pos, Block.getId(block.getBlock().defaultBlockState()));
         } else {
-            server.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, item), getX(), getY(), getZ(), 8, 0.15, 0.2, 0.15, 0.05);
+            server.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, ItemStackTemplate.fromNonEmptyStack(item)), getX(), getY(), getZ(), 8, 0.15, 0.2, 0.15, 0.05);
         }
     }
 

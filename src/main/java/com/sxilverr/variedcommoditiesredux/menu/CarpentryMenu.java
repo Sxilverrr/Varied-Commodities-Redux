@@ -82,7 +82,7 @@ public class CarpentryMenu extends AbstractContainerMenu {
                     remaining.set(positioned.left() + x + (positioned.top() + y) * 4, leftovers.get(x + y * input.width()));
                 }
             }
-            return r.assemble(input, level.registryAccess());
+            return r.assemble(input);
         }).orElse(ItemStack.EMPTY);
     }
 
@@ -102,7 +102,11 @@ public class CarpentryMenu extends AbstractContainerMenu {
                 leftover.grow(stack.getCount());
                 grid.setItem(i, leftover.copy());
             } else if (!player.getInventory().add(leftover.copy())) {
+                //? if >=26.3 {
+                /*player.drop(leftover.copy(), false, net.minecraft.util.Prediction.PREDICTED);
+                *///?} else {
                 player.drop(leftover.copy(), false);
+                //?}
             }
         }
         slotsChanged(grid);

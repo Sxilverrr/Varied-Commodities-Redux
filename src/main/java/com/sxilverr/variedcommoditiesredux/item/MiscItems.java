@@ -36,7 +36,7 @@ public final class MiscItems {
             if (bowed) player.startUsingItem(hand);
             ItemStack stack = player.getItemInHand(hand);
             if (level instanceof ServerLevel server) {
-                int note = level.random.nextInt(24);
+                int note = level.getRandom().nextInt(24);
                 float pitch = (float) Math.pow(2.0, (note - 12) / 12.0);
                 ItemUtil.playSound(player, SoundEvents.NOTE_BLOCK_HARP.value(), (float) VCConfig.instrumentVolume, pitch);
                 server.sendParticles(ParticleTypes.NOTE, player.getX(), player.getY() + 1.2, player.getZ(), 0, note / 24.0, 0.0, 0.0, 1.0);
@@ -78,10 +78,10 @@ public final class MiscItems {
             super(properties.durability(material.maxUses() * 5)
                     .repairable(ItemTags.WOODEN_TOOL_MATERIALS)
                     .equippableUnswappable(EquipmentSlot.OFFHAND)
-                    .component(DataComponents.BLOCKS_ATTACKS, new BlocksAttacks(0.25F, 1.0F,
+                    .delayedComponent(DataComponents.BLOCKS_ATTACKS, context -> new BlocksAttacks(0.25F, 1.0F,
                             List.of(new BlocksAttacks.DamageReduction(90.0F, Optional.empty(), 0.0F, 1.0F)),
                             new BlocksAttacks.ItemDamageFunction(3.0F, 1.0F, 1.0F),
-                            Optional.of(DamageTypeTags.BYPASSES_SHIELD),
+                            Optional.of(context.getOrThrow(DamageTypeTags.BYPASSES_SHIELD)),
                             Optional.of(SoundEvents.SHIELD_BLOCK),
                             Optional.of(SoundEvents.SHIELD_BREAK)))
                     .component(DataComponents.BREAK_SOUND, SoundEvents.SHIELD_BREAK));

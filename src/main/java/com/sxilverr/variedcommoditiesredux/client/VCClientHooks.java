@@ -33,7 +33,7 @@ public final class VCClientHooks {
     }
 
     public static void openRecipeBook() {
-        Minecraft.getInstance().setScreen(new RecipeBookScreen());
+        VCClient.open(new RecipeBookScreen());
     }
 
     private VCClientHooks() {

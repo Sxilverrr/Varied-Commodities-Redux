@@ -17,6 +17,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -187,12 +188,12 @@ public final class VCNetwork {
     }
 
     public static void syncRecipes(ServerPlayer player) {
-        send(player, new SyncRecipes(VCRecipes.entries(player.level().getServer().getRecipeManager(), player.level().registryAccess())));
+        send(player, new SyncRecipes(VCRecipes.entries(player.level().getServer().getRecipeManager())));
     }
 
     private static void saveSign(SaveSign packet, ServerPlayer player) {
         BlockPos pos = packet.pos();
-        if (!player.level().isLoaded(pos) || player.distanceToSqr(pos.getCenter()) > 64.0) return;
+        if (!player.level().isLoaded(pos) || player.distanceToSqr(Vec3.atCenterOf(pos)) > 64.0) return;
         if (player.level().getBlockEntity(pos) instanceof BigSignBlockEntity sign && !sign.waxed
                 && sign.getBlockState().getBlock() instanceof BigSignBlock block && block.hasText()) {
             List<String> lines = packet.lines();
@@ -203,7 +204,7 @@ public final class VCNetwork {
 
     private static void saveBook(SaveBook packet, ServerPlayer player) {
         BlockPos pos = packet.pos();
-        if (!player.level().isLoaded(pos) || player.distanceToSqr(pos.getCenter()) > 64.0) return;
+        if (!player.level().isLoaded(pos) || player.distanceToSqr(Vec3.atCenterOf(pos)) > 64.0) return;
         if (!(player.level().getBlockEntity(pos) instanceof BookBlockEntity be) || be.book.is(Items.WRITTEN_BOOK)) return;
         be.book = packet.sign() && !packet.title().isBlank()
                 ? BookPages.written(packet.pages(), packet.title().trim(), player.getName().getString())

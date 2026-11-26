@@ -1,11 +1,11 @@
 package com.sxilverr.variedcommoditiesredux.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
@@ -85,14 +85,15 @@ public class RotatedBlock extends VCBlock implements EntityBlock {
 
     protected static boolean dye(Level level, BlockPos pos, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
-        if (!(stack.getItem() instanceof DyeItem dye)) return false;
+        DyeColor color = stack.get(DataComponents.DYE);
+        if (color == null) return false;
         BlockState state = level.getBlockState(pos);
-        if (!state.hasProperty(COLOR) || state.getValue(COLOR) == dye.getDyeColor()) return true;
-        level.setBlock(pos, state.setValue(COLOR, dye.getDyeColor()), 3);
+        if (!state.hasProperty(COLOR) || state.getValue(COLOR) == color) return true;
+        level.setBlock(pos, state.setValue(COLOR, color), 3);
         if (state.hasProperty(TallBlock.TOP)) {
             BlockPos other = state.getValue(TallBlock.TOP) ? pos.below() : pos.above();
             BlockState otherState = level.getBlockState(other);
-            if (otherState.is(state.getBlock())) level.setBlock(other, otherState.setValue(COLOR, dye.getDyeColor()), 3);
+            if (otherState.is(state.getBlock())) level.setBlock(other, otherState.setValue(COLOR, color), 3);
         }
         if (!player.getAbilities().instabuild) stack.shrink(1);
         return true;
